@@ -1,0 +1,2 @@
+﻿This example shows how the RadRangeSlider can be used for different kinds of scenarios.
+The first range slider allows you to select a range of values, while the second one simulates single value selection.

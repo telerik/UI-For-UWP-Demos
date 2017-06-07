@@ -1,0 +1,1 @@
+﻿RadBulletGraph is a data visualization component that clearly and concisely describes a single datum compared to one or two additional data.

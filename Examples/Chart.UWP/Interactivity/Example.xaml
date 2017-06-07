@@ -1,0 +1,78 @@
+﻿<UserControl
+    x:Class="Chart.Interactivity.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.Interactivity"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CommonResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="IntersectionPointTemplate">
+                <Ellipse Stroke="Black" StrokeThickness="2" Width="8" Height="8"/>
+            </DataTemplate>
+            <DataTemplate x:Key="EmptyTemplate"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="MICROSOFT CORPORATION (MSFT) - NasdaqGS" FontSize="16"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="{Binding DateLabel}" Width="80" FontSize="12"/>
+            <TextBlock Text="MSFT:" Margin="2 0 2 0" FontSize="12"/>
+            <TextBlock Text="{Binding MSFTValue}" FontSize="12" Foreground="#FF1E98E4" Width="60"/>
+            <TextBlock Text="EMA (5):" Margin="2 0 2 0" FontSize="12"/>
+            <TextBlock Text="{Binding EMAValue}" FontSize="12" Foreground="#FF1E98E4"/>
+        </StackPanel>
+        <telerikChart:RadCartesianChart x:Name="Chart" Grid.Row="2" MinZoom="5,1" Margin="0 0 0 50">
+            <telerikChart:RadCartesianChart.VerticalAxis>
+                <telerikChart:LinearAxis/>
+            </telerikChart:RadCartesianChart.VerticalAxis>
+            <telerikChart:RadCartesianChart.HorizontalAxis>
+                <telerikChart:DateTimeContinuousAxis MaximumTicks="20" LabelFormat="{}{0:dd.MM}" LabelFitMode="MultiLine" />
+            </telerikChart:RadCartesianChart.HorizontalAxis>
+            <telerikChart:RadCartesianChart.Grid>
+                <telerikChart:CartesianChartGrid MajorLinesVisibility="Y"></telerikChart:CartesianChartGrid>
+            </telerikChart:RadCartesianChart.Grid>
+            <telerikChart:AreaSeries ItemsSource="{Binding Data}" Transitions="{x:Null}"
+                                     telerikChart:ChartTrackBallBehavior.TrackInfoTemplate="{StaticResource EmptyTemplate}" 
+                                     telerikChart:ChartTrackBallBehavior.IntersectionTemplate="{StaticResource IntersectionPointTemplate}">
+                <telerikChart:AreaSeries.ValueBinding>
+                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                </telerikChart:AreaSeries.ValueBinding>
+                <telerikChart:AreaSeries.CategoryBinding>
+                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                </telerikChart:AreaSeries.CategoryBinding>
+            </telerikChart:AreaSeries>
+            <telerikChart:RadCartesianChart.Indicators>
+                <telerikChart:ExponentialMovingAverageIndicator  telerikChart:ChartTrackBallBehavior.TrackInfoTemplate="{StaticResource EmptyTemplate}" 
+                                                                 ItemsSource="{Binding Data}" Period="5" Stroke="Black" StrokeThickness="1">
+                    <telerikChart:ExponentialMovingAverageIndicator.ValueBinding>
+                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                    </telerikChart:ExponentialMovingAverageIndicator.ValueBinding>
+                    <telerikChart:ExponentialMovingAverageIndicator.CategoryBinding>
+                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                    </telerikChart:ExponentialMovingAverageIndicator.CategoryBinding>
+                </telerikChart:ExponentialMovingAverageIndicator>
+            </telerikChart:RadCartesianChart.Indicators>
+            <telerikChart:RadCartesianChart.Behaviors>
+                <telerikChart:ChartPanAndZoomBehavior PanMode="Horizontal" ZoomMode="Horizontal"/>
+                <telerikChart:ChartTrackBallBehavior ShowIntersectionPoints="True" TrackInfoUpdated="ChartTrackBallBehavior_TrackInfoUpdated"/>
+            </telerikChart:RadCartesianChart.Behaviors>
+        </telerikChart:RadCartesianChart>
+    </Grid>
+</UserControl>

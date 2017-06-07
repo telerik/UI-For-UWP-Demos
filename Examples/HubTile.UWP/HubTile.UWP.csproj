@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1328BB49-3532-4BC3-AB74-02E550E24092}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HubTile</RootNamespace>
+    <AssemblyName>HubTile</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\HubTile\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="ExampleBase.cs" />
+    <Compile Include="FirstLook\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\ViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\HubTile.UWP.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Highlights\hubtile_470x500.jpg" />
+    <Content Include="Assets\HubTile_Large.png" />
+    <Content Include="Assets\HubTile_Medium.png" />
+    <Content Include="Assets\HubTile_Pinned.png" />
+    <Content Include="Assets\HubTile_Small.png" />
+    <Content Include="FirstLook\FirstLook_Small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Gallery\Images\CustomTile\icon.png" />
+    <Content Include="Gallery\Images\HubTile\150x.png" />
+    <Content Include="Gallery\Images\HubTile\310x.png" />
+    <Content Include="Gallery\Images\HubTile\310x150.png" />
+    <Content Include="Gallery\Images\HubTile\70x.png" />
+    <Content Include="Gallery\Images\MosaicTile\1.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\2.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\3.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\4.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\5.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\6.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\7.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\8.jpg" />
+    <Content Include="Gallery\Images\MosaicTile\9.jpg" />
+    <Content Include="Gallery\Images\SlideTile\150x.jpg" />
+    <Content Include="Gallery\Images\SlideTile\310x.jpg" />
+    <Content Include="Gallery\Images\SlideTile\310x.png" />
+    <Content Include="Gallery\Images\SlideTile\310x150.jpg" />
+    <Content Include="Gallery\Images\SlideTile\70x.jpg" />
+    <Content Include="Gallery\Thumbnails\Tile1.png" />
+    <Content Include="Gallery\Thumbnails\Tile2.png" />
+    <Content Include="Gallery\Thumbnails\Tile3.png" />
+    <Content Include="Gallery\Thumbnails\Tile4.png" />
+    <Content Include="Gallery\Thumbnails\Tile5.png" />
+    <EmbeddedResource Include="Gallery\Description.txt" />
+    <EmbeddedResource Include="FirstLook\Description.txt" />
+    <Content Include="Images\activities-1.png" />
+    <Content Include="Images\activities.png" />
+    <Content Include="Images\calls.png" />
+    <Content Include="Images\closed-wins-1.png" />
+    <Content Include="Images\closed-wins.png" />
+    <Content Include="Images\companies-1.png" />
+    <Content Include="Images\companies-2.png" />
+    <Content Include="Images\companies-3.png" />
+    <Content Include="Images\companies-4.png" />
+    <Content Include="Images\contacts-1.jpg" />
+    <Content Include="Images\contacts-10.jpg" />
+    <Content Include="Images\contacts-2.jpg" />
+    <Content Include="Images\contacts-3.jpg" />
+    <Content Include="Images\contacts-4.jpg" />
+    <Content Include="Images\contacts-5.jpg" />
+    <Content Include="Images\contacts-6.jpg" />
+    <Content Include="Images\contacts-7.jpg" />
+    <Content Include="Images\contacts-8.jpg" />
+    <Content Include="Images\contacts-9.jpg" />
+    <Content Include="Images\gallery\customtile.png" />
+    <Content Include="Images\gallery\hubtile.png" />
+    <Content Include="Images\gallery\mosaictile.png" />
+    <Content Include="Images\gallery\rotatortile.png" />
+    <Content Include="Images\gallery\slidetile.png" />
+    <Content Include="Images\jake-connely.png" />
+    <Content Include="Images\lost.png" />
+    <Content Include="Images\mails.png" />
+    <Content Include="Images\meetings.png" />
+    <Content Include="Images\open-tasks-1.png" />
+    <Content Include="Images\open-tasks.png" />
+    <Content Include="Images\opportunities-1.png" />
+    <Content Include="Images\opportunities.png" />
+    <Content Include="Images\won.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="FirstLook\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Templates\Tile1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Templates\Tile2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Templates\Tile3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Templates\Tile4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Templates\Tile5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QSF.Common\QSF.Common.csproj">
+      <Project>{680d7e16-7bc1-44a6-939e-8f94904dbc7b}</Project>
+      <Name>QSF.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="@(Compile)" />
+      <EmbeddedResource Include="@(Page)" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

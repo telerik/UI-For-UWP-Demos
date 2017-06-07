@@ -1,0 +1,2 @@
+﻿RadExpanderControl is an extended content control that enables master-details like scenarios by providing infrastructure for defining expandable content that can be collapes or expanded by the end user.
+

@@ -1,0 +1,100 @@
+﻿<UserControl  x:Class="Grid.Update.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.Update"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikChart ="using:Telerik.UI.Xaml.Controls.Chart"
+	xmlns:telerikData="using:Telerik.Data.Core">
+
+    
+    <Grid x:Name="layoutRoot">
+        <Grid.Resources>
+            <local:DeviationStyleSelector x:Key="DeviationForegroundSelector">
+                <local:DeviationStyleSelector.PositiveStyle>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#FF30E95C"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="10 0 0 0"/>
+                    </Style>
+                </local:DeviationStyleSelector.PositiveStyle>
+                <local:DeviationStyleSelector.NegativeStyle>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="#FFE1525C"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Margin" Value="10 0 0 0"/>
+                    </Style>
+                </local:DeviationStyleSelector.NegativeStyle>
+            </local:DeviationStyleSelector>
+            <local:DeviationStyleSelector x:Key="DeviationBackgroundSelector">
+                <local:DeviationStyleSelector.PositiveStyle>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="#2C8B40"/>
+                    </Style>
+                </local:DeviationStyleSelector.PositiveStyle>
+                <local:DeviationStyleSelector.NegativeStyle>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="#8B252C"/>
+                    </Style>
+                </local:DeviationStyleSelector.NegativeStyle>
+            </local:DeviationStyleSelector>
+            <local:DeviationStyleSelector x:Key="DeviationSecondaryBackgroundSelector">
+                <local:DeviationStyleSelector.PositiveStyle>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="#FF30E95C"/>
+                    </Style>
+                </local:DeviationStyleSelector.PositiveStyle>
+                <local:DeviationStyleSelector.NegativeStyle>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="#FFE1525C"/>
+                    </Style>
+                </local:DeviationStyleSelector.NegativeStyle>
+            </local:DeviationStyleSelector>
+            <local:DataUpdateViewModel x:Key="Model"/>
+            <TransitionCollection x:Key="EmptyTransitions"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ProgressBar Maximum="100" x:Name="UpdateIntervalBar" Margin="0" Foreground="#FF006AC1" Value="{Binding UpdateProgress, Mode=TwoWay, Source={StaticResource Model}}" Width="400" HorizontalAlignment="Center"/>
+        <telerikGrid:RadDataGrid Grid.Row="1" UserGroupMode="Disabled" UserColumnReorderMode="None" UserFilterMode="Disabled" 
+                                 GridLinesVisibility="Horizontal" AlternationStartIndex="1" AlternationStep="2" 
+                                 ItemsSource="{Binding Data, Source={StaticResource Model}}" AutoGenerateColumns="False">
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+				<telerikData:PropertyGroupDescriptor PropertyName="Continent"/>
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTemplateColumn Width="5" SizeMode="Fixed" CellDecorationStyleSelector="{StaticResource DeviationSecondaryBackgroundSelector}"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Symbol" Header="SYMBOL"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Price" CellContentFormat="{}{0:###,###.00}" Header="PRICE"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Change" CellContentFormat="{}{0:f2}" Header="CHANGE" CellContentStyleSelector="{StaticResource DeviationForegroundSelector}"  CellDecorationStyleSelector="{StaticResource DeviationBackgroundSelector}"/>
+                <telerikGrid:DataGridTextColumn PropertyName="ChangePercent" CellContentFormat="{}{0:p2}" Header="% CNG" CellContentStyleSelector="{StaticResource DeviationForegroundSelector}"/>
+                <telerikGrid:DataGridTemplateColumn Width="300" SizeMode="Fixed" Header="CHART">
+                    <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <telerikChart:RadCartesianChart MinHeight="30" MinWidth="60" Margin="5,8,10,8">
+                                <telerikChart:RadCartesianChart.VerticalAxis>
+                                    <telerikChart:LinearAxis Visibility="Collapsed" />
+                                </telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:RadCartesianChart.HorizontalAxis>
+                                    <telerikChart:CategoricalAxis Visibility="Collapsed"/>
+                                </telerikChart:RadCartesianChart.HorizontalAxis>
+                                <telerikChart:LineSeries ItemsSource="{Binding PriceHistory}" Transitions="{StaticResource EmptyTransitions}">
+                                    <telerikChart:LineSeries.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Item2"/>
+                                    </telerikChart:LineSeries.ValueBinding>
+                                    <telerikChart:LineSeries.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Item1"/>
+                                    </telerikChart:LineSeries.CategoryBinding>
+                                </telerikChart:LineSeries>
+                            </telerikChart:RadCartesianChart>
+                        </DataTemplate>
+                    </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                </telerikGrid:DataGridTemplateColumn>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+    </Grid>
+</UserControl>

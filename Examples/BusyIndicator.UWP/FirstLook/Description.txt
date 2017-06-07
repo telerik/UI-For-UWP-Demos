@@ -1,0 +1,2 @@
+﻿RadBusyIndicator enables you to display a progress animation and thus inform your end-users that a long-lasting operation is performed. The control delivers 7 different animation styles
+out-of-the-box and also allows for designing custom animations. You can specify custom content as well and define its position relative to the displayed animation.

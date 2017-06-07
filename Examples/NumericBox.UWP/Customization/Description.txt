@@ -1,0 +1,1 @@
+﻿The example demonstrates the Culture support and custom formatting in RadNumericBox. The first box has its control template modified to change the default buttons layout.

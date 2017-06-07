@@ -1,0 +1,41 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.Gallery"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart">
+
+    <local:DataPointToBrushConverter x:Key="BrushConverter"></local:DataPointToBrushConverter>
+    <DataTemplate x:Key="PointTemplate">
+        <Rectangle Width="8" Height="8" RadiusX="8" RadiusY="8">
+            <Rectangle.Fill>
+                <Binding Converter="{StaticResource BrushConverter}"/>
+            </Rectangle.Fill>
+        </Rectangle>
+    </DataTemplate>
+
+    <telerik:PropertyNameDataPointBinding x:Key="ValueBinding" PropertyName="Value"/>
+    <telerik:PropertyNameDataPointBinding x:Key="CategoryBinding" PropertyName="Category"/>
+
+    <DataTemplate x:Key="Item">
+        <telerik:RadCartesianChart PaletteName="DefaultLight">
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:CategoricalAxis/>
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis/>
+            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart.Grid>
+                <telerik:CartesianChartGrid MajorLinesVisibility="XY"/>
+            </telerik:RadCartesianChart.Grid>
+            <telerik:SplineSeries ItemsSource="{Binding Data1}" PointTemplate="{StaticResource PointTemplate}"
+                               ValueBinding="{StaticResource ValueBinding}" 
+                               CategoryBinding="{StaticResource CategoryBinding}"
+                               CombineMode="Stack"/>
+            <telerik:SplineSeries ItemsSource="{Binding Data2}"  PointTemplate="{StaticResource PointTemplate}"
+                               ValueBinding="{StaticResource ValueBinding}" 
+                               CategoryBinding="{StaticResource CategoryBinding}"
+                               CombineMode="Stack"/>
+        </telerik:RadCartesianChart>
+    </DataTemplate>
+
+</ResourceDictionary>

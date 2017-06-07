@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4E8BF452-8A61-495E-BC95-BE6EDF1C1675}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chart</RootNamespace>
+    <AssemblyName>Chart</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>..\..\Deploy.UWP\Chart\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <EmbeddedResource Include="Annotations\Data\USRecessionCompanyData.csv" />
+    <EmbeddedResource Include="EmptyValues\Data\Premierleaguedata.csv" />
+    <EmbeddedResource Include="Gallery\Point\Data\Earthquakes.csv" />
+    <EmbeddedResource Include="Interactivity\Data\MSFT.csv" />
+    <EmbeddedResource Include="MultipleAxes\Data\GDPDetails.csv" />
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Annotations\AxisLabelConverter.cs" />
+    <Compile Include="Annotations\ClosestDataPointChangedEventHandler.cs" />
+    <Compile Include="Annotations\Company.cs" />
+    <Compile Include="Annotations\CompanyData.cs" />
+    <Compile Include="Annotations\CompanyEvent.cs" />
+    <Compile Include="Annotations\DataPointEventArgs.cs" />
+    <Compile Include="Annotations\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Annotations\ExampleViewModel.cs" />
+    <Compile Include="Annotations\StringFormatConverter.cs" />
+    <Compile Include="Annotations\Views\AppleChart.xaml.cs">
+      <DependentUpon>AppleChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Annotations\Views\GoogleChart.xaml.cs">
+      <DependentUpon>GoogleChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Annotations\Views\MicrosoftChart.xaml.cs">
+      <DependentUpon>MicrosoftChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Annotations\VisibilityConverter.cs" />
+    <Compile Include="BurndownChart\DataModel.cs" />
+    <Compile Include="BurndownChart\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BurndownChart\ExampleViewModel.cs" />
+    <Compile Include="EmptyValues\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmptyValues\ExampleViewModel.cs" />
+    <Compile Include="EmptyValues\FootballTeamStats.cs" />
+    <Compile Include="FirstLook\Data\MonthRevenue.cs" />
+    <Compile Include="FirstLook\Data\ProductRevenue.cs" />
+    <Compile Include="FirstLook\Data\RevenueData.cs" />
+    <Compile Include="FirstLook\Data\StoreRevenue.cs" />
+    <Compile Include="FirstLook\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FirstLook\ForegroundConverter.cs" />
+    <Compile Include="FirstLook\PositiveVisibilityConverter.cs" />
+    <Compile Include="FirstLook\RevenuesTemplateSelector.cs" />
+    <Compile Include="FirstLook\StringFormatConverter.cs" />
+    <Compile Include="FirstLook\ViewModel\MainViewModel.cs" />
+    <Compile Include="Gallery\Area\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Bar\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\CategoricalData.cs" />
+    <Compile Include="Gallery\ChartGalleryModel.cs" />
+    <Compile Include="Gallery\DataPointToBrushConverter.cs" />
+    <Compile Include="Gallery\Doughnut\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\FinancialData.cs" />
+    <Compile Include="Gallery\Financial\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\GalleryControl.xaml.cs">
+      <DependentUpon>GalleryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Line\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\LowHighMeasurementWeatherData.cs" />
+    <Compile Include="Gallery\NumericalData.cs" />
+    <Compile Include="Gallery\PieLabelStrategy.cs" />
+    <Compile Include="Gallery\Pie\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\PointData.cs" />
+    <Compile Include="Gallery\Point\AxisLabelConverter.cs" />
+    <Compile Include="Gallery\Point\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Point\PointSeriesGalleryModel.cs" />
+    <Compile Include="Gallery\PolarData.cs" />
+    <Compile Include="Gallery\Polar\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Radar\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Range\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\Scatter\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery\SimpleData.cs" />
+    <Compile Include="Gallery\Step\FirstLook.xaml.cs">
+      <DependentUpon>FirstLook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interactivity\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interactivity\ExampleViewModel.cs" />
+    <Compile Include="Interactivity\OhlcModel.cs" />
+    <Compile Include="MultipleAxes\BooleanToVisibilityConverter.cs" />
+    <Compile Include="MultipleAxes\DataPointToBrushConverter.cs" />
+    <Compile Include="MultipleAxes\Example.xaml.cs">
+      <DependentUpon>Example.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultipleAxes\ExampleViewModel.cs" />
+    <Compile Include="MultipleAxes\GDPDetailsInfo.cs" />
+    <Compile Include="MultipleAxes\GDPInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock\Data\FinancialDataModel.cs" />
+    <Compile Include="Stock\Data\OhlcModel.cs" />
+    <Compile Include="Stock\DateTimeConverter.cs" />
+    <Compile Include="Stock\DelegateCommand.cs" />
+    <Compile Include="Stock\StockSeries.xaml.cs">
+      <DependentUpon>StockSeries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\StockViewModel.cs" />
+    <EmbeddedResource Include="Properties\Chart.UWP.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Annotations\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Annotations\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Annotations\Views\AppleChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Annotations\Views\GoogleChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Annotations\Views\MicrosoftChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BurndownChart\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CommonResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EmptyValues\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EmptyValues\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FirstLook\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FirstLook\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Gallery\Area\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Area\Templates\Area1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Area\Templates\Area2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Area\Templates\Area3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Area\Templates\Area4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Area\Templates\Area5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Bar\Templates\Bar8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Doughnut\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Doughnut\Templates\Doughnut1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Doughnut\Templates\Doughnut2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Financial\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Financial\Templates\Financial1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Financial\Templates\Financial2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\GalleryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line7.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Line\Templates\Line8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Pie\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Pie\Templates\Pie1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Pie\Templates\Pie2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Pie\Templates\Pie3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Point\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Point\Templates\Point1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\Templates\Polar1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\Templates\Polar2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\Templates\Polar3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\Templates\Polar4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Polar\Templates\Polar5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\Templates\Radar1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\Templates\Radar2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\Templates\Radar3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\Templates\Radar4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Radar\Templates\Radar5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Range\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Range\Templates\Range1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Range\Templates\Range2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\Templates\Scatter1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\Templates\Scatter2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\Templates\Scatter3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\Templates\Scatter4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Scatter\Templates\Scatter5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Step\FirstLook.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Step\Templates\Step1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Gallery\Step\Templates\Step2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interactivity\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MultipleAxes\Example.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Stock\StockSeries.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Annotations\Description.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Chart_Large.png" />
+    <Content Include="Assets\Chart_Medium.png" />
+    <Content Include="Assets\Chart_Pinned.png" />
+    <Content Include="Assets\Chart_Small.png" />
+    <Content Include="Assets\Highlights\chart_annotations_470x500.jpg" />
+    <Content Include="Assets\Highlights\chart_emptyvalues_150x160.jpg" />
+    <Content Include="Assets\Highlights\chart_multipleaxes_150x160.jpg" />
+    <Content Include="Assets\Highlights\chart_salesdashboard_310x330.jpg" />
+    <Content Include="Assets\Highlights\chart_stockseries_150x160.jpg" />
+    <Content Include="EmptyValues\Images\arsenal.png" />
+    <Content Include="EmptyValues\Images\aston_villa.png" />
+    <Content Include="EmptyValues\Images\blackburn_rovers.png" />
+    <Content Include="EmptyValues\Images\bolton_wanderers.png" />
+    <Content Include="EmptyValues\Images\chelsea.png" />
+    <Content Include="EmptyValues\Images\everton.png" />
+    <Content Include="EmptyValues\Images\football_player.png" />
+    <Content Include="EmptyValues\Images\fulham.png" />
+    <Content Include="EmptyValues\Images\leeds_united.png" />
+    <Content Include="EmptyValues\Images\liverpool.png" />
+    <Content Include="EmptyValues\Images\man_city.png" />
+    <Content Include="EmptyValues\Images\man_u.png" />
+    <Content Include="EmptyValues\Images\middlesbrough.png" />
+    <Content Include="EmptyValues\Images\newcastle.png" />
+    <Content Include="EmptyValues\Images\southampton.png" />
+    <Content Include="EmptyValues\Images\sunderland.png" />
+    <Content Include="EmptyValues\Images\tottenham.png" />
+    <Content Include="EmptyValues\Images\west_ham.png" />
+    <Content Include="EmptyValues\Pictures\football_player.png" />
+    <Content Include="FirstLook\Data\FirstLookData.xml" />
+    <Content Include="FirstLook\FirstLook_Small.png" />
+    <Content Include="Gallery\Area\Thumbnails\Area1.png" />
+    <Content Include="Gallery\Area\Thumbnails\Area2.png" />
+    <Content Include="Gallery\Area\Thumbnails\Area3.png" />
+    <Content Include="Gallery\Area\Thumbnails\Area4.png" />
+    <Content Include="Gallery\Area\Thumbnails\Area5.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar1.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar2.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar3.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar4.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar5.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar6.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar7.png" />
+    <Content Include="Gallery\Bar\Thumbnails\Bar8.png" />
+    <Content Include="Gallery\Doughnut\Thumbnails\Doughnut1.png" />
+    <Content Include="Gallery\Doughnut\Thumbnails\Doughnut2.png" />
+    <Content Include="Gallery\Financial\Thumbnails\Financial1.png" />
+    <Content Include="Gallery\Financial\Thumbnails\Financial2.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line1.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line2.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line3.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line4.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line5.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line6.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line7.png" />
+    <Content Include="Gallery\Line\Thumbnails\Line8.png" />
+    <Content Include="Gallery\Pie\Thumbnails\Pie1.png" />
+    <Content Include="Gallery\Pie\Thumbnails\Pie2.png" />
+    <Content Include="Gallery\Pie\Thumbnails\Pie3.png" />
+    <Content Include="Gallery\Point\Thumbnails\Point1.png" />
+    <Content Include="Gallery\Polar\Thumbnails\Polar1.png" />
+    <Content Include="Gallery\Polar\Thumbnails\Polar2.png" />
+    <Content Include="Gallery\Polar\Thumbnails\Polar3.png" />
+    <Content Include="Gallery\Polar\Thumbnails\Polar4.png" />
+    <Content Include="Gallery\Polar\Thumbnails\Polar5.png" />
+    <Content Include="Gallery\Radar\Thumbnails\Radar1.png" />
+    <Content Include="Gallery\Radar\Thumbnails\Radar2.png" />
+    <Content Include="Gallery\Radar\Thumbnails\Radar3.png" />
+    <Content Include="Gallery\Radar\Thumbnails\Radar4.png" />
+    <Content Include="Gallery\Radar\Thumbnails\Radar5.png" />
+    <Content Include="Gallery\Range\Thumbnails\Range1.png" />
+    <Content Include="Gallery\Range\Thumbnails\Range2.png" />
+    <Content Include="Gallery\Scatter\Thumbnails\Scatter1.png" />
+    <Content Include="Gallery\Scatter\Thumbnails\Scatter2.png" />
+    <Content Include="Gallery\Scatter\Thumbnails\Scatter3.png" />
+    <Content Include="Gallery\Scatter\Thumbnails\Scatter4.png" />
+    <Content Include="Gallery\Scatter\Thumbnails\Scatter5.png" />
+    <Content Include="Gallery\Step\Thumbnails\Step1.png" />
+    <Content Include="Gallery\Step\Thumbnails\Step2.png" />
+    <EmbeddedResource Include="Stock\Description.txt" />
+    <EmbeddedResource Include="Stock\Data\Weekly.txt" />
+    <EmbeddedResource Include="Stock\Data\Monthly.txt" />
+    <EmbeddedResource Include="Stock\Data\Daily.txt" />
+    <EmbeddedResource Include="MultipleAxes\Description.txt" />
+    <EmbeddedResource Include="Interactivity\Description.txt" />
+    <EmbeddedResource Include="Gallery\Step\Description.txt" />
+    <EmbeddedResource Include="Gallery\Scatter\Description.txt" />
+    <EmbeddedResource Include="Gallery\Range\Description.txt" />
+    <EmbeddedResource Include="Gallery\Radar\Description.txt" />
+    <EmbeddedResource Include="Gallery\Polar\Description.txt" />
+    <EmbeddedResource Include="Gallery\Point\Description.txt" />
+    <EmbeddedResource Include="Gallery\Pie\Description.txt" />
+    <EmbeddedResource Include="Gallery\Line\Description.txt" />
+    <EmbeddedResource Include="Gallery\Financial\Description.txt" />
+    <EmbeddedResource Include="Gallery\Doughnut\Description.txt" />
+    <EmbeddedResource Include="Gallery\Bar\Description.txt" />
+    <EmbeddedResource Include="Gallery\Area\Description.txt" />
+    <EmbeddedResource Include="FirstLook\Description.txt" />
+    <EmbeddedResource Include="EmptyValues\Description.txt" />
+    <EmbeddedResource Include="BurndownChart\Description.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\QSF.Common\QSF.Common.csproj">
+      <Project>{680d7e16-7bc1-44a6-939e-8f94904dbc7b}</Project>
+      <Name>QSF.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="@(Compile)" />
+      <EmbeddedResource Include="@(Page)" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

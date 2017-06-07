@@ -1,0 +1,96 @@
+﻿<Page
+    x:Class="LoopingList.Orientation.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LoopingList.Orientation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Data"
+    xmlns:telerikData="using:Telerik.Data.Core"
+    xmlns:listview="using:Telerik.UI.Xaml.Controls.Data.ListView"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives.LoopingList"
+    mc:Ignorable="d">
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <Style x:Key="loopingListItemStyle" TargetType="telerikPrimitives:LoopingListItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="telerikPrimitives:LoopingListItem">
+                            <ContentControl x:Name="contentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" DataContext="{TemplateBinding DataContext}"
+                                        Padding="{TemplateBinding Padding}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid x:Name="wrapperGrid" HorizontalAlignment="Left" Margin="50 0 0 0">
+            <telerikPrimitives:RadLoopingList Width="700"
+            Height="250" 
+            ItemSpacing="0"
+            IsCentered="True"
+            Margin="-12, 0, -12, 0"
+            VerticalAlignment="Center"
+            Orientation="Horizontal"
+            x:Name="loopingList"
+            ItemWidth="240"
+            ItemHeight="250"
+            IsLoopingEnabled="True"
+            ItemStyle="{StaticResource loopingListItemStyle}">
+                <telerikPrimitives:RadLoopingList.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Height="90">
+                                <TextBlock Text="{Binding Item.Place}" FontSize="20" HorizontalAlignment="Center"  Foreground="#686868" />
+                                <TextBlock Text="{Binding Item.Date}" FontSize="16" HorizontalAlignment="Center" Foreground="#686868"/>
+                            </StackPanel>
+                            <Image Width="240" Height="159" Source="{Binding Item.Picture}" Stretch="None"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerikPrimitives:RadLoopingList.ItemTemplate>
+            </telerikPrimitives:RadLoopingList>
+            <Image Grid.Row="0" x:Name="maskImage" IsHitTestVisible="False" Source="ms-appx:///LoopingList/Orientation/Images/movie.png" Height="215" Margin="-12, 85, -12, 0" Stretch="None"/>
+            <Image Grid.Row="0" x:Name="mobileMaskImage" Visibility="Collapsed" IsHitTestVisible="False" Source="ms-appx:///LoopingList/Orientation/Images/smallMovie.png" Height="215" Margin="-12, 85, -12, 0" Stretch="None"/>
+            <Image Grid.Row="0" x:Name="tabletMaskImage" Visibility="Collapsed" IsHitTestVisible="False" Source="ms-appx:///LoopingList/Orientation/Images/wideMovie.png" Height="215" Margin="-12, 85, -12, 0" Stretch="None"/>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="maskImage.Visibility" Value="Collapsed" />
+                        <Setter Target="tabletMaskImage.Visibility" Value="Visible" />
+                        <Setter Target="mobileMaskImage.Visibility" Value="Collapsed" />
+                        <Setter Target="loopingList.HorizontalAlignment" Value="Left" />
+                        <Setter Target="tabletMaskImage.HorizontalAlignment" Value="Left" />
+                        <Setter Target="loopingList.Width" Value="700" />
+                        <Setter Target="wrapperGrid.Width" Value="470" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="maskImage.Visibility" Value="Collapsed" />
+                        <Setter Target="tabletMaskImage.Visibility" Value="Collapsed" />
+                        <Setter Target="mobileMaskImage.Visibility" Value="Visible" />
+                        <Setter Target="loopingList.Width" Value="250" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

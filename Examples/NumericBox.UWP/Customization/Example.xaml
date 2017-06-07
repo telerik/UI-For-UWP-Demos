@@ -1,0 +1,145 @@
+﻿<UserControl
+    x:Class="NumericBox.Customization.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NumericBox.Customization"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:telerikPrimitivesCommon="using:Telerik.UI.Xaml.Controls.Primitives.Common"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    xmlns:telerikInputNumericBox="using:Telerik.UI.Xaml.Controls.Input.NumericBox"
+    xmlns:telerikTheming="using:Telerik.UI.Xaml.Controls.Primitives.Theming">
+    
+    <UserControl.Resources>
+        <Style TargetType="telerikInput:RadNumericBox" x:Key="BaseNumericBoxStyle">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#BABABA" />
+            <Setter Property="AllowNullValue" Value="False"/>
+            <Setter Property="ValueFormat" Value="{}{0,0:C4}"/>
+        </Style>
+        <Style TargetType="telerikInput:RadNumericBox" x:Key="CustomNumericBoxStyle" BasedOn="{StaticResource BaseNumericBoxStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="telerikInput:RadNumericBox">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ContentControl Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" Style="{TemplateBinding HeaderStyle}" IsTabStop="False"/>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <telerikInputNumericBox:NumericTextBox x:Name="PART_TextBox" Grid.ColumnSpan="2"/>
+                                <telerikPrimitivesCommon:InlineButton x:Name="PART_DecreaseButton" Content="&#xE0A1;" 
+                                                                      IsRepeatingEnabled="True" Grid.Row="1" HorizontalAlignment="Stretch"
+                                                                      Style="{TemplateBinding DecreaseButtonStyle}" Margin="0,2,2,0"/>
+                                <telerikPrimitivesCommon:InlineButton x:Name="PART_IncreaseButton" Content="&#xE0A0;" HorizontalAlignment="Stretch"
+                                                                      IsRepeatingEnabled="True" Grid.Row="1" Grid.Column="1" Margin="0,2,0,0"
+                                                                      Style="{TemplateBinding IncreaseButtonStyle}"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ExchangeRateText">
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+            <Setter Property="Margin" Value="0,6,0,0"/>
+            <Setter Property="Foreground" Value="{StaticResource TelerikSelectedBrush}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <RelativePanel>
+            <StackPanel x:Name="UnitedStatesStackPanel" MaxWidth="280">
+                <TextBlock  Text="CURRENCY CONVERTER" Foreground="{StaticResource TelerikSelectedBrush}" FontSize="20" Margin="0,0,0,36"/>
+                <telerikInput:RadNumericBox Style="{StaticResource CustomNumericBoxStyle}" telerikPrimitives:CultureService.CultureName="en-US"
+                                        Value="{Binding UsdValue, Mode=TwoWay}" Maximum="{Binding Maximum}" Margin="0,0,0,14">
+                    <telerikInput:RadNumericBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/usd.png" Margin="0,0,6,0"/>
+                            <TextBlock Text="United States Dollar" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </telerikInput:RadNumericBox.Header>
+                </telerikInput:RadNumericBox>
+                <TextBlock Text="$1 = 0.7700 €" Style="{StaticResource ExchangeRateText}"/>
+                <TextBlock Text="$1 = £ 0.6504" Style="{StaticResource ExchangeRateText}"/>
+                <TextBlock Text="$1 = ¥ 101.6045" Style="{StaticResource ExchangeRateText}"/>
+            </StackPanel>
+            <StackPanel x:Name="EuropeStackPanel" MaxWidth="280">
+                <telerikInput:RadNumericBox Value="{Binding EurValue, Mode=TwoWay}" Margin="0,0,0,24" Style="{StaticResource BaseNumericBoxStyle}"
+                                        Maximum="{Binding Maximum}" telerikPrimitives:CultureService.CultureName="de-DE">
+                    <telerikInput:RadNumericBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/eur.png" Margin="0,0,6,0"/>
+                            <TextBlock Text="Europe Euro" VerticalAlignment="Center"/>
+                            <TextBlock Text="1€ = $1.2985" Style="{StaticResource ExchangeRateText}" Margin="6,0,0,0"/>
+                        </StackPanel>
+                    </telerikInput:RadNumericBox.Header>
+                </telerikInput:RadNumericBox>
+                <telerikInput:RadNumericBox Value="{Binding GbpValue, Mode=TwoWay}" Margin="0,0,0,24" Style="{StaticResource BaseNumericBoxStyle}"
+                                        Maximum="{Binding Maximum}" telerikPrimitives:CultureService.CultureName="en-GB">
+                    <telerikInput:RadNumericBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/gbp.png" Margin="0,0,6,0"/>
+                            <TextBlock Text="UK Pound" VerticalAlignment="Center"/>
+                            <TextBlock Text="£1 = $1.5370" Style="{StaticResource ExchangeRateText}" Margin="6,0,0,0"/>
+                        </StackPanel>
+                    </telerikInput:RadNumericBox.Header>
+                </telerikInput:RadNumericBox>
+                <telerikInput:RadNumericBox Value="{Binding JpyValue, Mode=TwoWay}" Margin="0,0,0,24" Style="{StaticResource BaseNumericBoxStyle}"
+                                        Maximum="{Binding Maximum}" telerikPrimitives:CultureService.CultureName="ja-JP">
+                    <telerikInput:RadNumericBox.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/jpy.png" Margin="0,0,6,0"/>
+                            <TextBlock Text="Japan Yen" VerticalAlignment="Center"/>
+                            <TextBlock Text="¥1 = $0.0098" Style="{StaticResource ExchangeRateText}" Margin="6,0,0,0"/>
+                        </StackPanel>
+                    </telerikInput:RadNumericBox.Header>
+                </telerikInput:RadNumericBox>
+            </StackPanel>         
+        </RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="918" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="EuropeStackPanel.(RelativePanel.RightOf)" Value="UnitedStatesStackPanel" />
+                        <Setter Target="EuropeStackPanel.Margin" Value="150,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+                <!--<VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="790" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="EuropeStackPanel.(RelativePanel.RightOf)" Value="UnitedStatesStackPanel" />
+                        <Setter Target="EuropeStackPanel.Margin" Value="25,0,0,0" />
+                    </VisualState.Setters>
+                </VisualState>-->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="EuropeStackPanel.(RelativePanel.Below)" Value="UnitedStatesStackPanel" />
+                        <Setter Target="EuropeStackPanel.Margin" Value="0,30,0,0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+</UserControl>

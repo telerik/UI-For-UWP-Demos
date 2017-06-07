@@ -1,0 +1,1 @@
+﻿The example demonstrates how RadDataGrid responds to updates in the source data items.

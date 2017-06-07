@@ -1,0 +1,1 @@
+﻿The example demonstrates a simple filtering scenario using RadDataGrid's DelegateFilterDescriptor. Select a column from the ComboBox in the top-left corner and type a string to match.

@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:local="using:Chart.Gallery.Range.Templates">
+    
+    <DataTemplate x:Key="Item">
+        <telerik:RadCartesianChart PaletteName="DefaultLight" x:Name="chart">
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:DateTimeCategoricalAxis LabelFormat="{}{0:MMM}"/>
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis LabelFormat="{}{0:N1}F"
+                                    Minimum="6.8" Maximum="107.6"
+                                    HorizontalLocation="Right" />                
+            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart.Grid>
+                <telerik:CartesianChartGrid StripLinesVisibility="Y"/>
+            </telerik:RadCartesianChart.Grid>
+            <telerik:RangeBarSeries ItemsSource="{Binding Data1}">
+                <telerik:RangeBarSeries.VerticalAxis>
+                    <telerik:LinearAxis LabelFormat="{}{0}°C"
+                                    Minimum="-14"
+								    Maximum="42"
+								    MajorStep="7"/>
+                </telerik:RangeBarSeries.VerticalAxis>
+                <telerik:RangeBarSeries.CategoryBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Date"/>
+                </telerik:RangeBarSeries.CategoryBinding>
+                <telerik:RangeBarSeries.HighBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="HighMeasurement"/>
+                </telerik:RangeBarSeries.HighBinding>
+                <telerik:RangeBarSeries.LowBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="LowMeasurement"/>
+                </telerik:RangeBarSeries.LowBinding>
+            </telerik:RangeBarSeries>
+        </telerik:RadCartesianChart>
+    </DataTemplate>
+    
+</ResourceDictionary>

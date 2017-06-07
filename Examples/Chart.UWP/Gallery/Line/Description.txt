@@ -1,0 +1,1 @@
+﻿The example demonstrates various setups of the cartesian LineSeries. LineSeries are categorical and need a Categorical and a Continuous axis in order to get properly plotted. Select an item on the left to load the desired scenario.

@@ -1,0 +1,1 @@
+﻿The example demonstrates a setup of the categorical Point Series. Point Series need one Categorical Axis and one Numerical Axis in order to get properly plotted.

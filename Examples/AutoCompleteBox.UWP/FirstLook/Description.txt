@@ -1,0 +1,6 @@
+﻿This example shows the RadAutoCompleteBox control. The search box is bound to a remote service and will request data as you type.
+
+Type a part of a movie name (e.g. "Avenger") to see all matching titles that are in theaters now. Click on a result to see more information about the movie.
+
+In addition to supporting remote data, the RadAutoCompleteBox allows item templates for customizing the results display, and text match highlighting for the current input.
+

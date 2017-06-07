@@ -1,0 +1,47 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart">
+    
+    <telerik:PropertyNameDataPointBinding x:Key="AngleBinding" PropertyName="Angle"/>
+    <telerik:PropertyNameDataPointBinding x:Key="ValueBinding" PropertyName="Value"/>
+    <SolidColorBrush x:Key="TelerikChartAxisBorderBrush" Color="#666666" />
+    
+    <DataTemplate x:Key="Item">
+        <telerik:RadPolarChart PaletteName="DefaultLight">
+            <telerik:RadPolarChart.Grid>
+                <telerik:PolarChartGrid GridLineVisibility="Radial"/>
+            </telerik:RadPolarChart.Grid>
+            <telerik:RadPolarChart.PolarAxis>
+                <telerik:PolarAxis/>
+            </telerik:RadPolarChart.PolarAxis>
+            <telerik:RadPolarChart.RadialAxis>
+                <telerik:NumericalRadialAxis MajorStep="30">
+                    <telerik:NumericalRadialAxis.LineStyle>
+                        <Style TargetType="Ellipse">
+                            <Setter Property="StrokeDashArray" Value="4, 2"/>
+                            <Setter Property="Stroke" Value="{StaticResource TelerikChartAxisBorderBrush}"/>
+                        </Style>
+                    </telerik:NumericalRadialAxis.LineStyle>
+                    <telerik:NumericalRadialAxis.MajorTickStyle>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Fill" Value="Transparent"/>
+                        </Style>
+                    </telerik:NumericalRadialAxis.MajorTickStyle>
+                </telerik:NumericalRadialAxis>
+            </telerik:RadPolarChart.RadialAxis>
+            <telerik:RadPolarChart.Series>
+                <telerik:PolarSplineSeries ItemsSource="{Binding Data1}" 
+                                           AngleBinding="{StaticResource AngleBinding}"
+                                           ValueBinding="{StaticResource ValueBinding}"/>
+                <telerik:PolarSplineSeries ItemsSource="{Binding Data2}" 
+                                           AngleBinding="{StaticResource AngleBinding}"
+                                           ValueBinding="{StaticResource ValueBinding}"/>
+                <telerik:PolarSplineSeries ItemsSource="{Binding Data3}" 
+                                           AngleBinding="{StaticResource AngleBinding}"
+                                           ValueBinding="{StaticResource ValueBinding}"/>
+            </telerik:RadPolarChart.Series>
+        </telerik:RadPolarChart>
+    </DataTemplate>
+
+</ResourceDictionary>

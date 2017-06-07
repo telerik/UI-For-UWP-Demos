@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ExamplesSchema.xsd">
+  <HomepageInfo>
+    <Headline text="This is Headline 1" />
+    <Highlights>
+      <Highlight description="Highlight 1 description" image="/Application;component/Resources/Images/Highlights1.png" text="Highlight 1 text" />
+      <Highlight description="Highlight 2 description" image="/Application;component/Resources/Images/Highlights2.png" text="Highlight 2 text" />
+    </Highlights>
+    <WhatsNew>
+      <Highlight image="/QSF/Assets/Whatsnew/Whatsnew1.png" text="Whatsnew 1 text" description="Whatsnew 1 description" />
+      <Highlight image="/QSF/Assets/Whatsnew/Whatsnew2.png" text="Whatsnew 2 text" description="Whatsnew 2 description" />
+    </WhatsNew>
+  </HomepageInfo>
+  <Controls>
+    <Control name="Chart" keywords="chart" description="Light-weight and super-fast charting component for your Windows Universal applications." text="Chart">
+      <Group name="Overview">
+        <Example name="Chart.FirstLook.Example" isDefault="true" headerText="Sales dashboard" commonFolders="Chart/FirstLook" keywords="chart" text="First Look">
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="Chart/Assets/Highlights/chart_salesdashboard_310x330.jpg" />
+        </Example>
+      </Group>
+      <Group name="Gallery">
+        <Example name="Chart.Gallery.Bar.FirstLook" commonFolders="Chart/Gallery/" keywords="chart, gallery, bar" text="Gallery" headerText="Bar series" />
+        <Example name="Chart.Gallery.Line.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, line" text="Gallery" headerText="Line series" />
+        <Example name="Chart.Gallery.Area.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, area" text="Gallery" headerText="Area series" />
+        <Example name="Chart.Gallery.Step.FirstLook" commonFolders="Chart/Gallery/" keywords="chart, gallery, step" text="Gallery" headerText="Step series" />
+        <Example name="Chart.Gallery.Range.FirstLook" commonFolders="Chart/Gallery/" keywords="chart, gallery, range" text="Gallery" headerText="Range series" />
+        <Example name="Chart.Gallery.Point.FirstLook" commonFolders="Chart/Gallery/" keywords="chart, gallery, point" text="Gallery" headerText="Point series" />
+        <Example name="Chart.Gallery.Scatter.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, scatter" text="Gallery" headerText="Scatter series" />
+        <Example name="Chart.Gallery.Pie.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, pie" text="Gallery" headerText="Pie series" />
+        <Example name="Chart.Gallery.Doughnut.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, doughnut" text="Gallery" headerText="Doughnut series" />
+        <Example name="Chart.Gallery.Financial.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, stock, financial" text="Gallery" headerText="Financial series" />
+        <Example name="Chart.Gallery.Radar.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, radar" text="Gallery" headerText="Radar series" />
+        <Example name="Chart.Gallery.Polar.FirstLook" commonFolders="Chart/Gallery" keywords="chart, gallery, polar" text="Gallery" headerText="Polar series" />
+      </Group>
+      <Group name="Financial">
+        <Example name="Chart.Stock.StockSeries" platform="WindowsUniversal" commonFolders="Chart/Financial" keywords="chart, Financial" text="Stock series and indicators" headerText="Stock series/indicators">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Chart/Assets/Highlights/chart_stockseries_150x160.jpg" />
+        </Example>
+      </Group>
+      <Group name="Annotations">
+        <Example name="Chart.Annotations.Example" commonFolders="Chart/Annotations" keywords="chart, Annotations" text="Annotations" headerText="Annotations">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Chart/Assets/Highlights/chart_annotations_470x500.jpg" />
+        </Example>
+      </Group>
+      <Group name="Multiple Axes">
+        <Example name="Chart.MultipleAxes.Example" commonFolders="Chart/MultipleAxes" keywords="chart, Multiple Axes" text=" Multiple Axes" headerText=" Multiple Axes">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Chart/Assets/Highlights/chart_multipleaxes_150x160.jpg" />
+        </Example>
+      </Group>
+      <Group name="Interactivity">
+        <Example name="Chart.Interactivity.Example" commonFolders="Chart/Interactivity" keywords="chart, Interactivity, scrolling, zoom, pan" text="Interactivity" headerText="Interactivity" />
+      </Group>
+      <Group name="Empty Values">
+        <Example name="Chart.EmptyValues.Example" commonFolders="Chart/EmptyValues" keywords="chart, EmptyValues, scrolling, zoom, pan" text="Empty Values" headerText="Empty Values">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Chart/Assets/Highlights/chart_emptyvalues_150x160.jpg" />
+        </Example>
+      </Group>
+      <Group name="Burndown Chart">
+        <Example name="Chart.BurndownChart.Example" commonFolders="Chart/BurndownChart" keywords="chart, BurndownChart, annotations" text="Burndown Chart" headerText="Burndown Chart"/>
+      </Group>
+    </Control>
+    <Control name="Gauge" keywords="gauge" description="A gauge control for visualizing and highlighting some data indicators." text="Gauge">
+      <Group name="Overview">
+        <Example headerText="Radial/Linear" name="Gauge.Gallery.FirstLook" isDefault="true" commonFolders="Gauge/Gallery" keywords="gauge" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Gauge/Assets/Highlights/gauge_464x494.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="BulletGraph" keywords="bulletgraph" description="RadBulletGraph is a data visualization component that clearly and concisely describes a single datum compared to one or two additional data." text="Bullet Graph">
+      <Group name="Overview">
+        <Example headerText="First look" name="BulletGraph.FirstLook.Example" isDefault="true" commonFolders="BulletGraph/FirstLook" keywords="bulletgraph" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="BulletGraph/Assets/Highlights/bulletgraph_464x494.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="DatePicker" keywords="date, picker, datepicker" description="RadDatePicker is a control that allows the user to select a date from a popup selector through a intuitive user experience." text="Date Picker">
+      <Group name="Overview">
+        <Example headerText="First Look" name="DatePicker.FirstLook.Example" isDefault="true" commonFolders="DatePicker/FirstLook" keywords="date, picker, datepicker" text="First Look" />
+      </Group>
+      <Group name="Features">
+        <Example headerText="Inline selector" name="DatePicker.DisplayMode.Example" isDefault="true" commonFolders="DatePicker/DisplayMode" keywords="date, picker, datepicker" text="Display Mode">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="DatePicker/Assets/Highlights/datepicker_470x500.jpg" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="ListView" keywords="listview, list" description="RadListView is a control" text="ListView">
+      <Group name="Overview">
+        <!--<Example headerText="Horizontal Layout" name="ListView.HorizontalLayout.Example" isDefault="false" commonFolders="ListView/HorizontalLayout" keywords="listview, list" text="Horizontal Layout" />-->
+        <Example headerText="Reorder" name="ListView.Reorder.Example" isDefault="true" commonFolders="ListView/Reorder" keywords="listview, list" text="Reorder">
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="ListView/Assets/Highlights/ListView-Reorder.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="TimePicker" keywords="time, picker, timepicker" description="RadTimePicker is a control that allows for selecting a time from a popup selector through a intuitive user experience." text="Time Picker">
+      <Group name="Overview">
+        <Example headerText="First Look" name="TimePicker.FirstLook.Example" isDefault="true" commonFolders="TimePicker/FirstLook" keywords="time, picker, timepicker" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="TimePicker/Assets/Highlights/timepicker_464x494.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="HubTile" keywords="tile, hubtile" description="The Telerik hub tile controls, also called live tiles, mimic the behavior of the native User Experience found in the home screen of Windows Universal. These are rectangular UI elements that dynamically update themselves to show the latest and up to date information from different services or app functionality." text="Hub Tile">
+      <Group name="Overview">
+        <Example headerText="First Look" name="HubTile.FirstLook.Example" isDefault="true" commonFolders="HubTile/FirstLook" keywords="tile, hubtile" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="HubTile/Assets/Highlights/hubtile_470x500.jpg" />
+        </Example>
+        <Example headerText="Gallery" name="HubTile.Gallery.Example" commonFolders="HubTile/Gallery" keywords="tile, hubtile, gallery" text="Gallery" />
+      </Group>
+    </Control>
+    <Control name="HexView" keywords="tile, itemscontrol,hexview" description="TODO" text="Hex View">
+      <Group name="Overview">
+        <Example headerText="First Look" name="HexView.FirstLook.Example" isDefault="true" commonFolders="HexView/FirstLook" keywords="tile, hexview" text="First Look">
+          <!--<Highlight widthMultiplier="6" heightMultiplier="6" image="HubTile/Assets/Highlights/hubtile_470x500.jpg" />-->
+        </Example>
+      </Group>
+    </Control>
+    <Control name="BusyIndicator" keywords="busy, indicator, busyindicator" description="RadBusyIndicator is a control ......" text="BusyIndicator">
+      <Group name="Overview">
+        <Example headerText="First Look" name="BusyIndicator.FirstLook.Example" isDefault="true" commonFolders="BusyIndicator/FirstLook" keywords="busy, indicator, busyindicator" text="First Look" />
+      </Group>
+    </Control>
+    <Control name="Rating" keywords="rating" description="RadRating is a control ......" text="Rating">
+      <Group name="Overview">
+        <Example headerText="First Look" name="Rating.FirstLook.Example" isDefault="true" commonFolders="Rating/FirstLook" keywords="rating" text="First Look" />
+      </Group>
+    </Control>
+    <Control name="Pagination" keywords="Pagination" description="RadPagination is a control that is designed to add new navigation features like current page tracking and previous/next page navigation to XAML ItemsControls such as FlipView." text="Pagination">
+      <Group name="Overview">
+        <Example name="Pagination.FirstLook.Example" commonFolders="Pagination/FirstLook" isDefault="true" headerText="First Look" keywords="first look, firstlook, first" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Pagination/Assets/Highlights/pagination_464x494.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="Grid" keywords="Grid" description="RadDataGrid is a data-bound component that visualizes data in a Tabular way - that is by the means of Rows and Columns. Each Row represents an object instance and each Column represents a Property of the underlying object type. The intersection of a Row and a Column is called a Cell." text="Grid">
+      <Group name="Overview">
+        <Example name="Grid.FirstLook.Example" headerText="Sales Statistics" commonFolders="Grid/FirstLook" isDefault="true" description="" keywords="grid, data, sort, group" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Grid/Assets/Highlights/grid_salesstatistics_470x500.jpg" />
+        </Example>
+        <Example name="Grid.Grouping.Example" headerText="Grouping" commonFolders="Grid/Grouping" isDefault="true" description="" keywords="grid, data, sort, group" text="Grouping" />
+        <Example name="Grid.GroupingUI.Example" headerText="Sales Dashboard" commonFolders="Grid/GroupingUI" description="" keywords="grid, data, sort, group" text="Grouping">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Grid/Assets/Highlights/grid_salesdashboard_150x160.jpg" />
+        </Example>
+        <Example name="Grid.Filtering.Example" headerText="Filtering" commonFolders="Grid/Filtering" isDefault="true" description="" keywords="grid, data, sort, filter" text="Filtering" />
+        <Example name="Grid.FlightSearch.Example" headerText="Flight Search" commonFolders="Grid/FlightSearch" description="" keywords="grid, data, filter" text="Filtering">
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="Grid/Assets/Highlights/grid_flightsearch_310x330.jpg" />
+        </Example>
+        <Example name="Grid.Selection.Example" headerText="Selection" commonFolders="Grid/Selection" isDefault="true" description="" keywords="grid, data, selection" text="Selection" />
+        <Example name="Grid.Update.Example" headerText="Data Update" commonFolders="Grid/Update" isDefault="true" description="" keywords="grid, data, update" text="Update">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Grid/Assets/Highlights/grid_dataupdate_150x160.jpg" />
+        </Example>
+      </Group>
+      <Group name="Customization">
+        <Example name="Grid.Customization.Example" headerText="Customization" commonFolders="Grid/Customization" description="" keywords="grid, data, customization" text="Customization">
+          <Highlight widthMultiplier="2" heightMultiplier="2" image="Grid/Assets/Highlights/grid_customization_150x160.jpg" />
+        </Example>
+      </Group>
+      <Group name="Editing">
+        <Example name="Grid.Editing.Example" headerText="Editing" commonFolders="Grid/Editing" description="" keywords="grid, data, Edit" text="Project Implementation Schedule" />
+      </Group>
+    </Control>
+    <Control name="AutoCompleteBox" keywords="AutoCompleteBox" description="RadAutoCompleteBox is a data-bound component that mimics the behavior of Google/Bing search box and visualizes a list of suggestions matching the text typed in the box." text="AutoComplete">
+      <Group name="Overview">
+        <Example name="AutoCompleteBox.FirstLook.Example" headerText="First Look" commonFolders="AutoCompleteBox/FirstLook" isDefault="true" keywords="auto complete, autocomplete, autocompletebox, first look, firstlook, first" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="AutoCompleteBox/Assets/Highlights/autocompletebox_470x500.jpg" />
+        </Example>
+        <Example name="AutoCompleteBox.Configurator.Example" headerText="Configurator" commonFolders="AutoCompleteBox/Configurator" isDefault="false" keywords="auto complete, autocomplete, autocompletebox, configurator" text="Configurator" />
+        <Example name="AutoCompleteBox.InlineSuggestions.Example" headerText="Inline Suggestions" commonFolders="AutoCompleteBox/InlineSuggestions" isDefault="false" keywords="auto complete, autocomplete, autocompletebox, inline suggestion, inline" text="Inline Suggestions" />
+      </Group>
+    </Control>
+    <Control name="Calendar" keywords="Calendar" description="RadCalendar is a control that allows the user to select a date through an intuitive visual calendar display." text="Calendar">
+      <Group name="Overview">
+        <Example name="Calendar.FirstLook.Example" headerText="First Look" commonFolders="Calendar/FirstLook" isDefault="false" description="" keywords="first look, firstlook, first" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Calendar/Assets/Highlights/calendar_470x500.jpg" />
+        </Example>
+        <Example name="Calendar.SpecialDates.Example" headerText="Special Dates" commonFolders="Calendar/SpecialDates" isDefault="true" description="" keywords="special, special dates" text="Special Dates" />
+      </Group>
+    </Control>
+    <Control name="Map" keywords="Map" description="RadMap enables visualization of vector shape files in geographical coordinates." text="Map">
+      <Group name="Overview">
+        <Example name="Map.FirstLook.Example" headerText="First Look" commonFolders="Map/FirstLook" isDefault="true" description="" keywords="map, shapefile, shape layer" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="Map/Assets/Highlights/Map_FirstLook_500x470.png" />
+        </Example>
+        <Example name="Map.Colorization.Example" headerText="Colorization" commonFolders="Map/Colorization" isDefault="false" description="" keywords="map, shapefile, colorization" text="Colorization">
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="Map/Assets/Highlights/Map_Colorization_330x310.png" />
+        </Example>
+        <Example name="Map.UserLayer.Example" headerText="User Layer" commonFolders="Map/UserLayer" isDefault="false" description="" keywords="map, user, itemtemplate" text="User Layer" />
+        <Example name="Map.Gallery.Example" headerText="Shapefile Gallery" commonFolders="Map/Gallery" isDefault="false" description="" keywords="map, shapefile, shape layer gallery" text="Shapefile Gallery" />
+      </Group>
+    </Control>
+    <Control name="NumericBox" keywords="NumericBox" description="RadNumericBox is a component that allows numeric input either by typing a number or by incrementing a value using the Increase/Decrease buttons." text="NumericBox">
+      <Group name="Overview">
+        <Example name="NumericBox.FirstLook.Example" headerText="First Look" commonFolders="NumericBox/FirstLook" isDefault="true" description="" keywords="numericbox, numeric" text="First Look" />
+        <Example name="NumericBox.Customization.Example" headerText="Customization" commonFolders="NumericBox/Customization" isDefault="true" description="" keywords="numericbox, numeric, customization" text="Customization">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="NumericBox/Assets/Highlights/numericbox_470x500.jpg" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="RangeSlider" keywords="RangeSlider" description="RadRangeSlider represents an input control that can be used for visual selection of a logical range" text="RangeSlider">
+      <Group name="Overview">
+        <Example name="RangeSlider.FirstLook.Example" headerText="First Look" commonFolders="RangeSlider/FirstLook" isDefault="true" description="" keywords="rangeslider,range slider,slider, first look, firstlook, first" text="First Look">
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="RangeSlider/Assets/Highlights/rangeslider_500x470.jpg" />
+        </Example>
+        <Example name="RangeSlider.Configurator.Example" headerText="Configurator" commonFolders="RangeSlider/Configurator" isDefault="true" description="" keywords="rangeslider, slider, range, configurator" text="Configurator" />
+      </Group>
+    </Control>
+    <Control name="RadialMenu" keywords="RadialMenu" description="RadRadialMenu represents an input control that can be used as context menu or separate control." text="RadialMenu">
+      <Group name="Overview">
+        <Example name="RadialMenu.Customization.Example" headerText="Customization" commonFolders="RadialMenu/FirstLook" isDefault="true" description="This example demonstrates the customization features of RadRadialMenu. Borders, backgrounds, colors and text, are easily customized through a set of APIs, giving the menu a completely different look each time." keywords="customization, radial menu, radial, menu" text="Customization">
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="RadialMenu/Assets/Highlights/RadialMenu_Customization_330x310.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="DataForm" keywords="DataForm" text="DataForm">
+      <Group name="Overview">
+        <Example name="DataForm.FirstLook.Example" headerText="First Look" commonFolders="DataForm/FirstLook" isDefault="true" description="" text="First Look" keywords="dataform, form" >
+          <Highlight widthMultiplier="4" heightMultiplier="4" image="DataForm/Assets/Highlights/DataForm-FirstLook-W8.png" />
+        </Example>
+      </Group>
+    </Control>
+    <Control name="LoopingList" keywords="LoopingList" text="LoopingList">
+      <Group name="Overview">
+        <Example name="LoopingList.FirstLook.Example" headerText="First Look" commonFolders="LoopingList/FirstLook" isDefault="true" description="" text="First Look" keywords="looping list, list" >
+          <Highlight widthMultiplier="6" heightMultiplier="6" image="LoopingList/Assets/Highlights/LoopingList-470x500.png" />
+        </Example>
+        <Example name="LoopingList.Orientation.Example" headerText="Orientation" commonFolders="LoopingList/Orientation" isDefault="true" description="" text="Orientation" keywords="looping list, list, Orientation" />
+      </Group>
+    </Control>
+    <Control name="Expander" keywords="Expander" text="Expander">
+      <Group name="Overview">
+        <Example name="Expander.FirstLook.Example" headerText="First Look" commonFolders="Expander/FirstLook" isDefault="true" description="" text="First Look" keywords="Expander" />
+      </Group>
+    </Control>
+  </Controls>
+  <HighlightedExamples>
+    <HighlightedExample name="Grid.GroupingUI.Example" text="Grid" widthMultiplier="6" heightMultiplier="6" image="Grid/Assets/Highlights/grid_salesstatistics_470x500.jpg" />
+    <HighlightedExample name="LoopingList.FirstLook.Example" text="LoopingList" widthMultiplier="2" heightMultiplier="2" image="LoopingList/Assets/Highlights/LoopingList-470x500.png" />
+    <HighlightedExample name="NumericBox.FirstLook.Example" text="NumericBox" widthMultiplier="2" heightMultiplier="2" image="NumericBox/Assets/Highlights/numericbox_470x500.jpg" />
+    <HighlightedExample name="Chart.FirstLook.Example" text="Chart" widthMultiplier="4" heightMultiplier="4" image="Chart/Assets/Highlights/chart_salesdashboard_310x330.jpg" />
+    <HighlightedExample name="RadialMenu.Customization.Example" text="RadialMenu" widthMultiplier="2" heightMultiplier="2" image="RadialMenu/Assets/Highlights/RadialMenu_Customization_330x310.png" />
+    <HighlightedExample name="Map.FirstLook.Example" text="Map" widthMultiplier="4" heightMultiplier="4" image="Map/Assets/Highlights/Map_FirstLook_500x470.png" />
+    <HighlightedExample name="AutoCompleteBox.FirstLook.Example" text="AutoCompleteBox" widthMultiplier="4" heightMultiplier="4" image="AutoCompleteBox/Assets/Highlights/autocompletebox_470x500.jpg" />
+    <HighlightedExample name="DataForm.FirstLook.Example" text="DataForm" widthMultiplier="2" heightMultiplier="2" image="DataForm/Assets/Highlights/DataForm-FirstLook-W8.png" />
+  </HighlightedExamples>
+  <HighlightedControls>
+    <HighlightedControl name="Grid" />
+    <HighlightedControl name="Chart" />
+    <HighlightedControl name="DataForm" />
+    <HighlightedControl name="Pagination" />
+    <HighlightedControl name="RangeSlider" />
+    <HighlightedControl name="AutoCompleteBox" />
+    <HighlightedControl name="DatePicker" />
+    <HighlightedControl name="NumericBox" platform="UWP" />
+  </HighlightedControls>
+  <HighlightedApps>
+    <HighlightedApp name="Sales dashdoard" thumbnail="Assets/FeaturedApps/SalesDashboard.png" shortDescription="The Telerik Sales Dashboard is an application for monitoring a sales representative's performance. The app allows for analyzing enterprise data through a rich data visualization dashboard, and facilitates the decision-making process. The app utilizes UI for Windows Universal to deliver the best visual experience on devices of all form factors." detailedDescription="" link="http://www.telerik.com/download/windows-universal-ui">
+      <!--http to this app: http://apps.microsoft.com/windows/en-us/app/telerik-controls-examples-html/6804146a-004a-461e-b8dd-eef699325032-->
+      <Highlight image="Assets/FeaturedApps/SalesDashboard/HomeTotalSalesTrend.png" />
+    </HighlightedApp>
+  </HighlightedApps>
+</Root>

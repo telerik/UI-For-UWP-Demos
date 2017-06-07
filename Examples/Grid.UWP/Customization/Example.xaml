@@ -1,0 +1,190 @@
+﻿<UserControl
+    x:Class="Grid.Customization.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikGridPrimitive="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+	xmlns:telerikData="using:Telerik.Data.Core"
+    xmlns:common="using:QSF.Common"
+    xmlns:local="using:Grid.Customization"
+    FontSize="14.667">
+    
+    <UserControl.Resources>
+        <TransitionCollection x:Key="EmptyTransitions"/>
+        <local:NumericToCurrencyConverter x:Key="CurrencyConverter" Format=""/>
+
+        <local:GroupToTerritorySalesConverter x:Key="TerritorySalesConverter" FormatString="{}{0,0:C0}"/>
+
+        <local:GroupToTerritorySalesTemplateConverter x:Key="GroupToTemplateConverter">
+            <local:GroupToTerritorySalesTemplateConverter.UpTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Converter={StaticResource TerritorySalesConverter}}" VerticalAlignment="Center"/>
+                        <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,4" Foreground="#30E95C"/>
+                    </StackPanel>
+                </DataTemplate>
+            </local:GroupToTerritorySalesTemplateConverter.UpTemplate>
+            <local:GroupToTerritorySalesTemplateConverter.DownTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Converter={StaticResource TerritorySalesConverter}}" VerticalAlignment="Center"/>
+                        <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="4,0,0,2" Foreground="#E1525C">
+                            <TextBlock.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </local:GroupToTerritorySalesTemplateConverter.DownTemplate>
+        </local:GroupToTerritorySalesTemplateConverter>
+        
+        <local:GoupHeaderTemplateSelector x:Key="RegionTemplateSelector">
+            <local:GoupHeaderTemplateSelector.RegionTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="249"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Group.Key}" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Grid.Column="1">
+                            <Rectangle Width="1" Fill="#676666"/>
+                            <Rectangle Width="1" Fill="#A3A3A3"/>
+                            <ContentPresenter ContentTemplate="{Binding Converter={StaticResource GroupToTemplateConverter}}" VerticalAlignment="Center" Margin="8,0,0,0" Foreground="#101010"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </local:GoupHeaderTemplateSelector.RegionTemplate>
+            <local:GoupHeaderTemplateSelector.CountryTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </local:GoupHeaderTemplateSelector.CountryTemplate>
+        </local:GoupHeaderTemplateSelector>
+        <local:UpDownTemplateSelector x:Key="UpDownTemplateSelector">
+            <local:UpDownTemplateSelector.UpTemplate>
+                <DataTemplate>
+                    <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </DataTemplate>
+            </local:UpDownTemplateSelector.UpTemplate>
+            <local:UpDownTemplateSelector.DownTemplate>
+                <DataTemplate>
+                    <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <RotateTransform Angle="180"/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </DataTemplate>
+            </local:UpDownTemplateSelector.DownTemplate>
+        </local:UpDownTemplateSelector>
+        <local:UpDownDecorationStyleSelector x:Key="UpDownDecorationStyleSelector">
+            <local:UpDownDecorationStyleSelector.UpStyle>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill" Value="#30E95C"/>
+                </Style>
+            </local:UpDownDecorationStyleSelector.UpStyle>
+            <local:UpDownDecorationStyleSelector.DownStyle>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill" Value="#E1525C"/>
+                </Style>
+            </local:UpDownDecorationStyleSelector.DownStyle>
+        </local:UpDownDecorationStyleSelector>
+        <local:RegionStyleSelector x:Key="RegionStyleSelector">
+            <local:RegionStyleSelector.RegionStyle>
+                <Style TargetType="telerikGridPrimitive:DataGridGroupHeader">
+                    <Setter Property="Background" Value="#999999"/>
+                </Style>
+            </local:RegionStyleSelector.RegionStyle>
+        </local:RegionStyleSelector>
+        <Style TargetType="telerikGridPrimitive:DataGridColumnHeader" x:Key="ColumnHeaderStyle">
+            <Setter Property="Background" Value="#272727"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Rectangle" x:Key="SalesYTDDecorationStyle">
+            <Setter Property="Fill" Value="#E5E4E4"/>
+        </Style>
+    </UserControl.Resources>
+
+    <common:ExampleHelper.ConfigurationPanel>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ToggleSwitch Toggled="OnShowVerticalLinesToggled" Header="Show vertical lines" IsOn="True" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Toggled="OnCustomGroupHeadersToggled" Header="Custom group headers" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="1"/>
+            <ToggleSwitch Toggled="OnConditionalFormattingToggled" Header="Conditional formatting" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="2"/>
+            <ToggleSwitch Toggled="OnCustomColumnStyleToggled" Header="Custom column style" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="3"/>
+            <ToggleSwitch Toggled="OnCustomColumnHeaderToggled" Header="Custom column header style" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="4"/>
+            <ToggleSwitch Toggled="OnAlternateRowToggled" Header="Alternate rows" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="5"/>
+            <ToggleSwitch Toggled="OnCellFormattingToggled" Header="Cell formatting" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="6"/>
+        </Grid>
+    </common:ExampleHelper.ConfigurationPanel>
+
+    <Grid>
+        <telerikGrid:RadDataGrid ItemsSource="{Binding Sales}" 
+                                 AutoGenerateColumns="False" x:Name="radDataGrid"
+                                 GroupHeaderTemplateSelector="{StaticResource RegionTemplateSelector}"
+                                 GroupHeaderStyleSelector="{StaticResource RegionStyleSelector}"
+                                 AlternationStep="2" UserGroupMode="Disabled" UserColumnReorderMode="None" UserFilterMode="Disabled">
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+                <telerikData:PropertyGroupDescriptor PropertyName="Country" SortOrder="Descending"/>
+				<telerikData:PropertyGroupDescriptor PropertyName="Region"/>
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTextColumn PropertyName="Name" Header="SALES PERSON"/>
+                <telerikGrid:DataGridTemplateColumn Header="SALES QUOTA YTD">
+                    <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <telerikChart:RadCartesianChart PaletteName="DefaultLight" MinHeight="35" Margin="6,4,6,4">
+                                <telerikChart:RadCartesianChart.HorizontalAxis>
+                                    <telerikChart:CategoricalAxis Visibility="Collapsed"/>
+                                </telerikChart:RadCartesianChart.HorizontalAxis>
+                                <telerikChart:RadCartesianChart.VerticalAxis>
+                                    <telerikChart:LinearAxis Visibility="Collapsed"/>
+                                </telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:LineSeries ItemsSource="{Binding SalesChartData}" Transitions="{StaticResource EmptyTransitions}"/>
+                            </telerikChart:RadCartesianChart>
+                        </DataTemplate>
+                    </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                </telerikGrid:DataGridTemplateColumn>
+                <telerikGrid:DataGridTextColumn PropertyName="SalesYTD" Header="SALES YTD ($)" SizeMode="Fixed" Width="210" 
+                                                HeaderStyle="{StaticResource ColumnHeaderStyle}" CellContentFormat="{}{0,0:C0}"
+                                                CellDecorationStyle="{StaticResource SalesYTDDecorationStyle}">
+                    <telerikGrid:DataGridTextColumn.CellContentStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="8,10,8,10"/>
+                        </Style>
+                    </telerikGrid:DataGridTextColumn.CellContentStyle>
+                </telerikGrid:DataGridTextColumn>
+                <telerikGrid:DataGridTemplateColumn SizeMode="Fixed" Width="35" 
+                                                    CellContentTemplateSelector="{StaticResource UpDownTemplateSelector}" 
+                                                    CellDecorationStyleSelector="{StaticResource UpDownDecorationStyleSelector}">
+                    <telerikGrid:DataGridTemplateColumn.Header>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE084;" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Margin="-4,2,0,0">
+                                <TextBlock.RenderTransform>
+                                    <RotateTransform Angle="180"/>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </StackPanel>
+                    </telerikGrid:DataGridTemplateColumn.Header>
+                </telerikGrid:DataGridTemplateColumn>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+    </Grid>
+</UserControl>

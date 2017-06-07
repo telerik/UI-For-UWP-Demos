@@ -1,0 +1,15 @@
+﻿Click the Options button in the AppBar to see the configuration settings.
+
+Filter mode - Sets the mode used to filter the suggestion items based on the user input.
+
+Watermark - Sets the content to be displayed when the input field is empty and unfocused.
+
+Filter start threshold - Sets the amount of symbols which need to be typed in input field before the filtering procedure starts.
+
+Filter delay - Sets a time interval between the last end-user input action and a filter pass operation.
+
+Highlight text matches - When turned on, the text that matches the searched input gets highlighted.
+
+Ignore case - When turned on, the typed searches will be case insensitive.
+
+Autosuggest first item - When turned on, the first result is automatically selected.

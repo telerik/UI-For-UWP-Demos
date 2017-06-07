@@ -1,0 +1,1 @@
+This example demonstrates how RadChart supports empty (null/NaN) values. Missing values are represented as gaps.

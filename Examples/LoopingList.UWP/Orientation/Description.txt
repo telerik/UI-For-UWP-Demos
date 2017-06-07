@@ -1,0 +1,1 @@
+﻿RadLoopingList allows for changing its looping orientation by using its Orientation property. In this way you can easily create picture galleries for your Windows  application as this example demonstrates.

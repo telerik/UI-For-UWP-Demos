@@ -1,0 +1,128 @@
+﻿<UserControl
+    x:Class="RadialMenu.Customization.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    xmlns:telerikPrimitives ="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:radialMenuControls ="using:Telerik.UI.Xaml.Controls.Primitives.Menu"
+    xmlns:local ="using:RadialMenu.Customization"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:ViewModel x:Key="viewModel"/>
+            <local:CloseMenuCommand x:Name="closeCommand"/>
+
+            <Style TargetType="Rectangle" x:Key="NavigationMenuStyle">
+                <Setter Property="Fill" Value="Transparent"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style TargetType="Rectangle" x:Key="ContentMenuStyle">
+                <Setter Property="Fill" Value="Transparent"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+            </Style>
+
+            <Style TargetType="radialMenuControls:DecorationItemButton">
+                <Setter Property="Visibility" Value="Collapsed"/>
+                <Setter Property="Background" Value="Black"/>
+            </Style>
+
+            <ItemsPanelTemplate x:Key="wideItemsPanelTemplate">
+                <ItemsWrapGrid x:Name="itemsWrapGrid" Orientation="Horizontal" ItemWidth="480" ItemHeight="420"/>
+            </ItemsPanelTemplate>
+
+            <ItemsPanelTemplate x:Key="narrowItemsPanelTemplate">
+                <ItemsWrapGrid x:Name="itemsWrapGrid" Orientation="Horizontal" ItemWidth="300" ItemHeight="320"/>
+            </ItemsPanelTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <common:ExampleHelper.ConfigurationPanel>
+        <StackPanel HorizontalAlignment="Stretch" MinWidth="235" DataContext="{StaticResource viewModel}">
+            <StackPanel Margin="0 10 5 5" HorizontalAlignment="Stretch">
+                <TextBlock Text="Radial menu position" FontSize="14.67"/>
+                <ComboBox x:Name="PositionComboBox" FontSize="14.67" SelectedItem="{Binding MenuPosition,Mode=TwoWay}"/>
+            </StackPanel>
+        </StackPanel>
+    </common:ExampleHelper.ConfigurationPanel>
+    <common:ExampleHelper.ConfigurationPanelShrinksExample>
+        False
+    </common:ExampleHelper.ConfigurationPanelShrinksExample>
+
+    <Grid DataContext="{StaticResource viewModel}">
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="#EFEFEF" BorderThickness="1" Margin="0">
+            <ListView x:Name="listView" ItemsSource="{Binding PicturesInfo}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"  
+                      ScrollViewer.HorizontalScrollMode="Enabled" Margin="15,30,30,30" 
+                      SelectionMode="Single" CanDragItems="False" CanReorderItems="False" AllowDrop="False" IsSwipeEnabled="False"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      ScrollViewer.VerticalScrollMode="Auto" ItemsPanel="{StaticResource wideItemsPanelTemplate}"
+                      SelectionChanged="ListViewSelectionChanged">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <local:MenuControl Grid.RowSpan="1" Width="260" Height="260" Canvas.ZIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                               MenuPosition="{Binding Path=MenuPosition, Source={StaticResource viewModel}}" Margin="-107">
+
+                                <local:MenuControl.Content>
+                                    <telerikPrimitives:RadRadialMenu NavigationMenuBackgroundStyle="{StaticResource NavigationMenuStyle}" IsOpen="{Binding IsOpen,Mode=TwoWay}"
+                                                         ContentMenuBackgroundStyle="{StaticResource ContentMenuStyle}" StartAngle="{Binding MenuStartAngle}"
+                                                         VerticalAlignment="Stretch" HorizontalAlignment="Stretch" InnerNavigationRadiusFactor="0.9" InnerRadiusFactor="0.35">
+
+                                        <telerikPrimitives:RadRadialMenu.Commands>
+                                            <local:OpenMenuCommand/>
+                                        </telerikPrimitives:RadRadialMenu.Commands>
+
+                                        <telerikPrimitives:RadialMenuItem Selectable="False" ContentSectorBackground="Transparent" Command="{StaticResource closeCommand}" 
+                                                                              CommandParameter="{StaticResource viewModel}">
+                                            <telerikPrimitives:RadialMenuItem.IconContent>
+                                                <local:ShareButton NormalImage="Images/twitter.png" Width="42" Height="42" HoverImage="Images/twitterHover.png" />
+                                            </telerikPrimitives:RadialMenuItem.IconContent>
+                                        </telerikPrimitives:RadialMenuItem>
+
+                                        <telerikPrimitives:RadialMenuItem Selectable="False" ContentSectorBackground="Transparent" Command="{StaticResource closeCommand}" 
+                                                                              CommandParameter="{StaticResource viewModel}">
+                                            <telerikPrimitives:RadialMenuItem.IconContent>
+                                                <local:ShareButton NormalImage="Images/facebook.png" Width="42" Height="42" HoverImage="Images/facebookHover.png" />
+                                            </telerikPrimitives:RadialMenuItem.IconContent>
+                                        </telerikPrimitives:RadialMenuItem>
+
+                                        <telerikPrimitives:RadialMenuItem Selectable="False" ContentSectorBackground="Transparent" Command="{StaticResource closeCommand}" 
+                                                                              CommandParameter="{StaticResource viewModel}">
+                                            <telerikPrimitives:RadialMenuItem.IconContent>
+                                                <local:ShareButton NormalImage="Images/pinterest.png" Width="42" Height="42" HoverImage="Images/pinterestHover.png" />
+                                            </telerikPrimitives:RadialMenuItem.IconContent>
+                                        </telerikPrimitives:RadialMenuItem>
+
+                                        <telerikPrimitives:RadialMenuItem Selectable="False" ContentSectorBackground="Transparent" Command="{StaticResource closeCommand}" 
+                                                                              CommandParameter="{StaticResource viewModel}">
+                                            <telerikPrimitives:RadialMenuItem.IconContent>
+                                                <local:ShareButton NormalImage="Images/mail.png" Width="42" Height="42" HoverImage="Images/mailHover.png" />
+                                            </telerikPrimitives:RadialMenuItem.IconContent>
+                                        </telerikPrimitives:RadialMenuItem>
+                                    </telerikPrimitives:RadRadialMenu>
+                                </local:MenuControl.Content>
+                            </local:MenuControl>
+                            <Image x:Name="image" Margin="5 20" Source="{Binding Url}" Canvas.ZIndex="2" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="imageDescription" Margin="5 10" Grid.Row="2" FontSize="20"  Text="{Binding Description}" FontFamily="Segoe UI Light" 
+                                       Canvas.ZIndex="1" Foreground="#2D352F" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+    </Grid>
+</UserControl>

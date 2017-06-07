@@ -1,0 +1,132 @@
+﻿<UserControl
+    x:Class="QSF.Common.Examples.VerticalGalleryControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="using:QSF.Common.Examples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="DefaultBlue" Color="#1E98E4" />
+        <SolidColorBrush x:Key="SelectedBackground" Color="#212124" />
+        <SolidColorBrush x:Key="GalleryItemBorderBrush" Color="#7F999999" />
+        <Style TargetType="ListViewItem" x:Key="ListViewItemStyle">
+            <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+            <Setter Property="IsHoldingEnabled" Value="True"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Height" Value="108"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="{StaticResource GalleryItemBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Grid x:Name="OuterContainer">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="ContentBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrow" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrowFill" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="UnselectedSwiping" />
+                                    <VisualState x:Name="Selecting" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="ContentBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrow" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrowFill" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedSwiping"/>
+                                    <VisualState x:Name="Unselecting"/>
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="ContentBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrow" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="arrowFill" Storyboard.TargetProperty="Visibility">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="99" />
+                                    <RowDefinition Height="10" />
+                                </Grid.RowDefinitions>
+                                <Border x:Name="ContentBorder" Grid.Row="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                                <Path x:Name="arrowFill" Visibility="Collapsed" Grid.RowSpan="2" Opacity="0.15" Fill="{StaticResource PhoneForegroundBrush}" Height="105" Width="100" Stretch="Fill"
+                                      Data="M0,0 L122,0 L122,120 L69,120.02 L61,130.749 L52.3333,120.103 L0,120 z"/>
+                                <Path x:Name="arrow" Visibility="Collapsed" Fill="{StaticResource DefaultBlue}" Grid.RowSpan="2" Width="100"
+                                      Data="M2,2 L2,97.2601 L43.7049,97.2601 L50,105 L55.7049,97.2601 L98,97.2601 L98,2 z M0,0 L100,0 L100,99.1212 L56.5574,99.1377 L50,108 L42.8961,99.2063 L0,99.1212 z" />
+
+                                <ContentPresenter x:Name="contentPresenter" Grid.Row="0" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" 
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" 
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <converter:TitleGalleryControlVisibility x:Key="TitleGalleryControlVisibility" />
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Margin="-14 -10 -14 0" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+            <ListView x:Name="galleryList" ItemsSource="{Binding Items}" ItemContainerStyle="{StaticResource ListViewItemStyle}" 
+                    SelectionMode="Single" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Width="100" Height="100" Source="{Binding Thumbnail}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </ScrollViewer>
+        <TextBlock Text="{Binding Title}" Visibility="{Binding Title, Converter={StaticResource TitleGalleryControlVisibility}}" 
+                   FontSize="15" FontWeight="Bold" Grid.Row="1" Margin="0 25 0 20" TextWrapping="Wrap"/>
+        <ContentControl Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                        HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                        ContentTemplate="{Binding SelectedItem.Content}"/>
+    </Grid>
+</UserControl>

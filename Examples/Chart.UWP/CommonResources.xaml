@@ -1,0 +1,78 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:local="using:Chart">
+
+    <Style TargetType="telerikChart:RadChartBase" x:Key="BaseChartStyle">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="MinHeight" Value="300"/>
+        <Setter Property="Background" Value="#00FFFFFF"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="telerikChart:RadChartBase">
+                    <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    x:Name="PART_LayoutRoot">
+                        <Grid>
+                            <Canvas x:Name="PART_RenderSurface" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Border x:Name="PART_PlotAreaDecoration" Style="{TemplateBinding PlotAreaStyle}" Canvas.ZIndex="-1" />
+                            </Canvas>
+                            <Canvas x:Name="PART_LabelLayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <Canvas x:Name="PART_AdornerLayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <ContentPresenter x:Name="PART_EmptyContentPresenter"
+                                            IsHitTestVisible="False"
+                                            Content="{TemplateBinding EmptyContent}"
+                                            ContentTemplate="{TemplateBinding EmptyContentTemplate}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="telerikChart:RadCartesianChart" BasedOn="{StaticResource BaseChartStyle}">
+        <Setter Property="PlotAreaStyle">
+            <Setter.Value>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="White" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="telerikChart:RadPolarChart" BasedOn="{StaticResource BaseChartStyle}">
+        <Setter Property="PlotAreaStyle">
+            <Setter.Value>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="White" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="telerikChart:RadPieChart" BasedOn="{StaticResource BaseChartStyle}" />
+
+    <Style TargetType="telerikChart:CategoricalAxis">
+        <Setter Property="LabelFitMode" Value="MultiLine"/>
+        <Setter Property="PlotMode" Value="OnTicks" />
+    </Style>
+
+    <Style TargetType="telerikChart:DateTimeCategoricalAxis">
+        <Setter Property="LabelFitMode" Value="Rotate"/>
+        <Setter Property="LabelRotationAngle" Value="-45"/>
+        <Setter Property="LabelInterval" Value="2" />
+        <Setter Property="PlotMode" Value="OnTicks" />
+    </Style>
+
+    <Style TargetType="telerikChart:DateTimeContinuousAxis">
+        <Setter Property="LabelFitMode" Value="MultiLine"/>
+    </Style>
+
+</ResourceDictionary>

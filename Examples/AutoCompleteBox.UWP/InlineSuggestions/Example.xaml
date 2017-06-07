@@ -1,0 +1,176 @@
+﻿<UserControl
+    x:Class="AutoCompleteBox.InlineSuggestions.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AutoCompleteBox"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikInput ="using:Telerik.UI.Xaml.Controls.Input"
+    mc:Ignorable="d" 
+    d:DesignHeight="300"
+    d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:StringToBitmapImageConverter x:Key="imageConverter" />
+            <local:UpperCaseConverter x:Key="textConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Left">       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <telerikInput:RadAutoCompleteBox x:Name="autoCompleteBox" Grid.Row="0" Watermark="Search" Header="MOVIES SEARCH" MinWidth="650"  
+                                        FilterMemberPath="Title" FilterMode="Contains" DisplayMemberPath="Title" HorizontalAlignment="Left" 
+                                        IsDropDownOpen="False" DropDownPlacement="None" FilterDelay="0:0:0.5" TextChanged="autoCompleteBox_TextChanged">
+            <telerikInput:RadAutoCompleteBox.HeaderStyle>
+                <Style TargetType="ContentControl">
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="Foreground" Value="#0083EF"/>
+                    <Setter Property="Margin" Value="0,0,0,10"/>
+                    <Setter Property="FontWeight" Value="ExtraLight"/>
+                </Style>
+            </telerikInput:RadAutoCompleteBox.HeaderStyle>
+        </telerikInput:RadAutoCompleteBox>
+
+        <ProgressBar Grid.Row="0" x:Name="ProgressBar" IsIndeterminate="True" Width="650" HorizontalAlignment="Left"  Margin="0,27,0,0"/>
+
+        <StackPanel x:Name="FlixsterPanel" Grid.Row="1"  Opacity="0.7" Orientation="Horizontal" Margin="0,8,0,0">
+            <TextBlock Text="Type in to search" FontSize="18" Foreground="Gray" FontWeight="Light"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,3,0"/>        
+        </StackPanel>
+
+        <TextBlock x:Name="NoMovieText" Grid.Row="1" Text="No movies match your search" FontSize="18" Foreground="#AAAAAA" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,4,0,0"/>
+
+        <ListView Grid.Row="1" x:Name="ListViewItems"
+                  ItemsSource="{Binding ElementName=autoCompleteBox,Path=FilteredItems}" Width="900" Height="460" Margin="0,20,0,0" 
+                  ScrollViewer.IsVerticalRailEnabled="True" SelectionChanged="ListViewItemsSelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="115" Width="285" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="250" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding Poster}" Grid.RowSpan="2" VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" Margin="3,3,0,3"/>
+                        <TextBlock Text="{Binding Title}" FontSize="13" TextWrapping="Wrap" FontFamily="Segoe UI" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                           Grid.Column="1" Margin="5,0,10,0" Width="170" />
+
+                        <TextBlock FontSize="14" FontWeight="ExtraLight" Foreground="Gray"   FontFamily="Segoe UI" Grid.Column="1" Grid.Row="1"  Margin="5,0,0,0" VerticalAlignment="Top" >
+                            <Run Text="IMDB Rating: "/>
+                            <Run Text="{Binding Rating}"/>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid VerticalAlignment="Top" ItemWidth="285"  ItemHeight="115" Orientation="Horizontal" MaximumRowsOrColumns="3" Margin="0"></ItemsWrapGrid>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>         
+        </ListView>
+        <Button Grid.Row="1" x:Name="LostFocusButton" IsHitTestVisible="False" Opacity="0"/>
+
+        <Grid x:Name="ItemDetails" Height="400" Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource BackButtonItemStyle}" Grid.Row="0" Click="BackButtonClicked" Margin="0,20,0,15" 
+                    FontSize="46" VerticalAlignment="Top" Width="38" Height="38" />
+
+            <Image Source="{Binding Poster}" VerticalAlignment="Top" Width="150" x:Name="detailImage"
+                   Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="0,5,0,0" />
+
+            <StackPanel  Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" VerticalAlignment="Top" Margin="12,0,0,0" x:Name="detailDescriptions">
+                <TextBlock Text="{Binding Title, Converter={StaticResource textConverter}}" FontSize="24" Width="200" x:Name="title"
+                           FontFamily="Segoe UI" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="Black" />
+
+             
+                <TextBlock FontFamily="Segoe UI" FontSize="18" x:Name="director">
+                    <Run Text="Director: "/>
+                    <Run Text="{Binding Director}" Foreground="#0083EF"/>
+                </TextBlock>
+                <TextBlock FontFamily="Segoe UI" FontSize="18" x:Name="rating">
+                    <Run Text="IMDB Rating: "/>
+                    <Run Text="{Binding Rating}" Foreground="#0083EF"/>
+                </TextBlock>
+               
+            </StackPanel>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="865" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="580" />
+                        <Setter Target="ProgressBar.Width" Value="580"/>
+                        <Setter Target="ListViewItems.Width" Value="580"/>                      
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="793" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="485" />
+                        <Setter Target="ProgressBar.Width" Value="485"/>
+                        <Setter Target="ListViewItems.Width" Value="485"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="425" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="400" />
+                        <Setter Target="ProgressBar.Width" Value="400"/>
+                        <Setter Target="ListViewItems.Width" Value="400"/>                     
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="295" />
+                        <Setter Target="ProgressBar.Width" Value="295"/>
+                        <Setter Target="ListViewItems.Width" Value="295"/>
+                      
+                        <Setter Target="detailImage.Height" Value="200"/>
+                        <Setter Target="detailImage.HorizontalAlignment" Value="Left"/>
+                        <Setter Target="detailImage.(Grid.RowSpan)" Value="2"/>
+                        <Setter Target="detailDescriptions.(Grid.Row)" Value="3"/>
+                        <Setter Target="detailDescriptions.(Grid.Column)" Value="0"/>
+                        <Setter Target="detailDescriptions.Margin" Value="0"/>
+                        <Setter Target="title.FontSize" Value="19"/>
+                        <Setter Target="director.FontSize" Value="15"/>
+                        <Setter Target="rating.FontSize" Value="15"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

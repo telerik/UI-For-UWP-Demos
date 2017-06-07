@@ -1,0 +1,1 @@
+﻿The example demonstrates a simple editing scenario using RadDataGrid build-in editing functionality. Double-tap over a grid row to begin the edit. Tap on another row or press Enter to commit the edit. Use the Close button on top of the edited or press the Escape key to cancel the editing operation.

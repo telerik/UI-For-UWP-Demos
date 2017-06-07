@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QSF.Resources">
+
+    <x:String x:Key="SnappedHeaderString">Windows 8</x:String>
+    <x:String x:Key="SnappedSmallHeaderString">Telerik</x:String>
+    <x:String x:Key="SnappedHomeSmallHeaderString">Telerik UI for</x:String>
+    <x:String x:Key="HomeSnappedGridViewTitleString">All XAML Controls</x:String>
+    <x:String x:Key="AppBarPinExampleButtonString">Pin to Start</x:String>
+    <x:String x:Key="AppBarUnpinExampleButtonString">Unpin from Start</x:String>
+    <x:String x:Key="AppBarCodeButtonString">Code</x:String>
+    <x:String x:Key="AppBarDescriptionButtonString">Description</x:String>
+    <x:String x:Key="ConfiguratorHeaderString">Example Options</x:String>
+    <x:String x:Key="TopAppBarHeaderString"> Examples</x:String>
+    <x:String x:Key="HomeFeaturedProductsHeaderString">Featured Telerik Products</x:String>
+    <x:String x:Key="FeedbackPortalString">Feedback Portal</x:String>
+    <x:String x:Key="GetFromStoreString">Get From Store</x:String>
+    <x:String x:Key="LearnMoreString">Learn More</x:String>
+    <x:String x:Key="DownloadTrialString">Download Trial</x:String>
+    <x:String x:Key="AboutPageRadControlsForWin8HeaderText">Telerik UI for Windows 8 XAML</x:String>
+</ResourceDictionary>

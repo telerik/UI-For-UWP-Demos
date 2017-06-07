@@ -1,0 +1,39 @@
+﻿<Application
+    x:Class="QSF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls"
+    xmlns:local="using:QSF">
+    <Application.Resources>
+        <ResourceDictionary>
+            <telerik:UserThemeResources x:Key="themeResourceInitializer"/>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <!--overrides default Windows color to have unified custom look for MS native controls -->
+                    <Color x:Key="SystemAccentColor">#FF2367B5</Color>
+
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Resources/Strings.xaml"/>
+                        <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+                        <ResourceDictionary Source="Styles/CustomStyles.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Primitives.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Primitives.UWP/Themes/ThemeColorsLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Chart.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Grid.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.DataVisualization.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Input.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="ms-appx:///Telerik.UI.Xaml.Map.UWP/Themes/ThemeResourcesLight.xaml"/>
+                        <ResourceDictionary Source="{CustomResource LightResourcesPath}"/>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="TelerikPaginationButtonDisabledBackgroundBrush">#48068fff</SolidColorBrush>
+                            <SolidColorBrush x:Key="TelerikSelectedBrush" Color="{StaticResource TelerikSelectedColor}"/>
+                            <SolidColorBrush x:Key="TelerikSolidColorWhite" Color="{StaticResource TelerikWhiteColor}"/>
+                            <SolidColorBrush x:Key="TelerikSecondaryForegroundBrush" Color="{StaticResource TelerikSecondaryForegroundColor}"/>
+                        </ResourceDictionary>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+

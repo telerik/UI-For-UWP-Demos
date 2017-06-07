@@ -1,0 +1,1 @@
+﻿The example demonstrates the MapUserLayer and how it may be used to visualize arbitrary XAML elements positioned on a provided Geographic Location. The user layer works pretty much as an ItemsControl. Its items are virtualized and only those present within the Map's viewport are realized.

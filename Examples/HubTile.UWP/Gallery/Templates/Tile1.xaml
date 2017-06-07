@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives">
+    
+    <DataTemplate x:Key="Item">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="8" ItemHeight="75" ItemWidth="75" >
+                <telerikPrimitives:RadHubTile Width="295" Height="295" Title="Mail" VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="4"
+                                              Notification="99" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                              ImageSource="ms-appx:///HubTile/Gallery/Images/HubTile/310x.png" />
+                <telerikPrimitives:RadHubTile Width="295" Height="145" Title="Mail" VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="2"
+                                              Notification="99" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                              ImageSource="ms-appx:///HubTile/Gallery/Images/HubTile/310x150.png"  />
+                <telerikPrimitives:RadHubTile Width="145" Height="145" Title="Mail" VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2"
+                                              Notification="99" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                              ImageSource="ms-appx:///HubTile/Gallery/Images/HubTile/150x.png" />
+                <telerikPrimitives:RadHubTile Width="70" Height="70" Title="Mail" Notification="99" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                              ImageSource="ms-appx:///HubTile/Gallery/Images/HubTile/70x.png"  
+                                              HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </VariableSizedWrapGrid>
+        </ScrollViewer>
+    </DataTemplate>    
+</ResourceDictionary>

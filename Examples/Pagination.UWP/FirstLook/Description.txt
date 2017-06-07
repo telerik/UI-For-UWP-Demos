@@ -1,0 +1,1 @@
+﻿RadPaginationControl provides visual means for tracking the current Page within an Selector instance - like FlipView. You have also a complete control over each visual part of the control, since each part is located in a separate control.

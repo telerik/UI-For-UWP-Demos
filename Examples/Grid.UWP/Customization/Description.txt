@@ -1,0 +1,1 @@
+﻿The example demonstrates various customization aspects of RadDataGrid. Use the Options pane (available through the Bottom App Bar -> Options Button) to change the settings and see how they reflect the visual appearance of the component.

@@ -1,0 +1,23 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives">
+
+    <DataTemplate x:Key="Item">
+        <Grid Margin="0,-18,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="8" ItemHeight="75" ItemWidth="75" >
+                    <telerikPrimitives:RadMosaicHubTile Width="295" Height="295" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                                PicturesSource="{Binding MosaicPictures}" 
+                                                VariableSizedWrapGrid.RowSpan="4" VariableSizedWrapGrid.ColumnSpan="4" UpdateInterval="0:0:2" Title="Photos"/>
+                    <telerikPrimitives:RadMosaicHubTile Width="145" Height="145" telerikPrimitives:HubTileService.GroupTag="Gallery" VerticalAlignment="Top"
+                                                PicturesSource="{Binding MosaicPictures}" 
+                                                VariableSizedWrapGrid.RowSpan="2" VariableSizedWrapGrid.ColumnSpan="2" UpdateInterval="0:0:3" Title="Photos"/>
+                    <telerikPrimitives:RadMosaicHubTile Width="70" Height="70" telerikPrimitives:HubTileService.GroupTag="Gallery" Title="Photos"
+                                                PicturesSource="{Binding MosaicPictures}" HorizontalAlignment="Left" VerticalAlignment="Top" UpdateInterval="0:0:3.5"/>
+                </VariableSizedWrapGrid>
+            </ScrollViewer>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

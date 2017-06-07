@@ -1,0 +1,190 @@
+﻿<UserControl
+    x:Class="Chart.Annotations.AppleChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.Annotations"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:telerikChartPrimitives="using:Telerik.UI.Xaml.Controls.Chart.Primitives"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <telerikChart:RadCartesianChart ClipToBounds="False">
+            <telerikChart:RadCartesianChart.Behaviors>
+                <telerikChart:ChartTrackBallBehavior ShowIntersectionPoints="True" 
+                                                     LineStyle="{StaticResource trackBallLineStyle}"
+                                                     TrackInfoUpdated="ChartTrackBallBehavior_TrackInfoUpdated" />
+            </telerikChart:RadCartesianChart.Behaviors>
+            <telerikChart:RadCartesianChart.HorizontalAxis>
+                <telerikChart:DateTimeContinuousAxis x:Name="horizontalAxis"
+                                                MajorStep="3"
+                                                MajorStepUnit="Month"
+                                                PlotMode="OnTicks"
+                                                LabelTemplate="{StaticResource axisLabelTemplate}"
+                                                MajorTickStyle="{StaticResource tickStyle}"
+                                                LineStyle="{StaticResource AxisLineStyle}" />
+            </telerikChart:RadCartesianChart.HorizontalAxis>
+            <telerikChart:RadCartesianChart.VerticalAxis>
+                <telerikChart:LinearAxis x:Name="verticalAxis"
+                                    Minimum="50"
+                                    Maximum="700"
+                                    MajorStep="130"
+                                    MajorTickStyle="{StaticResource tickStyle}"
+                                    LineStyle="{StaticResource AxisLineStyle}"
+                                    LabelStyle="{StaticResource axisLabelStyle}" />
+            </telerikChart:RadCartesianChart.VerticalAxis>
+            <telerikChart:AreaSeries ItemsSource="{Binding Data}"
+                                     StrokeThickness="2"
+                                     Stroke="{StaticResource StrokeAccentBrush}"
+                                     Fill="{StaticResource FillAccentBrush}"
+                                     ClipToPlotArea="False"
+                                     Transitions="{x:Null}"
+                                     telerikChart:ChartTrackBallBehavior.TrackInfoTemplate="{StaticResource trackInfoTemplate}"
+                                     telerikChart:ChartTrackBallBehavior.IntersectionTemplate="{StaticResource trackBallTemplate}">
+                <telerikChart:AreaSeries.VerticalAxis>
+                    <telerikChart:LinearAxis Minimum="50"
+                                        Maximum="700"
+                                        MajorStep="130"
+                                        HorizontalLocation="Right"
+                                        MajorTickStyle="{StaticResource tickStyle}"
+                                        LineStyle="{StaticResource AdditionalAxisLineStyle}"
+                                        LabelStyle="{StaticResource axisLabelStyle}"/>
+                </telerikChart:AreaSeries.VerticalAxis>
+                <telerikChart:AreaSeries.CategoryBinding>
+                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date" />
+                </telerikChart:AreaSeries.CategoryBinding>
+                <telerikChart:AreaSeries.ValueBinding>
+                    <telerikChart:PropertyNameDataPointBinding PropertyName="Value" />
+                </telerikChart:AreaSeries.ValueBinding>
+            </telerikChart:AreaSeries>
+            <telerikChart:RadCartesianChart.Grid>
+                <telerikChart:CartesianChartGrid MajorLinesVisibility="Y" />
+            </telerikChart:RadCartesianChart.Grid>
+            <telerikChart:RadCartesianChart.Annotations>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation1" DataContext="{Binding Path=SignificantEvents[0]}"
+                                                     Axis="{Binding ElementName=verticalAxis}"
+                                                     Value="{Binding Value}" Label="{Binding EventDescription}"
+                                                     StrokeThickness="2"/>
+                <telerikChart:CartesianPlotBandAnnotation x:Name="annotation2" DataContext="{Binding Path=SignificantEvents[1]}"
+                                                     Axis="{Binding ElementName=verticalAxis}"
+                                                     From="{Binding EventStart}" To="{Binding EventEnd}"
+                                                     Stroke="Transparent" />
+                <telerikChart:CartesianCustomAnnotation x:Name="annotation3" DataContext="{Binding Path=SignificantEvents[2]}"
+                                                        HorizontalAxis="{Binding ElementName=horizontalAxis}" VerticalAxis="{Binding ElementName=verticalAxis}"
+                                                        HorizontalValue="{Binding EventStart}" VerticalValue="{Binding Value}"
+                                                        ClipToPlotArea="False" VerticalOffset="5" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                        Content="{Binding Path=Value, Converter={StaticResource formatConverter}, ConverterParameter=\{0:F2\}}"
+                                                        ContentTemplate="{StaticResource annotationTemplate}"
+                                                        ZIndex="100"/>
+                <telerikChart:CartesianCustomAnnotation x:Name="annotation4" DataContext="{Binding Path=SignificantEvents[3]}"
+                                                        HorizontalAxis="{Binding ElementName=horizontalAxis}" VerticalAxis="{Binding ElementName=verticalAxis}"
+                                                        HorizontalValue="{Binding EventStart}" VerticalValue="{Binding Value}"
+                                                        ClipToPlotArea="False" VerticalOffset="5" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                        Content="{Binding Path=Value, Converter={StaticResource formatConverter}, ConverterParameter=\{0:F2\}}"
+                                                        ContentTemplate="{StaticResource annotationTemplate}" />
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation5" DataContext="{Binding Path=SignificantEvents[4]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4"  VerticalOffset="100"/>
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation6" DataContext="{Binding Path=SignificantEvents[5]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" VerticalOffset="150" />
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation7" DataContext="{Binding Path=SignificantEvents[6]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" />
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation8" DataContext="{Binding Path=SignificantEvents[7]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" />
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation9" DataContext="{Binding Path=SignificantEvents[8]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" VerticalOffset="100"/>
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation10" DataContext="{Binding Path=SignificantEvents[9]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" />
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation11" DataContext="{Binding Path=SignificantEvents[10]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" VerticalOffset="50"/>
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+                <telerikChart:CartesianGridLineAnnotation x:Name="annotation12" DataContext="{Binding Path=SignificantEvents[11]}"
+                                                     Axis="{Binding ElementName=horizontalAxis}"
+                                                     Value="{Binding EventStart}" Label="{Binding EventDescription}"
+                                                     Style="{StaticResource DashedGridLineStyle}">
+                    <telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                        <telerikChart:ChartAnnotationLabelDefinition Location="Right" VerticalAlignment="Top" DefaultVisualStyle="{StaticResource annotationLabelStyle}" HorizontalOffset="4" VerticalOffset="100"/>
+                    </telerikChart:CartesianGridLineAnnotation.LabelDefinition>
+                </telerikChart:CartesianGridLineAnnotation>
+            </telerikChart:RadCartesianChart.Annotations>
+        </telerikChart:RadCartesianChart>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="horizontalAxis.LabelInterval" Value="3" />
+                        <Setter Target="annotation1.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation2.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation3.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation4.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation5.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation8.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation10.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation11.Visibility" Value="Collapsed" />
+                        <Setter Target="annotation12.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

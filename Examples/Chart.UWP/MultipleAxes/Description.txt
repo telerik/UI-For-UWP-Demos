@@ -1,0 +1,1 @@
+﻿The example demonstrates a distribution of financial data through predefined period of time using the financial series and indicators of RadChart.

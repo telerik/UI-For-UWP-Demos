@@ -1,0 +1,1 @@
+﻿The example demonstrates various setups of the Doughnut. RadPieChart is a discrete Polar-coordinate system chart and does not need any Axes in order to get its data properly plotted. Select an item on the left to load the desired scenario.

@@ -1,0 +1,1 @@
+﻿The example demonstrates a typical usage of a DataGrid component displaying grouped data. In addition it shows integration of semantic zoom for fast navigation between the groups. Using a Pinch Gesture (or CTRL+MouseWheel) you can navigate between the two views of the example.

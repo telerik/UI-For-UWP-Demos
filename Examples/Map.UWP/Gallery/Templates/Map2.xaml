@@ -1,0 +1,64 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Map.Gallery"
+    xmlns:telerikMap="using:Telerik.UI.Xaml.Controls.Map"
+    xmlns:telerikDrawing="using:Telerik.UI.Drawing">
+
+    <DataTemplate x:Key="Item">
+        <telerikMap:RadMap>
+            <telerikMap:RadMap.Behaviors>
+                <telerikMap:MapPanAndZoomBehavior />
+                <telerikMap:MapShapePointerOverBehavior />
+                <telerikMap:MapShapeSelectionBehavior />
+                <telerikMap:MapShapeToolTipBehavior />
+            </telerikMap:RadMap.Behaviors>
+
+            <telerikMap:RadMap.Commands>
+                <local:MapShapeLayerSourceChangedCommand />
+            </telerikMap:RadMap.Commands>
+
+            <telerikMap:MapShapeLayer ShapeToolTipAttributeName="CNTRY_NAME" Tag="Asia">
+                <telerikMap:MapShapeLayer.Source>
+                    <telerikMap:ShapefileDataSource SourceUriString="ms-appx:///Map/Data/asia.shp" 
+                                                    DataSourceUriString="ms-appx:///Map/Data/asia.dbf" />
+                </telerikMap:MapShapeLayer.Source>
+
+                <telerikMap:MapShapeLayer.ShapeStyle>
+                    <telerikDrawing:D2DShapeStyle>
+                        <telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ffd6d1c1" />
+                        </telerikDrawing:D2DShapeStyle.Fill>
+                        <telerikDrawing:D2DShapeStyle.Stroke>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ff908a78" />
+                        </telerikDrawing:D2DShapeStyle.Stroke>
+                    </telerikDrawing:D2DShapeStyle>
+                </telerikMap:MapShapeLayer.ShapeStyle>
+
+                <telerikMap:MapShapeLayer.ShapePointerOverStyle>
+                    <telerikDrawing:D2DShapeStyle>
+                        <telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ffd0e596" />
+                        </telerikDrawing:D2DShapeStyle.Fill>
+                        <telerikDrawing:D2DShapeStyle.Stroke>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ff908a78" />
+                        </telerikDrawing:D2DShapeStyle.Stroke>
+                    </telerikDrawing:D2DShapeStyle>
+                </telerikMap:MapShapeLayer.ShapePointerOverStyle>
+
+                <telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                    <telerikDrawing:D2DShapeStyle>
+                        <telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ffa6ce3a" />
+                        </telerikDrawing:D2DShapeStyle.Fill>
+                        <telerikDrawing:D2DShapeStyle.Stroke>
+                            <telerikDrawing:D2DSolidColorBrush Color="#ff908a78" />
+                        </telerikDrawing:D2DShapeStyle.Stroke>
+                    </telerikDrawing:D2DShapeStyle>
+                </telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                
+            </telerikMap:MapShapeLayer>
+        </telerikMap:RadMap>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,25 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives">
+
+    <DataTemplate x:Key="Item">
+        <Grid Margin="0,-18,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="8" ItemHeight="75" ItemWidth="75" >
+                    <telerikPrimitives:RadPictureRotatorHubTile Width="295" Height="295" telerikPrimitives:HubTileService.GroupTag="Gallery"
+                                                                PicturesSource="{Binding MosaicPictures}" VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="4"
+                                                                UpdateInterval="0:0:2" Title="Photos"/>
+                    <telerikPrimitives:RadPictureRotatorHubTile Width="295" Height="145" telerikPrimitives:HubTileService.GroupTag="Gallery" VerticalAlignment="Top"
+                                                                PicturesSource="{Binding MosaicPictures}" VariableSizedWrapGrid.ColumnSpan="4" VariableSizedWrapGrid.RowSpan="2"
+                                                                Title="Photos" Grid.Column="1" Grid.ColumnSpan="2" UpdateInterval="0:0:2"/>
+                    <telerikPrimitives:RadPictureRotatorHubTile Width="145" Height="145" telerikPrimitives:HubTileService.GroupTag="Gallery" VerticalAlignment="Top"
+                                                                PicturesSource="{Binding MosaicPictures}" UpdateInterval="0:0:4" Title="Photos"
+                                                                VariableSizedWrapGrid.ColumnSpan="2" VariableSizedWrapGrid.RowSpan="2" />
+                    <telerikPrimitives:RadPictureRotatorHubTile Width="70" Height="70" telerikPrimitives:HubTileService.GroupTag="Gallery" Title="Photos" UpdateInterval="0:0:5"
+                                                        PicturesSource="{Binding MosaicPictures}" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                </VariableSizedWrapGrid>
+            </ScrollViewer>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

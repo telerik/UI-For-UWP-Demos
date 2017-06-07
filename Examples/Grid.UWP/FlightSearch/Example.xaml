@@ -1,0 +1,97 @@
+﻿<UserControl
+    x:Class="Grid.FlightSearch.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.FlightSearch"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
+    xmlns:telerikPrimitivesCommon="using:Telerik.UI.Xaml.Controls.Primitives.Common"
+	xmlns:telerikData="using:Telerik.Data.Core">
+    
+    <UserControl.Resources>
+        <local:GroupHeaderTemplateSelector x:Key="GroupHeaderTemplateSelector">
+            <local:GroupHeaderTemplateSelector.DepartTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="London (LHR)" VerticalAlignment="Center"/>
+                        <TextBlock Text="&#x2192;" FontFamily="Segoe UI Symbol" Margin="6,0,6,6" FontSize="18" VerticalAlignment="Center"/>
+                        <TextBlock Text="New York (JFK)" VerticalAlignment="Center"/>
+                        <TextBlock Text="&#x276D;" FontFamily="Segoe UI Symbol" Margin="24,-38,24,-34" FontSize="40" VerticalAlignment="Center" FontWeight="Light"/>
+                        <TextBlock Text="Depart date: May 14, 2013" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </local:GroupHeaderTemplateSelector.DepartTemplate>
+            <local:GroupHeaderTemplateSelector.ReturnTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="New York (JFK)" VerticalAlignment="Center"/>
+                        <TextBlock Text="&#x2192;" FontFamily="Segoe UI Symbol" FontSize="18" Margin="6,0,6,6" VerticalAlignment="Center"/>
+                        <TextBlock Text="London (LHR)" VerticalAlignment="Center"/>
+                        <TextBlock Text="&#x276D;" FontFamily="Segoe UI Symbol" Margin="24,-38,24,-34" FontSize="40" VerticalAlignment="Center" FontWeight="SemiLight"/>
+                        <TextBlock Text="Return date: May 18, 2013" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </local:GroupHeaderTemplateSelector.ReturnTemplate>
+        </local:GroupHeaderTemplateSelector>
+        <Style TargetType="telerikGridPrimitives:DataGridGroupHeader" x:Key="GroupHeaderStyle">
+            <Setter Property="Background" Value="#00A651"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+
+    <common:ExampleHelper.ConfigurationPanel>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ToggleSwitch Toggled="OnCustomTimeFilterToggled" Header="Custom 'Departing/Arriving' filter" IsOn="True" HorizontalAlignment="Stretch"/>
+            <ToggleSwitch Toggled="OnCustomDirectFilterToggled" Header="Custom 'Direct' filter" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="1"/>
+            <ToggleSwitch Toggled="OnCustomDurationFilterToggled" Header="Custom 'Duration' filter" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="2"/>
+            <ToggleSwitch Toggled="OnCustomPriceFilterToggled" Header="Custom 'Price' filter" IsOn="True" HorizontalAlignment="Stretch" Grid.Row="3"/>
+        </Grid>
+    </common:ExampleHelper.ConfigurationPanel>
+
+    <Grid>
+        <telerikGrid:RadDataGrid x:Name="radDataGrid" ItemsSource="{Binding Results}" AutoGenerateColumns="False" UserGroupMode="Disabled" UserColumnReorderMode="None"
+                                 GroupHeaderStyle="{StaticResource GroupHeaderStyle}" GroupHeaderTemplateSelector="{StaticResource GroupHeaderTemplateSelector}">
+            <telerikGrid:RadDataGrid.Resources>
+                <Style TargetType="telerikGridPrimitives:DataGridFilteringFlyout">
+                    <Setter Property="FilterButtonStyle">
+                        <Setter.Value>
+                            <Style TargetType="telerikPrimitivesCommon:InlineButton">
+                                <Setter Property="Foreground" Value="#FFFFFF"/>
+                                <Setter Property="Background" Value="#FF00A651"/>
+                                <Setter Property="PointerOverBackgroundBrush" Value="#DC00A651"/>
+                                <Setter Property="PointerOverForegroundBrush" Value="#FFFFFF"/>
+                                <Setter Property="PressedBackgroundBrush" Value="#FF000000"/>
+                                <Setter Property="PressedForegroundBrush" Value="#FFFFFF"/>
+                            </Style>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </telerikGrid:RadDataGrid.Resources>
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+				<telerikData:PropertyGroupDescriptor PropertyName="IsReturning"/>
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Commands>
+                <local:FilterButtonTapCommand/>
+            </telerikGrid:RadDataGrid.Commands>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTextColumn PropertyName="Carrier" Header="CARRIER"/>
+                <telerikGrid:DataGridTextColumn PropertyName="FlightId" Header="FLIGHT #" CanUserFilter="False"/>
+                <telerikGrid:DataGridTimeColumn PropertyName="Departure" Header="DEPARTING" CellContentFormat="{}{0,0:MMM dd, h:mm tt}"/>
+                <telerikGrid:DataGridTimeColumn PropertyName="Arrival" Header="ARRIVING" CellContentFormat="{}{0,0:MMM dd, h:mm tt}"/>
+                <telerikGrid:DataGridBooleanColumn PropertyName="IsDirect" Header="DIRECT"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Duration" Header="DURATION" CellContentFormat="{}{0,0:%h} hr {0,0:%m} min"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Class" Header="CLASS"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Price" Header="PRICE" CellContentFormat="{}{0,0:C0}"/>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+    </Grid>
+</UserControl>

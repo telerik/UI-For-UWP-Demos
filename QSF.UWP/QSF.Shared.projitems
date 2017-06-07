@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="SharedProjectFile_SccProperties">
+    <SharedProjectFile_ProjectGuid>{c7ba0d61-2d2c-4b4b-9b36-8c21960dd19e}</SharedProjectFile_ProjectGuid>
+    <SharedProjectFile_SccProjectName>SAK</SharedProjectFile_SccProjectName>
+    <SharedProjectFile_SccAuxPath>SAK</SharedProjectFile_SccAuxPath>
+    <SharedProjectFile_SccLocalPath>SAK</SharedProjectFile_SccLocalPath>
+    <SharedProjectFile_SccProvider>SAK</SharedProjectFile_SccProvider>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d66376fd-e709-4d28-988c-79d3005a8ffe</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>QSF</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CodeFormatting\CodeViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BindableBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\LayoutAwarePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomGridViewItemInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GroupInfoList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\CodeView\ExampleSourceCodeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Exceptions\ExampleNotLoadedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Extensions\VisualTreeHelperExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Extensions\XElementExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\AssemblyCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\ExampleLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\FavouritesHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\HintsHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\ListViewBaseHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Helpers\PinnedItemsHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\ModelFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\CodeFileInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\ControlInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\ExampleGroupInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\ExampleInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\HighlightInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\HomePageInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\ICommonModelObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\IControlInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\IExampleGroupInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\IExampleInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\IQuickStartData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Model\QuickStartData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Search\DefaultSearchStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)QSF.Infrastructure\Search\ISearchStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\ExampleItemTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\HighlightedControlsTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\HighlightedItemsTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\StatusModeTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ControlExamplesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ExampleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NavigatingViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchResultsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ICanShowSpecificRegion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\CodeViewerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

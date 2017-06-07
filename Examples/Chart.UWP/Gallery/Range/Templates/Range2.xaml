@@ -1,0 +1,40 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.Gallery.Range.Templates"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart">
+
+    <DataTemplate x:Key="Item">
+        <telerik:RadCartesianChart PaletteName="DefaultLight">
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:DateTimeCategoricalAxis LabelFormat="{}{0:MMM}"/>
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis LabelFormat="{}{0:N1}F"
+                                    Minimum="6.8" Maximum="107.6"
+                                    HorizontalLocation="Right" />
+            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart.Grid>
+                <telerik:CartesianChartGrid StripLinesVisibility="Y"/>
+            </telerik:RadCartesianChart.Grid>
+            <telerik:RangeSeries ItemsSource="{Binding Data1}">
+                <telerik:RangeSeries.VerticalAxis>
+                    <telerik:LinearAxis LabelFormat="{}{0}°C"
+								    Minimum="-14"
+								    Maximum="42"
+								    MajorStep="7"/>
+                </telerik:RangeSeries.VerticalAxis>
+                <telerik:RangeSeries.CategoryBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Date"/>
+                </telerik:RangeSeries.CategoryBinding>
+                <telerik:RangeSeries.HighBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="HighMeasurement"/>
+                </telerik:RangeSeries.HighBinding>
+                <telerik:RangeSeries.LowBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="LowMeasurement"/>
+                </telerik:RangeSeries.LowBinding>
+            </telerik:RangeSeries>
+        </telerik:RadCartesianChart>
+    </DataTemplate>
+
+</ResourceDictionary>

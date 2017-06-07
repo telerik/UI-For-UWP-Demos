@@ -1,0 +1,1 @@
+﻿The example demonstrates setups of the categorical StepLineSeries and StepAreaSeries with Stacked CombineMode. StepSeries need one Categorical Axis and one Numerical Axis in order to get properly plotted. Select an item on the left to load the desired scenario.
