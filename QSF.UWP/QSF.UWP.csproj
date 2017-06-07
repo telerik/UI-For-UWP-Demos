@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{A63C16F8-208A-4BBE-8282-CE5C902011F6}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QSF</RootNamespace>
+    <AssemblyName>QSF.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>QSF.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>QSF.UWP_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="ExamplesSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllowedFilenameExtensions.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppShell.xaml.cs">
+      <DependentUpon>AppShell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CodeFormatting\CodeViewer.cs" />
+    <Compile Include="CodeFormatting\ColorConverter.cs" />
+    <Compile Include="CodeFormatting\CSharpSyntaxParser.cs" />
+    <Compile Include="CodeFormatting\HTMLSyntaxParser.cs" />
+    <Compile Include="CodeFormatting\LanguageSyntaxStructure.cs" />
+    <Compile Include="CodeFormatting\SyntaxParser.cs" />
+    <Compile Include="CodeFormatting\SyntaxPicker.cs" />
+    <Compile Include="CodeFormatting\TextSyntaxParser.cs" />
+    <Compile Include="CodeFormatting\Token.cs" />
+    <Compile Include="CodeFormatting\Tokenizer.cs" />
+    <Compile Include="CodeFormatting\XamlSyntaxParser.cs" />
+    <Compile Include="CodeFormatting\XmlSyntaxParser.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\BooleanNegationConverter.cs" />
+    <Compile Include="Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Common\LayoutAwarePage.cs" />
+    <Compile Include="Common\LayoutSize.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Controls\CodeViewer.cs" />
+    <Compile Include="Controls\CustomGridView.cs" />
+    <Compile Include="Controls\CustomGridViewItemInfo.cs" />
+    <Compile Include="Controls\FlyoutControl.cs" />
+    <Compile Include="Controls\HintsLayer.cs" />
+    <Compile Include="Controls\NavigationListView.cs" />
+    <Compile Include="Converters\DoubleToDoubleConverter.cs" />
+    <Compile Include="Converters\DoubleToRectConverter.cs" />
+    <Compile Include="Converters\FullFilenameToShortNameConverter.cs" />
+    <Compile Include="Converters\InvertedBooleanToVisibilityConverter.cs" />
+    <Compile Include="GroupInfoList.cs" />
+    <Compile Include="Helpers\ActualSizePropertyProxy.cs" />
+    <Compile Include="Helpers\AppBarHelper.cs" />
+    <Compile Include="Helpers\AutoSuggestBoxHelper.cs" />
+    <Compile Include="LayoutAwarePage.cs" />
+    <Compile Include="Models\NavigationMenuItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QSF.Infrastructure\CodeView\ExampleSourceCodeHelper.cs" />
+    <Compile Include="QSF.Infrastructure\Exceptions\ExampleNotLoadedException.cs" />
+    <Compile Include="QSF.Infrastructure\Extensions\StringExtensions.cs" />
+    <Compile Include="QSF.Infrastructure\Extensions\VisualTreeHelperExtensions.cs" />
+    <Compile Include="QSF.Infrastructure\Extensions\XElementExtensions.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\AssemblyCache.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\ExampleLoader.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\FavouritesHelper.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\HintsHelper.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\ListViewBaseHelper.cs" />
+    <Compile Include="QSF.Infrastructure\Helpers\PinnedItemsHelper.cs" />
+    <Compile Include="QSF.Infrastructure\ModelFactory.cs" />
+    <Compile Include="QSF.Infrastructure\Model\CodeFileInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\ControlInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\Enums.cs" />
+    <Compile Include="QSF.Infrastructure\Model\ExampleGroupInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\ExampleInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\HighlightInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\HomePageInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\ICommonModelObject.cs" />
+    <Compile Include="QSF.Infrastructure\Model\IControlInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\IExampleGroupInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\IExampleInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Model\IQuickStartData.cs" />
+    <Compile Include="QSF.Infrastructure\Model\QuickStartData.cs" />
+    <Compile Include="QSF.Infrastructure\Properties\AssemblyInfo.cs" />
+    <Compile Include="QSF.Infrastructure\Search\DefaultSearchStrategy.cs" />
+    <Compile Include="QSF.Infrastructure\Search\ISearchStrategy.cs" />
+    <Compile Include="QSFVersion.cs" />
+    <Compile Include="TemplateSelectors\AppHighlightLinkButtonTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\ExampleItemTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\HighlightedControlsTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\HighlightedItemsTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\StatusModeTemplateSelector.cs" />
+    <Compile Include="ViewModels\AppShellViewModel.cs" />
+    <Compile Include="ViewModels\ControlExamplesViewModel.cs" />
+    <Compile Include="ViewModels\ExampleViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\NavigatingViewModel.cs" />
+    <Compile Include="ViewModels\SearchResultsViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelFactory.cs" />
+    <Compile Include="Views\AboutFlyoutView.xaml.cs">
+      <DependentUpon>AboutFlyoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ControlExamplesPage.xaml.cs">
+      <DependentUpon>ControlExamplesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DescriptionFlyoutView.xaml.cs">
+      <DependentUpon>DescriptionFlyoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExamplePage.xaml.cs">
+      <DependentUpon>ExamplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ICanShowSpecificRegion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="QSF.Infrastructure\packages.config" />
+    <None Include="QSF.UWP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Background.jpg" />
+    <Content Include="Assets\FeaturedApps\SalesDashboard.png" />
+    <Content Include="Assets\FeaturedApps\SalesDashboard\HomeTotalSalesTrend.png" />
+    <Content Include="Assets\FeaturedApps\TasksThumbnail.png" />
+    <Content Include="Assets\FeaturedApps\Tasks\1.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\2.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\3.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\4.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\5.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\6.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\7.jpg" />
+    <Content Include="Assets\FeaturedApps\Tasks\8.jpg" />
+    <Content Include="Assets\flip.png" />
+    <Content Include="Assets\Icons\black\autocompletebox.png" />
+    <Content Include="Assets\Icons\black\bulletgraph.png" />
+    <Content Include="Assets\Icons\black\busyindicator.png" />
+    <Content Include="Assets\Icons\black\calendar.png" />
+    <Content Include="Assets\Icons\black\chart.png" />
+    <Content Include="Assets\Icons\black\databoundlistbox.png" />
+    <Content Include="Assets\Icons\black\dataform.png" />
+    <Content Include="Assets\Icons\black\datepicker.png" />
+    <Content Include="Assets\Icons\black\expander.png" />
+    <Content Include="Assets\Icons\black\gauge.png" />
+    <Content Include="Assets\Icons\black\grid.png" />
+    <Content Include="Assets\Icons\black\hexview.png" />
+    <Content Include="Assets\Icons\black\hubtile.png" />
+    <Content Include="Assets\Icons\black\listview.png" />
+    <Content Include="Assets\Icons\black\loopinglist.png" />
+    <Content Include="Assets\Icons\black\map.png" />
+    <Content Include="Assets\Icons\black\numericbox.png" />
+    <Content Include="Assets\Icons\black\pagination.png" />
+    <Content Include="Assets\Icons\black\radialmenu.png" />
+    <Content Include="Assets\Icons\black\rangeslider.png" />
+    <Content Include="Assets\Icons\black\rating.png" />
+    <Content Include="Assets\Icons\black\sidedrawer.png" />
+    <Content Include="Assets\Icons\black\timepicker.png" />
+    <Content Include="Assets\Icons\blue\autocompletebox.png" />
+    <Content Include="Assets\Icons\blue\bulletgraph.png" />
+    <Content Include="Assets\Icons\blue\busyindicator.png" />
+    <Content Include="Assets\Icons\blue\calendar.png" />
+    <Content Include="Assets\Icons\blue\chart.png" />
+    <Content Include="Assets\Icons\blue\databoundlistbox.png" />
+    <Content Include="Assets\Icons\blue\dataform.png" />
+    <Content Include="Assets\Icons\blue\datepicker.png" />
+    <Content Include="Assets\Icons\blue\expander.png" />
+    <Content Include="Assets\Icons\blue\gauge.png" />
+    <Content Include="Assets\Icons\blue\grid.png" />
+    <Content Include="Assets\Icons\blue\hexview.png" />
+    <Content Include="Assets\Icons\blue\hubtile.png" />
+    <Content Include="Assets\Icons\blue\listview.png" />
+    <Content Include="Assets\Icons\blue\loopinglist.png" />
+    <Content Include="Assets\Icons\blue\map.png" />
+    <Content Include="Assets\Icons\blue\numericbox.png" />
+    <Content Include="Assets\Icons\blue\pagination.png" />
+    <Content Include="Assets\Icons\blue\radialmenu.png" />
+    <Content Include="Assets\Icons\blue\rangeslider.png" />
+    <Content Include="Assets\Icons\blue\rating.png" />
+    <Content Include="Assets\Icons\blue\sidedrawer.png" />
+    <Content Include="Assets\Icons\blue\timepicker.png" />
+    <Content Include="Assets\Icons\white\autocompletebox.png" />
+    <Content Include="Assets\Icons\white\bulletgraph.png" />
+    <Content Include="Assets\Icons\white\busyindicator.png" />
+    <Content Include="Assets\Icons\white\calendar.png" />
+    <Content Include="Assets\Icons\white\chart.png" />
+    <Content Include="Assets\Icons\white\databoundlistbox.png" />
+    <Content Include="Assets\Icons\white\dataform.png" />
+    <Content Include="Assets\Icons\white\datepicker.png" />
+    <Content Include="Assets\Icons\white\expander.png" />
+    <Content Include="Assets\Icons\white\gauge.png" />
+    <Content Include="Assets\Icons\white\grid.png" />
+    <Content Include="Assets\Icons\white\hexview.png" />
+    <Content Include="Assets\Icons\white\hubtile.png" />
+    <Content Include="Assets\Icons\white\listview.png" />
+    <Content Include="Assets\Icons\white\loopinglist.png" />
+    <Content Include="Assets\Icons\white\map.png" />
+    <Content Include="Assets\Icons\white\numericbox.png" />
+    <Content Include="Assets\Icons\white\pagination.png" />
+    <Content Include="Assets\Icons\white\radialmenu.png" />
+    <Content Include="Assets\Icons\white\rangeslider.png" />
+    <Content Include="Assets\Icons\white\rating.png" />
+    <Content Include="Assets\Icons\white\sidedrawer.png" />
+    <Content Include="Assets\Icons\white\timepicker.png" />
+    <Content Include="Assets\Logo.scale-180.png" />
+    <Content Include="Assets\MarketingBanner.png" />
+    <Content Include="Assets\MobileLogo.png" />
+    <Content Include="Assets\ProgressLogo.png" />
+    <Content Include="Assets\SmallLogo.scale-180.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\TabletLogo.png" />
+    <Content Include="Assets\TelerikLogo.png" />
+    <Content Include="Assets\TelerikLogoInverted.png" />
+    <Content Include="Common\ReadMe.txt" />
+    <Content Include="Examples.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="QSF.Infrastructure\QSF.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AppShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Strings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CodeViewerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CustomStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\HintsLayerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ModifiedLightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AboutFlyoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ControlExamplesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DescriptionFlyoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ExamplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QSF.Common\QSF.Common.csproj">
+      <Project>{680d7e16-7bc1-44a6-939e-8f94904dbc7b}</Project>
+      <Name>QSF.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AutoCompleteBox, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Deploy.UWP\AutoCompleteBox\AutoCompleteBox.dll</HintPath>
+    </Reference>
+    <Reference Include="BulletGraph">
+      <HintPath>..\Deploy.UWP\BulletGraph\BulletGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="BusyIndicator">
+      <HintPath>..\Deploy.UWP\BusyIndicator\BusyIndicator.dll</HintPath>
+    </Reference>
+    <Reference Include="Calendar">
+      <HintPath>..\Deploy.UWP\Calendar\Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="Chart">
+      <HintPath>..\Deploy.UWP\Chart\Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="DataForm">
+      <HintPath>..\Deploy.UWP\DataForm\DataForm.dll</HintPath>
+    </Reference>
+    <Reference Include="DatePicker">
+      <HintPath>..\Deploy.UWP\DatePicker\DatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Expander">
+      <HintPath>..\Deploy.UWP\Expander\Expander.dll</HintPath>
+    </Reference>
+    <Reference Include="Gauge">
+      <HintPath>..\Deploy.UWP\Gauge\Gauge.dll</HintPath>
+    </Reference>
+    <Reference Include="Grid">
+      <HintPath>..\Deploy.UWP\Grid\Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="HexView">
+      <HintPath>..\Deploy.UWP\HexView\HexView.dll</HintPath>
+    </Reference>
+    <Reference Include="HubTile">
+      <HintPath>..\Deploy.UWP\HubTile\HubTile.dll</HintPath>
+    </Reference>
+    <Reference Include="ListView">
+      <HintPath>..\Deploy.UWP\ListView\ListView.dll</HintPath>
+    </Reference>
+    <Reference Include="LoopingList">
+      <HintPath>..\Deploy.UWP\LoopingList\LoopingList.dll</HintPath>
+    </Reference>
+    <Reference Include="Map">
+      <HintPath>..\Deploy.UWP\Map\Map.dll</HintPath>
+    </Reference>
+    <Reference Include="NumericBox">
+      <HintPath>..\Deploy.UWP\NumericBox\NumericBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Pagination">
+      <HintPath>..\Deploy.UWP\Pagination\Pagination.dll</HintPath>
+    </Reference>
+    <Reference Include="RadialMenu">
+      <HintPath>..\Deploy.UWP\RadialMenu\RadialMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="RangeSlider">
+      <HintPath>..\Deploy.UWP\RangeSlider\RangeSlider.dll</HintPath>
+    </Reference>
+    <Reference Include="Rating">
+      <HintPath>..\Deploy.UWP\Rating\Rating.dll</HintPath>
+    </Reference>
+    <Reference Include="TimePicker">
+      <HintPath>..\Deploy.UWP\TimePicker\TimePicker.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP %28WindowsMobile, Version=10.0.10586.0%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

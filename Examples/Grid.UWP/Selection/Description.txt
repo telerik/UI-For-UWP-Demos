@@ -1,0 +1,1 @@
+﻿The example demonstrates the selection modes and units of RadDataGrid.

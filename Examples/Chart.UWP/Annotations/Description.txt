@@ -1,0 +1,1 @@
+This example demonstrates how RadChart supports line, plot band and custom annotations. Annotations are supported both for RadCartesianChart, and RadPolarChart.

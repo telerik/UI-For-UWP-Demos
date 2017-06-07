@@ -1,0 +1,1 @@
+﻿The example demonstrates all the five different HubTile controls available in Telerik UI for Windows Universal: RadHubTile, RadCustomHubTile, RadSlideHubTile, RadPictureRotatorHubTile and RadMosaicHubTile. Select a tile type by selecting an item from the list on the left.

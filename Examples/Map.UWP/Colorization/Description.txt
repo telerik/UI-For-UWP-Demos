@@ -1,0 +1,1 @@
+﻿The example demonstrates the built-in colorization capabilities of RadMap. Typically, a shape vector file is distributed in pair with a *.dbf file with the same name, containing additional attribute data for each shape. RadMap can read these attributes and can colorize each shape based on a range distribution for a particular attribute value - e.g. Population.

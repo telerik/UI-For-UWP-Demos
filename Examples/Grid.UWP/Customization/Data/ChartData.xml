@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>367000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>637000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>565000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>244000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>669000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>165000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>460000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>525000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2005-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>226000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>353000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>767000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>549000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>469000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>917000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>356000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>872000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>781000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2005-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>556000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>502000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>665000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>846000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>266000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>780000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>264000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>473000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>583000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2006-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>280000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>267000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>583000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>493000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>301000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>802000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>341000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>952000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>639000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2006-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>550000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1429000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1355000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1600000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>542000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>734000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>210000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1034000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>496000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2006-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>483000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>341000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>452000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>813000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>226000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>647000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>329000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1352000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1009000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2006-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1324000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>729000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>860000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>839000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>239000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>571000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>190000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>470000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>288000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2007-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>151000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>284000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>247000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>555000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>224000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>572000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>418000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1369000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1021000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2007-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1194000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1575000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1525000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1171000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>507000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>950000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>319000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>935000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1051000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2007-07-01 00:00:00.000</QuotaDate>
+    <SalesQuota>631000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>372000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>707000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>684000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>450000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>675000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>453000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>971000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1276000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2007-10-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1218000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>849000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>894000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>714000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>280000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>538000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>343000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>614000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>569000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2008-01-01 00:00:00.000</QuotaDate>
+    <SalesQuota>234000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>403000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>830000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>724000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>390000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>686000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>390000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>947000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>1124000.0</SalesQuota>
+  </element>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <QuotaDate>2008-04-01 00:00:00.000</QuotaDate>
+    <SalesQuota>869000.0</SalesQuota>
+  </element>
+</root>

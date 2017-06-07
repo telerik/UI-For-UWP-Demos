@@ -1,0 +1,1 @@
+﻿RadRating allows users to show their rating for anything... albums, movies, etc. The Rating is applied by tapping an item. Each item's shape and style is fully customizable.

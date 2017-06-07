@@ -1,0 +1,83 @@
+﻿<UserControl
+    x:Class="Grid.Selection.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.Selection"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid">
+    <UserControl.Resources>
+        <local:SelectionViewModel x:Key="Model"/>
+        <local:CountryFlagsConverter x:Key="CountryConverter" />
+        <local:SelectionModeConverter x:Key="SelectionModeConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <ComboBox x:Name="selectionUnitCombo" Height="40"  ItemsSource="{Binding SelectionUnits,Source={StaticResource Model}}" SelectedIndex="0" Margin="0 0 10 10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Selection unit: "/>
+                            <TextBlock Text="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <CheckBox x:Name="selectionModeCheckBox" Height="40" Content="Allow multiple selection" IsChecked="True" Margin="50 0 0 10"/>
+        </RelativePanel>
+
+        <telerikGrid:RadDataGrid  Grid.Row="1" 
+                                  x:Name="dataGrid" 
+                                  UserGroupMode="Disabled" 
+                                  AutoGenerateColumns="False"
+                                  SelectionMode="{Binding IsChecked, Converter={StaticResource SelectionModeConverter}, ElementName=selectionModeCheckBox}" 
+                                  SelectionUnit="{Binding SelectedItem, ElementName=selectionUnitCombo}" 
+                                  ItemsSource="{Binding Data, Source={StaticResource Model}}">
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTextColumn PropertyName="FirstName" Header="FIRST NAME"/>
+                <telerikGrid:DataGridTextColumn PropertyName="LastName" Header="LAST NAME"/>
+                <telerikGrid:DataGridTextColumn PropertyName="AddressLine" Header="ADDRESS"/>
+                <telerikGrid:DataGridTextColumn PropertyName="PhoneNumber" Header="PHONE NUMBER"/>
+                <telerikGrid:DataGridTextColumn PropertyName="City" Header="CITY"/>
+                <telerikGrid:DataGridTemplateColumn Header="COUNTRY">
+                    <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="24" Height="24" Source="{Binding CountryCode, Converter={StaticResource CountryConverter}}" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="{Binding CountryCode}" VerticalAlignment="Center" Margin="5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                </telerikGrid:DataGridTemplateColumn>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="867" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="selectionUnitCombo.Width" Value="400"/>
+                        <Setter Target="selectionModeCheckBox.(RelativePanel.RightOf)" Value="selectionUnitCombo"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="selectionUnitCombo.Width" Value="250"/>
+                        <Setter Target="selectionModeCheckBox.(RelativePanel.Below)" Value="selectionUnitCombo"/>
+                        <Setter Target="selectionModeCheckBox.Margin" Value="0 0 0 10"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

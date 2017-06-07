@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <element>
+    <Id>11</Id>
+    <Task>Develop Functional Specifications</Task>
+    <Effort>80</Effort>
+    <Role>Project Manager</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2013-08-01 00:00:00.000</EndDate>
+    <Cost>200</Cost>
+    <Group>1</Group>
+  </element>
+  <element>
+    <Id>12</Id>
+    <Task>Develop System Architecture</Task>
+    <Effort>160</Effort>
+    <Role>Software Architect</Role>
+    <StartDate>2013-08-01 00:00:00.000</StartDate>
+    <EndDate>2013-09-01 00:00:00.000</EndDate>
+    <Cost>150</Cost>
+    <Group>1</Group>
+  </element>
+  <element>
+    <Id>13</Id>
+    <Task>Develop Preliminary Design Specification</Task>
+    <Effort>120</Effort>
+    <Role> Sr Software Developer</Role>
+    <StartDate>2013-08-01 00:00:00.000</StartDate>
+    <EndDate>2013-09-01 00:00:00.000</EndDate>
+    <Cost>150</Cost>
+    <Group>1</Group>
+  </element>
+  <element>
+    <Id>14</Id>
+    <Task>Develop Detailed Design Specifications</Task>
+    <Effort>120</Effort>
+    <Role> Sr Software Developer</Role>
+    <StartDate>2013-08-01 00:00:00.000</StartDate>
+    <EndDate>2013-09-01 00:00:00.000</EndDate>
+    <Cost>150</Cost>
+    <Group>1</Group>
+  </element>
+  <element>
+    <Id>15</Id>
+    <Task>Develop Acceptance Test Plan</Task>
+    <Effort>160</Effort>
+    <Role>Sr QA</Role>
+    <StartDate>2013-09-01 00:00:00.000</StartDate>
+    <EndDate>2013-09-15 00:00:00.000</EndDate>
+    <Cost>90</Cost>
+    <Group>1</Group>
+  </element>
+  <element>
+    <Id>21</Id>
+    <Task>Develop Components</Task>
+    <Effort>480</Effort>
+    <Role>Software Developer</Role>
+    <StartDate>2013-08-15 00:00:00.000</StartDate>
+    <EndDate>2013-11-15 00:00:00.000</EndDate>
+    <Cost>120</Cost>
+    <Group>2</Group>
+  </element>
+  <element>
+    <Id>22</Id>
+    <Task>Development Acceptance Test Package</Task>
+    <Effort>160</Effort>
+    <Role>QA</Role>
+    <StartDate>2013-08-15 00:00:00.000</StartDate>
+    <EndDate>2013-11-15 00:00:00.000</EndDate>
+    <Cost>90</Cost>
+    <Group>2</Group>
+  </element>
+  <element>
+    <Id>23</Id>
+    <Task>Perform Unit/Integration Test</Task>
+    <Effort>160</Effort>
+    <Role>Software Developer</Role>
+    <StartDate>2013-08-15 00:00:00.000</StartDate>
+    <EndDate>2013-11-15 00:00:00.000</EndDate>
+    <Cost>100</Cost>
+    <Group>2</Group>
+  </element>
+  <element>
+    <Id>31</Id>
+    <Task>Install System</Task>
+    <Effort>40</Effort>
+    <Role>Sr Consultant</Role>
+    <StartDate>2013-11-15 00:00:00.000</StartDate>
+    <EndDate>2013-11-22 00:00:00.000</EndDate>
+    <Cost>120</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>32</Id>
+    <Task>Train Customers</Task>
+    <Effort>120</Effort>
+    <Role>Consultant</Role>
+    <StartDate>2013-11-22 00:00:00.000</StartDate>
+    <EndDate>2013-12-15 00:00:00.000</EndDate>
+    <Cost>180</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>33</Id>
+    <Task>Perform Acceptance Test</Task>
+    <Effort>40</Effort>
+    <Role>QA</Role>
+    <StartDate>2013-11-08 00:00:00.000</StartDate>
+    <EndDate>2013-12-15 00:00:00.000</EndDate>
+    <Cost>90</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>34</Id>
+    <Task>Perform Post Project Review</Task>
+    <Effort>40</Effort>
+    <Role>Sr Support Officer</Role>
+    <StartDate>2013-12-15 00:00:00.000</StartDate>
+    <EndDate>2013-12-21 00:00:00.000</EndDate>
+    <Cost>80</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>35</Id>
+    <Task>Provide Warranty Support</Task>
+    <Effort>480</Effort>
+    <Role>Support Officer</Role>
+    <StartDate></StartDate>
+    <EndDate></EndDate>
+    <Cost>120</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>36</Id>
+    <Task>Archive Materials</Task>
+    <Effort>40</Effort>
+    <Role>Support Officer</Role>
+    <StartDate>2013-12-21 00:00:00.000</StartDate>
+    <EndDate>2013-12-31 00:00:00.000</EndDate>
+    <Cost>50</Cost>
+    <Group>3</Group>
+  </element>
+  <element>
+    <Id>41</Id>
+    <Task>Customer Progress Meetings/Reports</Task>
+    <Effort>40</Effort>
+    <Role>Project Manager</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2014-01-15 00:00:00.000</EndDate>
+    <Cost>180</Cost>
+    <Group>4</Group>
+  </element>
+  <element>
+    <Id>42</Id>
+    <Task>Internal Status Meetings/Reports</Task>
+    <Effort>80</Effort>
+    <Role>Project Manager</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2014-01-15 00:00:00.000</EndDate>
+    <Cost>80</Cost>
+    <Group>4</Group>
+  </element>
+  <element>
+    <Id>43</Id>
+    <Task>Configuration Management</Task>
+    <Effort>80</Effort>
+    <Role>Sr Support Officer</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2014-01-15 00:00:00.000</EndDate>
+    <Cost>140</Cost>
+    <Group>4</Group>
+  </element>
+  <element>
+    <Id>44</Id>
+    <Task>Quality Assurance</Task>
+    <Effort>480</Effort>
+    <Role>Sr QA</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2014-01-15 00:00:00.000</EndDate>
+    <Cost>90</Cost>
+    <Group>4</Group>
+  </element>
+  <element>
+    <Id>45</Id>
+    <Task>Overall Project Management</Task>
+    <Effort>480</Effort>
+    <Role>Project Manager</Role>
+    <StartDate>2013-07-15 00:00:00.000</StartDate>
+    <EndDate>2014-01-15 00:00:00.000</EndDate>
+    <Cost>200</Cost>
+    <Group>4</Group>
+  </element>
+</root>

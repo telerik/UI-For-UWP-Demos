@@ -1,0 +1,1 @@
+﻿The example loads two large shape files, containing vector information for all the countries in the world as well as the administrative counties of each country. A county may be selected and the corresponding country is highlighted as well. The total number of rendered points is ~1 000 000.

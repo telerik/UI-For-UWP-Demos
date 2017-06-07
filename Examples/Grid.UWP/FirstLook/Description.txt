@@ -1,0 +1,1 @@
+﻿The example demonstrates a typical usage of a DataGrid component - sales statistics (actual vs. target). The tiles on the left allow you to select a product category and the grid on the right is populated with the product details. The data is grouped by the SubCategory property of the underlying ViewModel.

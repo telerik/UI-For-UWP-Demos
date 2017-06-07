@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <element>
+    <BusinessEntityID>275</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Michael Blythe</Name>
+    <Region>Central</Region>
+    <SalesLastYear>1750406.5</SalesLastYear>
+    <SalesQuota>1.1162E7</SalesQuota>
+    <SalesYTD>3763178.2</SalesYTD>
+    <TerritorySalesLastYear>3205014.0</TerritorySalesLastYear>
+    <TerritorySalesYTD>3072175.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>276</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Linda Mitchell</Name>
+    <Region>Northwest</Region>
+    <SalesLastYear>1439156.0</SalesLastYear>
+    <SalesQuota>1.1786E7</SalesQuota>
+    <SalesYTD>4251368.5</SalesYTD>
+    <TerritorySalesLastYear>3298694.5</TerritorySalesLastYear>
+    <TerritorySalesYTD>7887187.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>277</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Jillian Carson</Name>
+    <Region>Central</Region>
+    <SalesLastYear>1997186.2</SalesLastYear>
+    <SalesQuota>1.2198E7</SalesQuota>
+    <SalesYTD>3189418.2</SalesYTD>
+    <TerritorySalesLastYear>3205014.0</TerritorySalesLastYear>
+    <TerritorySalesYTD>3072175.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>278</BusinessEntityID>
+    <Country>CA</Country>
+    <Name>Garrett Vargas</Name>
+    <Region>Canada</Region>
+    <SalesLastYear>1620276.9</SalesLastYear>
+    <SalesQuota>4365000.0</SalesQuota>
+    <SalesYTD>1453719.5</SalesYTD>
+    <TerritorySalesLastYear>5693989.0</TerritorySalesLastYear>
+    <TerritorySalesYTD>6771829.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>279</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Tsvi Reiter</Name>
+    <Region>Southeast</Region>
+    <SalesLastYear>1849641.0</SalesLastYear>
+    <SalesQuota>8541000.0</SalesQuota>
+    <SalesYTD>2315185.5</SalesYTD>
+    <TerritorySalesLastYear>3925071.5</TerritorySalesLastYear>
+    <TerritorySalesYTD>2538667.2</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>280</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Pamela Ansman-Wolfe</Name>
+    <Region>Northwest</Region>
+    <SalesLastYear>1927059.1</SalesLastYear>
+    <SalesQuota>3551000.0</SalesQuota>
+    <SalesYTD>1352577.1</SalesYTD>
+    <TerritorySalesLastYear>3298694.5</TerritorySalesLastYear>
+    <TerritorySalesYTD>7887187.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>281</BusinessEntityID>
+    <Country>US</Country>
+    <Name>Shu Ito</Name>
+    <Region>Southwest</Region>
+    <SalesLastYear>2073506.0</SalesLastYear>
+    <SalesQuota>7804000.0</SalesQuota>
+    <SalesYTD>2458535.5</SalesYTD>
+    <TerritorySalesLastYear>5366575.5</TerritorySalesLastYear>
+    <TerritorySalesYTD>1.0510854E7</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>282</BusinessEntityID>
+    <Country>CA</Country>
+    <Name>Jose Saraiva</Name>
+    <Region>Canada</Region>
+    <SalesLastYear>2038234.6</SalesLastYear>
+    <SalesQuota>7098000.0</SalesQuota>
+    <SalesYTD>2604540.8</SalesYTD>
+    <TerritorySalesLastYear>5693989.0</TerritorySalesLastYear>
+    <TerritorySalesYTD>6771829.0</TerritorySalesYTD>
+  </element>
+  <element>
+    <BusinessEntityID>283</BusinessEntityID>
+    <Country>US</Country>
+    <Name>David Campbell</Name>
+    <Region>Northwest</Region>
+    <SalesLastYear>1371635.4</SalesLastYear>
+    <SalesQuota>4025000.0</SalesQuota>
+    <SalesYTD>1573013.0</SalesYTD>
+    <TerritorySalesLastYear>3298694.5</TerritorySalesLastYear>
+    <TerritorySalesYTD>7887187.0</TerritorySalesYTD>
+  </element>
+</root>

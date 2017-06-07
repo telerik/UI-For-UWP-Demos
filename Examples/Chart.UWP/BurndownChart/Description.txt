@@ -1,0 +1,3 @@
+﻿This example demonstrates how RadChart supports custom line and marked zone annotations. These types of annotations are supported for RadCartesianChart.
+
+On the chart the optimal burndown is visualized by a CustomLineAnnotation. There are two zones where unplanned work items are added to the sprint backlog. They are highlighted by MarkedZoneAnnotation.

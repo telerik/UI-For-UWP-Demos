@@ -1,0 +1,329 @@
+﻿<UserControl
+    x:Class="Chart.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.FirstLook"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:common="using:QSF.Common"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CommonResources.xaml" />
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <local:MainViewModel x:Key="ViewModel"></local:MainViewModel>
+            <local:StringFormatConverter x:Key="StringFormat"></local:StringFormatConverter>
+            <local:ForegroundConverter x:Key="ForegroundConverter"></local:ForegroundConverter>
+            <local:PositiveVisibilityConverter x:Key="PositiveVisibilityConverter"></local:PositiveVisibilityConverter>
+            <local:RevenuesTemplateSelector x:Key="wideRevenueDataSelector" >
+                <local:RevenuesTemplateSelector.ActualTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[0], Source={StaticResource ViewModel}}" Width="10" Height="10" Margin="5 0 5 0"></Rectangle>
+                                <TextBlock Text="Revenues"></TextBlock>
+                            </StackPanel>
+                            <TextBlock Foreground="#1F7DB8" FontSize="20" Text="{Binding Amount}" Margin="5 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </local:RevenuesTemplateSelector.ActualTemplate>
+                <local:RevenuesTemplateSelector.ActualVSLastYearTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[0], Source={StaticResource ViewModel}}" Width="10" Height="10" Margin="5 0 5 0"></Rectangle>
+                                <TextBlock Text="Actual vs"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[1], Source={StaticResource ViewModel}}" Width="10" Height="10" Margin="5 0 5 0"></Rectangle>
+                                <TextBlock Text="Last Year"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="5 0 0 0">
+                                <Path Stretch="Fill" Width="14" Height="10" Margin="0 3 0 0" Fill="Green" Data="M 0 6 L 12 6 L 6 0 Z" Visibility="{Binding Amount,Converter={StaticResource PositiveVisibilityConverter}}"/>
+                                <Path Stretch="Fill" Width="14" Height="10" Margin="0 4 0 0" Fill="Red" Data="M 0 0 L 6 6 L 12 0 Z"  Visibility="{Binding Amount,Converter={StaticResource PositiveVisibilityConverter},ConverterParameter='invert'}"/>
+                                <TextBlock Margin="3 0 0 0" FontSize="20" Text="{Binding Amount,Converter={StaticResource StringFormat},ConverterParameter='{}{0:P2}'}" Foreground="{Binding Amount, Converter={StaticResource ForegroundConverter}}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </local:RevenuesTemplateSelector.ActualVSLastYearTemplate>
+                <local:RevenuesTemplateSelector.ActualVSTargetTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[0], Source={StaticResource ViewModel}}" Width="10" Height="10" Margin="5 0 5 0"></Rectangle>
+                                <TextBlock Text="Actual vs"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[1], Source={StaticResource ViewModel}}" Width="10" Height="10" Margin="5 0 5 0"></Rectangle>
+                                <TextBlock Text="Target"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Margin="5 0 0 0">
+                                <Path Stretch="Fill" Width="14" Height="10" Fill="Green" Margin="0 3 0 0" Data="M 0 6 L 12 6 L 6 0 Z" Visibility="{Binding Amount,Converter={StaticResource PositiveVisibilityConverter}}"/>
+                                <Path Stretch="Fill" Width="14" Height="10" Fill="Red" Margin="0 4 0 0" Data="M 0 0 L 6 6 L 12 0 Z"  Visibility="{Binding Amount,Converter={StaticResource PositiveVisibilityConverter},ConverterParameter='invert'}"/>
+                                <TextBlock  Margin="3 0 0 0" FontSize="20" Text="{Binding Amount,Converter={StaticResource StringFormat},ConverterParameter='{}{0:P2}'}" Foreground="{Binding Amount, Converter={StaticResource ForegroundConverter}}"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </local:RevenuesTemplateSelector.ActualVSTargetTemplate>
+            </local:RevenuesTemplateSelector>
+            <DataTemplate x:Key="TrackInfoTemplate">
+                <Border Visibility="Collapsed"></Border>
+            </DataTemplate>
+
+            <Style TargetType="telerikChart:RadCartesianChart" BasedOn="{StaticResource BaseChartStyle}">
+                <Setter Property="MinHeight" Value="300"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+        <Grid x:Name="LayoutRoot" DataContext="{StaticResource ViewModel}">
+        <Grid.Resources>
+            <DataTemplate x:Name="RevenueChart">
+                <telerik:RadCartesianChart HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PaletteName="DefaultLight">
+                    <telerik:RadCartesianChart.Grid>
+                        <telerik:CartesianChartGrid MajorLinesVisibility="Y"></telerik:CartesianChartGrid>
+                    </telerik:RadCartesianChart.Grid>
+                    <telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:LinearAxis LabelStyle="{StaticResource LabelStyle}"></telerik:LinearAxis>
+                    </telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:DateTimeCategoricalAxis DateTimeComponent="Month" LabelFormat="{}{0,0:MMM}" LabelStyle="{StaticResource LabelStyle}"></telerik:DateTimeCategoricalAxis>
+                    </telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:RadCartesianChart.Series>
+                        <telerik:AreaSeries ItemsSource="{Binding ActualRevenues}"   telerik:ChartTrackBallBehavior.TrackInfoTemplate="{StaticResource TrackInfoTemplate}">
+                            <telerik:AreaSeries.ValueBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                            </telerik:AreaSeries.ValueBinding>
+                            <telerik:AreaSeries.CategoryBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Date"></telerik:PropertyNameDataPointBinding>
+                            </telerik:AreaSeries.CategoryBinding>
+                        </telerik:AreaSeries>
+                    </telerik:RadCartesianChart.Series>
+                    <telerik:RadCartesianChart.Behaviors>
+                        <telerik:ChartTrackBallBehavior InfoMode="Individual" ShowInfo="True" TrackInfoUpdated="ChartTrackBallBehavior_TrackInfoUpdated">
+                            <telerik:ChartTrackBallBehavior.LineStyle>
+                                <Style TargetType="Polyline">
+                                    <Setter Property="Fill" Value="Transparent"></Setter>
+                                </Style>
+                            </telerik:ChartTrackBallBehavior.LineStyle>
+                        </telerik:ChartTrackBallBehavior>
+                    </telerik:RadCartesianChart.Behaviors>
+                </telerik:RadCartesianChart>
+            </DataTemplate>
+            <DataTemplate x:Name="ActualVSTargetChart">
+                <telerik:RadCartesianChart HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PaletteName="DefaultLight" SelectionPaletteName="DefaultLightSelected">
+                    <telerik:RadCartesianChart.Grid>
+                        <telerik:CartesianChartGrid MajorLinesVisibility="Y"></telerik:CartesianChartGrid>
+                    </telerik:RadCartesianChart.Grid>
+                    <telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:LinearAxis LabelStyle="{StaticResource LabelStyle}"></telerik:LinearAxis>
+                    </telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:DateTimeCategoricalAxis DateTimeComponent="Month" LabelFormat="{}{0,0:MMM}" LabelStyle="{StaticResource LabelStyle}"></telerik:DateTimeCategoricalAxis>
+                    </telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:RadCartesianChart.Series>
+                        <telerik:BarSeries ItemsSource="{Binding ActualRevenues}" >
+                            <telerik:BarSeries.ValueBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.ValueBinding>
+                            <telerik:BarSeries.CategoryBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Date"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.CategoryBinding>
+                        </telerik:BarSeries>
+                        <telerik:LineSeries ItemsSource="{Binding TargetRevenues}"  >
+                            <telerik:LineSeries.ValueBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                            </telerik:LineSeries.ValueBinding>
+                            <telerik:LineSeries.CategoryBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Date"></telerik:PropertyNameDataPointBinding>
+                            </telerik:LineSeries.CategoryBinding>
+                        </telerik:LineSeries>
+                    </telerik:RadCartesianChart.Series>
+                    <telerik:RadCartesianChart.Behaviors>
+                        <telerik:ChartSelectionBehavior SelectionChanged="ChartSelectionBehavior_SelectionChanged" DataPointSelectionMode="Single"></telerik:ChartSelectionBehavior>
+                    </telerik:RadCartesianChart.Behaviors>
+                </telerik:RadCartesianChart>
+            </DataTemplate>
+            <DataTemplate x:Name="ActualVSLastYearChart">
+                <telerik:RadCartesianChart HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PaletteName="DefaultLight" SelectionPaletteName="DefaultLightSelected">
+                    <telerik:RadCartesianChart.Grid>
+                        <telerik:CartesianChartGrid MajorLinesVisibility="Y"></telerik:CartesianChartGrid>
+                    </telerik:RadCartesianChart.Grid>
+                    <telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:LinearAxis LabelStyle="{StaticResource LabelStyle}"></telerik:LinearAxis>
+                    </telerik:RadCartesianChart.VerticalAxis>
+                    <telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:DateTimeCategoricalAxis DateTimeComponent="Month" LabelFormat="{}{0,0:MMM}" LabelStyle="{StaticResource LabelStyle}"></telerik:DateTimeCategoricalAxis>
+                    </telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:RadCartesianChart.Series>
+                        <telerik:BarSeries CombineMode="Cluster" ItemsSource="{Binding ActualRevenues}" >
+                            <telerik:BarSeries.ValueBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.ValueBinding>
+                            <telerik:BarSeries.CategoryBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Date"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.CategoryBinding>
+                        </telerik:BarSeries>
+                        <telerik:BarSeries CombineMode="Cluster" ItemsSource="{Binding LastYearRevenues}" >
+                            <telerik:BarSeries.ValueBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.ValueBinding>
+                            <telerik:BarSeries.CategoryBinding>
+                                <telerik:PropertyNameDataPointBinding PropertyName="Date"></telerik:PropertyNameDataPointBinding>
+                            </telerik:BarSeries.CategoryBinding>
+                        </telerik:BarSeries>
+                    </telerik:RadCartesianChart.Series>
+                    <telerik:RadCartesianChart.Behaviors>
+                        <telerik:ChartSelectionBehavior SelectionChanged="ChartSelectionBehavior_SelectionChanged" DataPointSelectionMode="Single"></telerik:ChartSelectionBehavior>
+                    </telerik:RadCartesianChart.Behaviors>
+                </telerik:RadCartesianChart>
+            </DataTemplate>
+        </Grid.Resources>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <RelativePanel MinHeight="700">
+                <RelativePanel x:Name="revenuesWrapper" RelativePanel.AlignTopWithPanel="True">
+                    <ListBox x:Name="RevenuesList" 
+                     Background="Transparent" 
+                     Template="{StaticResource ListBoxTemplate}" 
+                     SelectionChanged="RevenuesList_SelectionChanged" 
+                     ItemContainerStyle="{StaticResource wideListBoxItemStyle}" 
+                     ItemsSource="{Binding RevenueDataList}" 
+                     ItemTemplateSelector="{StaticResource wideRevenueDataSelector}"
+                     SelectedIndex="{Binding SelectedRevenueIndex, Mode=TwoWay}"
+                     RelativePanel.AlignLeftWithPanel="True"
+                     RelativePanel.AlignTopWithPanel="True" />
+                    <Grid x:Name="ChartRevenue">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource BaselineTextStyle}" Text="REVENUE ($thousand)"></TextBlock>
+                        <ContentPresenter x:Name="RevenueView" Grid.Row="1" 
+                                      ContentTemplate="{StaticResource RevenueChart}"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch" />
+                    </Grid>
+                </RelativePanel>
+
+                <RelativePanel x:Name="pieWrapper" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True"
+                               RelativePanel.Below="revenuesWrapper">
+                    <Grid x:Name="PieChart" RelativePanel.AlignLeftWithPanel="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="0 30 0 0" Style="{StaticResource BaselineTextStyle}" Text="REVENUE by PRODUCT (% of total)"></TextBlock>
+                        <telerik:RadPieChart Grid.Row="1" PaletteName="DefaultLight" MinHeight="150">
+                            <telerik:PieSeries ItemsSource="{Binding ProductRevenues}" RadiusFactor="0.7">
+                                <telerik:PieSeries.ValueBinding>
+                                    <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                                </telerik:PieSeries.ValueBinding>
+                                <telerik:PieSeries.LabelDefinitions>
+                                    <telerik:ChartSeriesLabelDefinition Margin="-3"/>
+                                </telerik:PieSeries.LabelDefinitions>
+                            </telerik:PieSeries>
+                        </telerik:RadPieChart>
+                        <StackPanel Grid.Row="2">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[0]}" Width="10" Height="10" Margin="2"></Rectangle>
+                                <TextBlock Text="{Binding ProductRevenues[0].ProductName}" Foreground="{StaticResource TextBoxDisabledForegroundThemeBrush}"  Margin="2" ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[1]}" Width="10" Height="10"  Margin="2"></Rectangle>
+                                <TextBlock Text="{Binding ProductRevenues[1].ProductName}" Foreground="{StaticResource TextBoxDisabledForegroundThemeBrush}"  Margin="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[2]}" Width="10" Height="10"  Margin="2"></Rectangle>
+                                <TextBlock Text="{Binding ProductRevenues[2].ProductName}" Foreground="{StaticResource TextBoxDisabledForegroundThemeBrush}" Margin="2"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding DefaultPalette.FillEntries.Brushes[3]}" Width="10" Height="10"  Margin="2"></Rectangle>
+                                <TextBlock Text="{Binding ProductRevenues[3].ProductName}" Foreground="{StaticResource TextBoxDisabledForegroundThemeBrush}"  Margin="2"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid x:Name="RevenueByStoreChart" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="0 30 0 0" Style="{StaticResource BaselineTextStyle}" Text="REVENUE by STORE ($thousand)"></TextBlock>
+                        <telerik:RadCartesianChart Grid.Row="1" >
+                            <telerik:RadCartesianChart.Grid>
+                                <telerik:CartesianChartGrid MajorLinesVisibility="Y"></telerik:CartesianChartGrid>
+                            </telerik:RadCartesianChart.Grid>
+                            <telerik:RadCartesianChart.VerticalAxis>
+                                <telerik:LinearAxis LabelStyle="{StaticResource LabelStyle}"></telerik:LinearAxis>
+                            </telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:RadCartesianChart.HorizontalAxis>
+                                <telerik:CategoricalAxis LabelStyle="{StaticResource LabelStyle}" LabelFitMode="MultiLine"></telerik:CategoricalAxis>
+                            </telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:RadCartesianChart.Series>
+                                <telerik:BarSeries ItemsSource="{Binding StoreRevenues}">
+                                    <telerik:BarSeries.ValueBinding>
+                                        <telerik:PropertyNameDataPointBinding PropertyName="Amount"></telerik:PropertyNameDataPointBinding>
+                                    </telerik:BarSeries.ValueBinding>
+                                    <telerik:BarSeries.CategoryBinding>
+                                        <telerik:PropertyNameDataPointBinding PropertyName="StoreName"></telerik:PropertyNameDataPointBinding>
+                                    </telerik:BarSeries.CategoryBinding>
+                                </telerik:BarSeries>
+                            </telerik:RadCartesianChart.Series>
+                        </telerik:RadCartesianChart>
+                    </Grid>
+                </RelativePanel>
+            </RelativePanel>
+        </ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RevenuesList.MaxWidth" Value="280" />
+                        <Setter Target="PieChart.MaxWidth" Value="280" />
+                        <Setter Target="ChartRevenue.(RelativePanel.RightOf)" Value="RevenuesList" />
+                        <Setter Target="ChartRevenue.Margin" Value="20 0 0 0" />
+                        <Setter Target="RevenueByStoreChart.Margin" Value="20 0 0 0" />
+                        <Setter Target="RevenueByStoreChart.(RelativePanel.RightOf)" Value="PieChart" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RevenuesList.ItemsPanel">
+                            <Setter.Value>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="RevenuesList.ItemContainerStyle" Value="{StaticResource narrowListBoxItemStyle}" />
+                        <!--<Setter Target="RevenuesList.ItemTemplateSelector" Value="{StaticResource narrowRevenueDataSelector}" />-->
+
+                        <Setter Target="RevenuesList.MaxWidth" Value="1008" />
+                        <Setter Target="RevenuesList.HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Target="PieChart.MaxWidth" Value="1008" />
+                        <Setter Target="PieChart.HorizontalAlignment" Value="Center" />
+
+                        <Setter Target="ChartRevenue.Margin" Value="0 30 0 0" />
+                        <Setter Target="ChartRevenue.(RelativePanel.Below)" Value="RevenuesList" />
+                        <Setter Target="ChartRevenue.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+
+                        <Setter Target="RevenueByStoreChart.(RelativePanel.Below)" Value="PieChart" />
+                        <Setter Target="RevenueByStoreChart.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

@@ -1,0 +1,126 @@
+﻿<UserControl
+    x:Class="Map.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    xmlns:example="using:Map.FirstLook"
+    xmlns:exampleCommon="using:Map.Common"
+    xmlns:telerikMap="using:Telerik.UI.Xaml.Controls.Map"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    xmlns:telerikGeospatial="using:Telerik.Geospatial"
+    xmlns:telerikDrawing="using:Telerik.UI.Drawing"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <example:ExampleViewModel x:Key="ViewModel" />
+        <telerikMap:ShapefileDataSource x:Key="WorldSubCountryAdminUnits" ShapeProcessingCompleted="SubCountryDataSource_ShapeProcessingCompleted"
+                                        SourceUriString="ms-appx:///Map/Data/world_subcountry_admin_unit.shp" 
+                                        DataSourceUriString="ms-appx:///Map/Data/world_subcountry_admin_unit.dbf" />
+        <telerikMap:ShapefileDataSource x:Key="WorldCountryAdminUnits" 
+                                        SourceUriString="ms-appx:///Map/Data/world_country_admin_unit.shp" 
+                                        DataSourceUriString="ms-appx:///Map/Data/world_country_admin_unit.dbf" />
+        <DataTemplate x:Key="MapToolTipTemplate">
+            <Grid Margin="12,12,0,3">
+                <Grid.Resources>
+                    <example:MapAreaToCountryAreaPercentageConverter x:Key="percentageConverter" />
+                    <example:MapAttributeToDoughnutItemsSourceConverter x:Key="doughnutConverter" />
+                    <exampleCommon:MapAttributeToUpperConverter x:Key="toUpperConverter" />
+                    <example:MapAttributeFormatConverter x:Key="formatConverter" />
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="{Binding Shape.Attributes[ADMIN_NAME]}" FontSize="22" />
+                    <TextBlock Text="{Binding Shape.Attributes[CNTRY_NAME], Converter={StaticResource toUpperConverter}}" FontSize="14" Grid.Row="1" Margin="0,0,0,10" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Area sq. mil: " Foreground="#FFECBF34" Margin="0,0,5,0" />
+                        <TextBlock Text="{Binding Shape.Attributes[SQMI_ADMIN], Converter={StaticResource formatConverter}}" Foreground="#FFECBF34" Grid.Column="1" />
+                        <TextBlock Text="Country sq. mil: " Foreground="#FFFFF7DC" Margin="0,0,5,0" Grid.Row="1" />
+                        <TextBlock Text="{Binding Shape.Attributes[SQMI_CNTRY], Converter={StaticResource formatConverter}}" Foreground="#FFFFF7DC" Grid.Row="1" Grid.Column="1" />
+                    </Grid>
+                </StackPanel>
+
+                <Grid Grid.Row="1">
+                    <telerikChart:RadPieChart Transitions="{x:Null}" Palette="{Binding DoughnutPalette, Source={StaticResource ViewModel}}">
+                        <telerikChart:DoughnutSeries ItemsSource="{Binding Converter={StaticResource doughnutConverter}}"
+                                                    AngleRange="{Binding DoughnutAngleRange, Source={StaticResource ViewModel}}"
+                                                    ShowLabels="False" RadiusFactor="0.8" InnerRadiusFactor="0.75" />
+                    </telerikChart:RadPieChart>
+                    <TextBlock Text="{Binding Converter={StaticResource percentageConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <telerikMap:RadMap Background="#7BD5FB" 
+                           ZoomLevel="{Binding ZoomLevel, Source={StaticResource ViewModel}}" 
+                           MaxZoomLevel="{Binding MaxZoomLevel, Source={StaticResource ViewModel}}"
+                           Center="{Binding Center, Source={StaticResource ViewModel}}">
+            <telerikMap:RadMap.Behaviors>
+                <telerikMap:MapPanAndZoomBehavior/>
+                <telerikMap:MapShapePointerOverBehavior />
+                <telerikMap:MapShapeToolTipBehavior />
+                <example:MapSingleSelectionPerLayerBehavior />
+            </telerikMap:RadMap.Behaviors>
+
+            <telerikMap:RadMap.Layers>
+                <telerikMap:MapShapeLayer Source="{StaticResource WorldSubCountryAdminUnits}" 
+                                          telerikMap:MapShapeToolTipBehavior.ContentTemplate="{StaticResource MapToolTipTemplate}">
+                    <telerikMap:MapShapeLayer.ShapeStyle>
+                        <telerikDrawing:D2DShapeStyle>
+                            <telerikDrawing:D2DShapeStyle.Fill>
+                                <telerikDrawing:D2DSolidColorBrush Color="#FFFFFFFF" />
+                            </telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DShapeStyle.Stroke>
+                                <telerikDrawing:D2DSolidColorBrush Color="#FF7BD5FB" />
+                            </telerikDrawing:D2DShapeStyle.Stroke>
+                        </telerikDrawing:D2DShapeStyle>
+                    </telerikMap:MapShapeLayer.ShapeStyle>
+                    <telerikMap:MapShapeLayer.ShapePointerOverStyle>
+                        <telerikDrawing:D2DShapeStyle>
+                            <telerikDrawing:D2DShapeStyle.Fill>
+                                <telerikDrawing:D2DSolidColorBrush Color="#FFECBF34" />
+                            </telerikDrawing:D2DShapeStyle.Fill>
+                        </telerikDrawing:D2DShapeStyle>
+                    </telerikMap:MapShapeLayer.ShapePointerOverStyle>
+                    <telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                        <telerikDrawing:D2DShapeStyle>
+                            <telerikDrawing:D2DShapeStyle.Fill>
+                                <telerikDrawing:D2DSolidColorBrush Color="#FFECBF34" />
+                            </telerikDrawing:D2DShapeStyle.Fill>
+                        </telerikDrawing:D2DShapeStyle>
+                    </telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                </telerikMap:MapShapeLayer>
+                <telerikMap:MapShapeLayer Source="{StaticResource WorldCountryAdminUnits}" IsPointerOverEnabled="False" IsToolTipEnabled="False" ShapeStyle="{x:Null}">
+                    <telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                        <telerikDrawing:D2DShapeStyle StrokeThickness="1">
+                            <telerikDrawing:D2DShapeStyle.Fill>
+                                <telerikDrawing:D2DSolidColorBrush Color="#20FFD800" />
+                            </telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DShapeStyle.Stroke>
+                                <telerikDrawing:D2DSolidColorBrush Color="#FFECBF34" />
+                            </telerikDrawing:D2DShapeStyle.Stroke>
+                        </telerikDrawing:D2DShapeStyle>
+                    </telerikMap:MapShapeLayer.ShapeSelectedStyle>
+                </telerikMap:MapShapeLayer>
+            </telerikMap:RadMap.Layers>
+        </telerikMap:RadMap>
+    </Grid>
+</UserControl>

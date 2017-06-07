@@ -1,0 +1,281 @@
+﻿<Page
+    x:Class="Rating.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Rating.FirstLook"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    xmlns:common="using:QSF.Common"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Style/Resource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush Color="#000" x:Key="RatingForeground" />
+
+            <local:TemplateSet x:Key="RatingTemplate1">
+                <local:TemplateSet.Filled>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE0B4;" Foreground="{StaticResource RatingForeground}"/>
+                    </DataTemplate>
+                </local:TemplateSet.Filled>
+                <local:TemplateSet.Empty>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE0B4;" />
+                    </DataTemplate>
+                </local:TemplateSet.Empty>
+            </local:TemplateSet>
+
+            <local:TemplateSet x:Key="RatingTemplate2">
+                <local:TemplateSet.Filled>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE0A5;" Foreground="{StaticResource RatingForeground}" Margin="0 0 3 0"/>
+                    </DataTemplate>
+                </local:TemplateSet.Filled>
+                <local:TemplateSet.Empty>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE006;" Margin="0 0 3 0"/>
+                    </DataTemplate>
+                </local:TemplateSet.Empty>
+            </local:TemplateSet>
+
+            <local:TemplateSet x:Key="RatingTemplate3">
+                <local:TemplateSet.Filled>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE0B4;" Foreground="{StaticResource RatingForeground}"/>
+                    </DataTemplate>
+                </local:TemplateSet.Filled>
+                <local:TemplateSet.Empty>
+                    <DataTemplate>
+                        <TextBlock Text="&#xE224;"/>
+                    </DataTemplate>
+                </local:TemplateSet.Empty>
+            </local:TemplateSet>
+
+            <local:TemplateSet x:Key="RatingTemplate4">
+                <local:TemplateSet.Filled>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Width="22" Height="22" Text="&#xE009;" Foreground="{StaticResource RatingForeground}"/>
+                            <TextBlock Margin="3 -3 0 0" Text="&#xE249;" Foreground="#808080" />
+                        </Grid>
+                    </DataTemplate>
+                </local:TemplateSet.Filled>
+                <local:TemplateSet.Empty>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Width="22" Height="22" Text="&#xE009;" />
+                            <TextBlock Margin="3 -3 0 0" Text="&#xE249;" Foreground="Black" />
+                        </Grid>
+                    </DataTemplate>
+                </local:TemplateSet.Empty>
+            </local:TemplateSet>
+
+            <local:ViewModel x:Key="viewModel">
+                <local:ViewModel.SelectedTemplateSet>
+                    <local:TemplateSet >
+                        <local:TemplateSet.Filled>
+                            <DataTemplate>
+                                <TextBlock Text="&#xE0B4;" Foreground="{StaticResource RatingForeground}"/>
+                            </DataTemplate>
+                        </local:TemplateSet.Filled>
+                        <local:TemplateSet.Empty>
+                            <DataTemplate>
+                                <TextBlock Text="&#xE0B4;"/>
+                            </DataTemplate>
+                        </local:TemplateSet.Empty>
+                    </local:TemplateSet>
+                </local:ViewModel.SelectedTemplateSet>
+            </local:ViewModel>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <common:ExampleHelper.ConfigurationPanel>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Choose symbols" FontSize="20" Foreground="#000" Margin="0 0 0 20" />
+            <RadioButton Grid.Row="1" IsChecked="True" Style="{StaticResource RadioButtonStyle}" DataContext="{StaticResource viewModel}" 
+                         CommandParameter="{StaticResource RatingTemplate1}" Command="{Binding hangeTemplateCommand}">
+                <telerikInput:RadRating Style="{StaticResource RadRatingStyle}"
+                                        EmptyIconContentTemplate="{Binding Source={StaticResource RatingTemplate1}, Path=Empty}" 
+                                        FilledIconContentTemplate="{Binding Source={StaticResource RatingTemplate1}, Path=Filled}" />
+            </RadioButton>
+            <RadioButton Grid.Row="2"  Style="{StaticResource RadioButtonStyle}" DataContext="{StaticResource viewModel}" 
+                         CommandParameter="{StaticResource RatingTemplate2}" Command="{Binding ChangeTemplateCommand}">
+                <telerikInput:RadRating Style="{StaticResource RadRatingStyle}"
+                                        EmptyIconContentTemplate="{Binding Source={StaticResource RatingTemplate2}, Path=Empty}" 
+                                        FilledIconContentTemplate="{Binding Source={StaticResource RatingTemplate2}, Path=Filled}" />
+            </RadioButton>
+            <RadioButton Grid.Row="3" Style="{StaticResource RadioButtonStyle}" DataContext="{StaticResource viewModel}" 
+                         CommandParameter="{StaticResource RatingTemplate3}" Command="{Binding ChangeTemplateCommand}">
+                <telerikInput:RadRating Style="{StaticResource RadRatingStyle}"
+                                        EmptyIconContentTemplate="{Binding Source={StaticResource RatingTemplate3}, Path=Empty}" 
+                                        FilledIconContentTemplate="{Binding Source={StaticResource RatingTemplate3}, Path=Filled}"/>
+            </RadioButton>
+            <RadioButton Grid.Row="4" Style="{StaticResource RadioButtonStyle}" DataContext="{StaticResource viewModel}" 
+                         CommandParameter="{StaticResource RatingTemplate4}" Command="{Binding ChangeTemplateCommand}">
+                <telerikInput:RadRating Style="{StaticResource RadRatingStyle}"
+                                        EmptyIconContentTemplate="{Binding Source={StaticResource RatingTemplate4}, Path=Empty}" 
+                                        FilledIconContentTemplate="{Binding Source={StaticResource RatingTemplate4}, Path=Filled}"/>
+            </RadioButton>
+        </Grid>
+
+    </common:ExampleHelper.ConfigurationPanel>
+    <common:ExampleHelper.ConfigurationPanelShrinksExample>
+        True
+    </common:ExampleHelper.ConfigurationPanelShrinksExample>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="0 10 0 20">
+        <RelativePanel>
+            <Grid x:Name="title" RenderTransformOrigin="1 1" VerticalAlignment="Top" >
+                <Rectangle x:Name="headingRect" Stroke="#f5d242" StrokeDashArray="1 2" StrokeThickness="2" Width="410" Height="60" />
+                <TextBlock x:Name="heading" Text="IN TEATHERS NOW" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black"  FontSize="22" FontWeight="Bold"  />
+            </Grid>
+            <Grid x:Name="film1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Style="{StaticResource GridStyle}">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="../Assets/Images/img_border.png" Stretch="None" />
+                    </Grid.Background>
+                    <StackPanel>
+                        <Image Source="../Assets/Images/img1.png" Stretch="None" Margin="25"/>
+                        <Grid Style="{StaticResource GridStyle1}">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Assets/Images/star_rating.png" Stretch="None" />
+                            </Grid.Background>
+                            <TextBlock Text="4.5" Style="{StaticResource TextStarStyle}"/>
+                        </Grid>
+                        <TextBlock Text="Your rating:" Foreground="#312a0d" FontSize="20" Margin="20 -20 0 10" />
+                        <Grid Margin="15 0 0 0">
+                            <telerikInput:RadRating x:Name="rate" Style="{StaticResource RadRatingStyle}" DataContext="{StaticResource viewModel}" 
+                                                EmptyIconContentTemplate="{Binding SelectedTemplateSet.Empty}"
+                                                FilledIconContentTemplate="{Binding SelectedTemplateSet.Filled}"/>
+                            <TextBlock Style="{StaticResource TextRatingInfo}">
+                            <Run Text="{Binding ElementName=rate, Path=Value}"></Run>
+                            <Run>/</Run>
+                            <Run>5</Run>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="1" Text="HARRY POTTER" Style="{StaticResource TextTitleStyle}"/>
+            </Grid>
+
+            <Grid x:Name="film2" Margin="100,0,0,0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Style="{StaticResource GridStyle}">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="../Assets/Images/img_border.png" Stretch="None" />
+                    </Grid.Background>
+                    <StackPanel>
+                        <Image Source="../Assets/Images/img2.png" Stretch="None" Margin="25"/>
+                        <Grid Style="{StaticResource GridStyle1}">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Assets/Images/star_rating.png" Stretch="None" />
+                            </Grid.Background>
+                            <TextBlock Text="4.1" Style="{StaticResource TextStarStyle}" />
+                        </Grid>
+                        <TextBlock Text="Your rating:" Foreground="#312a0d" FontSize="20" Margin="20 -20 0 10" />
+                        <Grid Margin="15 0 0 0">
+                            <telerikInput:RadRating x:Name="rate1" Style="{StaticResource RadRatingStyle}" DataContext="{StaticResource viewModel}" 
+                                                EmptyIconContentTemplate="{Binding SelectedTemplateSet.Empty}"
+                                                FilledIconContentTemplate="{Binding SelectedTemplateSet.Filled}"/>
+                            <TextBlock Style="{StaticResource TextRatingInfo}">
+                            <Run Text="{Binding ElementName=rate1, Path=Value}"></Run>
+                            <Run>/</Run>
+                            <Run>5</Run>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="1" Text="TOY STOTRY 3" Style="{StaticResource TextTitleStyle}"/>
+            </Grid>
+            <Grid x:Name="film3" Margin="100,0,0,0" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Style="{StaticResource GridStyle}">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="../Assets/Images/img_border.png" Stretch="None" />
+                    </Grid.Background>
+                    <StackPanel>
+                        <Image Source="../Assets/Images/img3.png" Stretch="None" Margin="25"/>
+                        <Grid Style="{StaticResource GridStyle1}">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="../Assets/Images/star_rating.png" Stretch="None" />
+                            </Grid.Background>
+                            <TextBlock Text="4.9" Style="{StaticResource TextStarStyle}"/>
+                        </Grid>
+                        <TextBlock Text="Your rating:" Foreground="#312a0d" FontSize="20" Margin="20 -20 0 10" />
+                        <Grid Margin="15 0 0 0">
+                            <telerikInput:RadRating x:Name="rate2" Style="{StaticResource RadRatingStyle}" DataContext="{StaticResource viewModel}"  
+                                                EmptyIconContentTemplate="{Binding SelectedTemplateSet.Empty}"
+                                                FilledIconContentTemplate="{Binding SelectedTemplateSet.Filled}"/>
+                            <TextBlock Style="{StaticResource TextRatingInfo}">
+                            <Run Text="{Binding ElementName=rate2, Path=Value}"></Run>
+                            <Run>/</Run>
+                            <Run>5</Run>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <TextBlock Grid.Row="1" Text="TRUE GRIT" Style="{StaticResource TextTitleStyle}"/>
+            </Grid>
+        </RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1047" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="title.RenderTransform">
+                            <Setter.Value>
+                                <CompositeTransform Rotation="-90"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="title.Margin" Value="-350 -60 90 0"/>
+                        <Setter Target="film1.VerticalAlignment" Value="Top"/>
+                        <Setter Target="film1.(RelativePanel.RightOf)" Value="title" />
+                        <Setter Target="film2.(RelativePanel.RightOf)" Value="film1" />
+                        <Setter Target="film3.(RelativePanel.RightOf)" Value="film2" />
+
+                    </VisualState.Setters>
+                </VisualState>                
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="title.Margin" Value="0"/>
+                        <Setter Target="film1.(RelativePanel.Below)" Value="title" />
+                        <Setter Target="film2.(RelativePanel.Below)" Value="film1" />
+                        <Setter Target="film3.(RelativePanel.Below)" Value="film2" />
+                        <Setter Target="heading.FontSize" Value="20"/>
+                        <Setter Target="headingRect.Width" Value="290"/>
+                        <Setter Target="film1.Margin" Value="0,30,0,30" />
+                        <Setter Target="film2.Margin" Value="0,0,0,30" />
+                        <Setter Target="film3.Margin" Value="0,0,0,30" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+</Page>

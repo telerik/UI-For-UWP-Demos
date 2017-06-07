@@ -1,0 +1,1 @@
+﻿The example demonstrates the filtering UI built in RadDataGrid. The default filter controls may be easily changed by providing a custom FilterButtonTap command and modifying the default context passed to the Execute method. Custom filter controls may be turned on and off by using the Options Panel on the right.

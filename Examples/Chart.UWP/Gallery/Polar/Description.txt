@@ -1,0 +1,1 @@
+﻿The example demonstrates various setups of the polar Line, Spline, Area and SplineArea series. Each series need a NumericalRadialAxis and a PolarAxis in order to get properly plotted. Select an item on the left to load the desired scenario.

@@ -1,0 +1,118 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikDataViz="using:Telerik.UI.Xaml.Controls.DataVisualization"
+    xmlns:local="using:Gauge.Gallery">
+
+    <local:CoerceValueConverter x:Key="ValueConverter"/>
+    <DataTemplate x:Key="Item">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <VariableSizedWrapGrid Orientation="Horizontal" Margin="0 20 0 0" MaximumRowsOrColumns="2" ItemHeight="320" ItemWidth="280" >
+                <Grid Margin="0 0 0 50">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="REVENUES (% OF TARGET)" Margin="0 0 0 50"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <telerikDataViz:RadLinearGauge telerikDataViz:RadLinearGauge.Orientation="Vertical" MinValue="0" MaxValue="80" LabelStep="20" TickStep="20" LabelOffset="-20">
+                            <telerikDataViz:RadLinearGauge.TickTemplate>
+                                <DataTemplate>
+                                    <Rectangle Width="1" Height="5" Fill="#999999" Margin="0 0 0 3"></Rectangle>
+                                </DataTemplate>
+                            </telerikDataViz:RadLinearGauge.TickTemplate>
+                            <telerikDataViz:SegmentedLinearGaugeIndicator Value="80" telerikDataViz:RadLinearGauge.Orientation="Vertical">
+                                <telerikDataViz:BarIndicatorSegment Length="40" Stroke="#999999" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                                <telerikDataViz:BarIndicatorSegment Length="30" Stroke=" #4d4d4d" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                                <telerikDataViz:BarIndicatorSegment Length="10" Stroke="Red" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                            </telerikDataViz:SegmentedLinearGaugeIndicator>
+                            <telerikDataViz:MarkerGaugeIndicator  telerikDataViz:RadLinearGauge.Orientation="Vertical" Value="0">
+                                <telerikDataViz:MarkerGaugeIndicator.Content>
+                                    <Rectangle Width="7" Height="2" Fill="#999999" Margin="0 0 5 0" />
+                                </telerikDataViz:MarkerGaugeIndicator.Content>
+                            </telerikDataViz:MarkerGaugeIndicator>
+                            <telerikDataViz:LinearBarGaugeIndicator telerikDataViz:RadLinearGauge.Orientation="Vertical" Brush="Black" Thickness="12" IsAnimated="True"  telerikDataViz:RadLinearGauge.IndicatorOffset="10" Value="{Binding Revenues}"/>
+                        </telerikDataViz:RadLinearGauge>
+
+                        <telerikDataViz:RadLinearGauge telerikDataViz:RadLinearGauge.Orientation="Vertical" Grid.Column="1" MinValue="0" MaxValue="80" LabelStep="20" TickStep="20" LabelOffset="-20">
+                            <telerikDataViz:RadLinearGauge.TickTemplate>
+                                <DataTemplate>
+                                    <Rectangle Width="1" Height="5" Fill="#999999" Margin="0 0 0 3"></Rectangle>
+                                </DataTemplate>
+                            </telerikDataViz:RadLinearGauge.TickTemplate>
+                            <telerikDataViz:SegmentedLinearGaugeIndicator Value="80" telerikDataViz:RadLinearGauge.Orientation="Vertical">
+                                <telerikDataViz:BarIndicatorSegment Length="40" Stroke="Red" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                                <telerikDataViz:BarIndicatorSegment Length="30" Stroke=" #4d4d4d" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                                <telerikDataViz:BarIndicatorSegment Length="10" Stroke="#999999" Thickness="2" telerikDataViz:RadLinearGauge.Orientation="Vertical"/>
+                            </telerikDataViz:SegmentedLinearGaugeIndicator>
+                            <telerikDataViz:MarkerGaugeIndicator  telerikDataViz:RadLinearGauge.Orientation="Vertical" Value="0">
+                                <telerikDataViz:MarkerGaugeIndicator.Content>
+                                    <Rectangle Width="7" Height="2" Fill="#999999" Margin="0 0 5 0" />
+                                </telerikDataViz:MarkerGaugeIndicator.Content>
+                            </telerikDataViz:MarkerGaugeIndicator>
+                            <telerikDataViz:LinearBarGaugeIndicator telerikDataViz:RadLinearGauge.Orientation="Vertical" Brush="#999999" Thickness="12" IsAnimated="True"  telerikDataViz:RadLinearGauge.IndicatorOffset="10" Value="{Binding Revenues}"/>
+                            <telerikDataViz:LinearBarGaugeIndicator telerikDataViz:RadLinearGauge.Orientation="Vertical" Brush="#4d4d4d" Thickness="12" IsAnimated="True"  telerikDataViz:RadLinearGauge.IndicatorOffset="10" Value="{Binding Revenues, Converter={StaticResource ValueConverter}, ConverterParameter='60'}"/>
+                            <telerikDataViz:LinearBarGaugeIndicator telerikDataViz:RadLinearGauge.Orientation="Vertical" Brush="#333333" Thickness="12" IsAnimated="True"  telerikDataViz:RadLinearGauge.IndicatorOffset="10" BorderBrush="#CCCCCC" BorderThickness="5" Value="{Binding Revenues, Converter={StaticResource ValueConverter}, ConverterParameter='40'}"/>
+                        </telerikDataViz:RadLinearGauge>
+                    </Grid>
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="EXPENSES" Margin="0 0 0 50"/>
+                    <StackPanel Grid.Row="1" Padding="5 0">
+                        <telerikDataViz:RadLinearGauge MinValue="0" MaxValue="120" LabelOffset="10" TickStep="10" LabelStep="20" Height="100">
+                            <telerikDataViz:LinearBarGaugeIndicator Value="120" Brush="#333333" Thickness="12" telerikDataViz:RadLinearGauge.IndicatorOffset="-15"/>
+                            <telerikDataViz:LinearBarGaugeIndicator Value="{Binding ExpensePercent}" IsAnimated="True" Brush="Gray"  Thickness="12" telerikDataViz:RadLinearGauge.IndicatorOffset="-15"/>
+                            <telerikDataViz:SegmentedLinearGaugeIndicator Value="120"  telerikDataViz:RadLinearGauge.IndicatorOffset="-2">
+                                <telerikDataViz:BarIndicatorSegment Length="120" Stroke="#999999" Thickness="2"/>
+                            </telerikDataViz:SegmentedLinearGaugeIndicator>
+                            <telerikDataViz:MarkerGaugeIndicator Content="*" Foreground="Red" telerikDataViz:RadLinearGauge.IndicatorOffset="-12" FontSize="15" Value="18"/>
+                        </telerikDataViz:RadLinearGauge>
+
+                        <telerikDataViz:RadLinearGauge MinValue="0" MaxValue="80" Grid.Row="1" LabelOffset="5" Height="120">
+                            <telerikDataViz:RadLinearGauge.TickTemplate>
+                                <DataTemplate></DataTemplate>
+                            </telerikDataViz:RadLinearGauge.TickTemplate>
+                            <telerikDataViz:RadLinearGauge.LabelTemplate>
+                                <DataTemplate></DataTemplate>
+                            </telerikDataViz:RadLinearGauge.LabelTemplate>
+                            <telerikDataViz:LinearBarGaugeIndicator Value="80" Brush="#333333" Thickness="12" telerikDataViz:RadLinearGauge.IndicatorOffset="-14"/>
+                            <telerikDataViz:LinearBarGaugeIndicator Value="{Binding Expenses}" IsAnimated="True" Brush="Gray"  Thickness="12" telerikDataViz:RadLinearGauge.IndicatorOffset="-14"/>
+                            <telerikDataViz:SegmentedLinearGaugeIndicator Value="80" telerikDataViz:RadLinearGauge.IndicatorOffset="-2">
+                                <telerikDataViz:BarIndicatorSegment Stroke="Transparent" Length="60" Thickness="2"/>
+                                <telerikDataViz:BarIndicatorSegment Stroke="#999999" Length="20" Thickness="2"/>
+                            </telerikDataViz:SegmentedLinearGaugeIndicator>
+                            <telerikDataViz:MarkerGaugeIndicator Value="0" Content="0"/>
+                            <telerikDataViz:MarkerGaugeIndicator Value="60" telerikDataViz:RadLinearGauge.IndicatorOffset="8">
+                                <telerikDataViz:MarkerGaugeIndicator.Content>
+                                    <StackPanel>
+                                        <Ellipse Stroke="#999999" HorizontalAlignment="Center" StrokeThickness="2" Fill="#343434" Width="7" Height="7"/>
+                                        <TextBlock Text="60" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </telerikDataViz:MarkerGaugeIndicator.Content>
+                            </telerikDataViz:MarkerGaugeIndicator>
+                            <telerikDataViz:MarkerGaugeIndicator Value="80" telerikDataViz:RadLinearGauge.IndicatorOffset="8">
+                                <telerikDataViz:MarkerGaugeIndicator.Content>
+                                    <StackPanel>
+                                        <Ellipse Stroke="#999999" HorizontalAlignment="Center" StrokeThickness="2" Fill="#343434" Width="7" Height="7"/>
+                                        <TextBlock Text="max" Margin="0 5 0 0" HorizontalAlignment="Center"></TextBlock>
+                                    </StackPanel>
+                                </telerikDataViz:MarkerGaugeIndicator.Content>
+                            </telerikDataViz:MarkerGaugeIndicator>
+                        </telerikDataViz:RadLinearGauge>
+                    </StackPanel>
+                </Grid>
+            </VariableSizedWrapGrid>
+        </ScrollViewer>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,114 @@
+﻿<UserControl
+    x:Class="Grid.GroupingUI.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.GroupingUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:common="using:QSF.Common"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikGridPrimitives="using:Telerik.UI.Xaml.Controls.Grid.Primitives"
+	xmlns:telerikData="using:Telerik.Data.Core">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="HighlightBrush" Color="#2C7ECF"/>
+        <local:GoupHeaderTemplateSelector x:Key="HeaderTemplateSelector">
+            <local:GoupHeaderTemplateSelector.SalesOrderTemplate>
+                <DataTemplate>
+                    <TextBlock VerticalAlignment="Center">
+                        <Run Text="Sales order number: "/>
+                        <Run Text="{Binding Group.Key}" Foreground="{StaticResource HighlightBrush}" FontSize="16"/>
+                    </TextBlock>
+                </DataTemplate>
+            </local:GoupHeaderTemplateSelector.SalesOrderTemplate>
+        </local:GoupHeaderTemplateSelector>
+        <local:GroupHeaderStyleSelector x:Key="HeaderStyleSelector">
+            <local:GroupHeaderStyleSelector.SalesNumberStyle>
+                <Style TargetType="telerikGridPrimitives:DataGridGroupHeader">
+                    <Setter Property="Background" Value="#999999"/>
+                </Style>
+            </local:GroupHeaderStyleSelector.SalesNumberStyle>
+        </local:GroupHeaderStyleSelector>
+        <local:ExampleDragBehavior x:Key="DragBehavior" IsGroupByColumnEnabled="True" IsGroupHeaderReorderEnabled="True"/>
+    </UserControl.Resources>
+
+    <common:ExampleHelper.ConfigurationPanel>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <ToggleSwitch Toggled="OnShowGroupingPanelToggled" Header="Show grouping panel" IsOn="True" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="Shows or hides the panel on the left side of the grid." TextWrapping="Wrap" Margin="7 0 7 5" FontSize="13"/>
+                <Rectangle Height="2" Margin="7,10,0,0" Fill="{StaticResource ApplicationForegroundThemeBrush}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <ToggleSwitch Toggled="OnEnableColumnGroupingToggled" Header="Enable grouping by column drag" IsOn="True" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="Allows new grouping level to be created by dragging a column header over the grouping panel on the left." TextWrapping="Wrap" Margin="7 0 7 5" FontSize="13"/>
+                <Rectangle Height="2" Margin="7,10,0,0" Fill="{StaticResource ApplicationForegroundThemeBrush}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <ToggleSwitch Toggled="OnEnableUngroupingToggled" Header="Enable ungrouping" IsOn="True" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="Allows grouping levels to be removed by closing a groupHeader, residing within the grouping panel flyout." TextWrapping="Wrap" Margin="7 0 7 5" FontSize="13"/>
+                <Rectangle Height="2" Margin="7,10,0,0" Fill="{StaticResource ApplicationForegroundThemeBrush}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3">
+                <ToggleSwitch Toggled="OnEnableGroupReorderingToggled" Header="Enable group reordering" IsOn="True" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="Allows group levels to be reordered using interactive dragging among the the flyout group headers." TextWrapping="Wrap" Margin="7 0 7 5" FontSize="13"/>
+            </StackPanel>
+        </Grid>
+    </common:ExampleHelper.ConfigurationPanel>
+
+    <Grid>
+        <telerikGrid:RadDataGrid x:Name="radGrid" AutoGenerateColumns="False" ItemsSource="{Binding Sales}" 
+                                 GroupHeaderTemplateSelector="{StaticResource HeaderTemplateSelector}"
+                                 GroupHeaderStyleSelector="{StaticResource HeaderStyleSelector}"
+                                 DragBehavior="{StaticResource DragBehavior}">
+            <telerikGrid:RadDataGrid.Resources>
+                <Style TargetType="telerikGridPrimitives:DataGridFlyoutGroupHeader">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="grouptile.png" AlignmentX="Left" AlignmentY="Top" Stretch="None"/>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </telerikGrid:RadDataGrid.Resources>
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+				<telerikData:PropertyGroupDescriptor PropertyName="Region" />
+				<telerikData:PropertyGroupDescriptor PropertyName="Person" />
+				<telerikData:PropertyGroupDescriptor PropertyName="OrderId" />
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTemplateColumn Header="PRODUCT">
+                    <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding PictureSource}" Width="96" Height="60"/>
+                                <TextBlock Text="{Binding ProductName}" VerticalAlignment="Center" Margin="8"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                </telerikGrid:DataGridTemplateColumn>
+                <telerikGrid:DataGridTextColumn PropertyName="ProductCategory" Header="PRODUCT CATEGORY"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Quantity" Header="QTY"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="UnitPrice" Header="PRICE" CellContentFormat="{}{0,0:C2}"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Total" Header="TOTAL" CellContentFormat="{}{0,0:C2}">
+                    <telerikGrid:DataGridNumericalColumn.CellContentStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                            <Setter Property="Foreground" Value="{StaticResource HighlightBrush}"/>
+                            <Setter Property="Margin" Value="8"/>
+                        </Style>
+                    </telerikGrid:DataGridNumericalColumn.CellContentStyle>
+                </telerikGrid:DataGridNumericalColumn>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+    </Grid>
+</UserControl>

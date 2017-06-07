@@ -1,0 +1,231 @@
+﻿<UserControl
+    x:Class="Calendar.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikInput ="using:Telerik.UI.Xaml.Controls.Input"
+    xmlns:telerikCalendar ="using:Telerik.UI.Xaml.Controls.Input.Calendar"
+    xmlns:local="using:Calendar.FirstLook"
+    xmlns:common="using:QSF.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <local:ExampleViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <telerikCalendar:CalendarDateToSingleDateRangeConverter x:Key="converter" />
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="Margin" Value="0 0 0 5" />
+            <Setter Property="Foreground" Value="#000" />
+            <Setter Property="FontWeight" Value="Light" />
+            <Setter Property="FontSize" Value="22" />
+        </Style>
+        <Style TargetType="ComboBox" x:Key="ComboBoxStyle">
+            <Setter Property="Height" Value="34" />
+            <Setter Property="BorderBrush" Value="#A3000000" />
+            <Setter Property="Margin" Value="0 0 0 20" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <RelativePanel>
+            <Border BorderThickness="2" BorderBrush="#EFEFEF" Background="#F9F9F9" Width="850" Height="650" x:Name="calendars">
+                <Grid Margin="20" Grid.Row="1" x:Name="calendarsGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0" x:Name="whereChoise">
+                        <TextBlock  Text="Where" Style="{StaticResource TextBlockStyle}" />
+                        <ComboBox ItemsSource="{Binding Cities}" x:Name="whereCombo" SelectedItem="{Binding Path=SelectedCity, Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}" />
+                    </StackPanel>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="Check-in" x:Name="checkInTxt" Style="{StaticResource TextBlockStyle}"/>
+                    <RadioButton Content="Check-in" Grid.Column="0" Grid.Row="1" Visibility="Collapsed" x:Name="checkInButton" Checked="OnRadioButtonChecked"/>
+                    <telerikInput:RadCalendar x:Name="checkInCalendar" Grid.Column="0" Grid.Row="2" Margin="0,0,15,0"
+                                          DisplayDateStart ="{Binding Today}"
+                                          DisplayDate="{Binding CheckInDisplayDate,Mode=TwoWay}"      
+                                          SelectedDateRange="{Binding StartDate, Converter={StaticResource converter}, Mode=TwoWay}"
+                                          CellStyleSelector="{Binding DatesStyleSelector}" Background="White" MaxHeight="450"/>
+
+                    <StackPanel Grid.Column="1" x:Name="roomsChoise">
+                        <TextBlock Text="Rooms" Style="{StaticResource TextBlockStyle}" x:Name="roomsTxt"/>
+                        <ComboBox ItemsSource="{Binding OptionsList}" SelectedItem="{Binding RoomsCount, Mode=TwoWay}" x:Name="roomsCombo" Style="{StaticResource ComboBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" x:Name="adultsChoise">
+                        <TextBlock Text="Adults" Style="{StaticResource TextBlockStyle}" x:Name="adultsTxt"/>
+                        <ComboBox ItemsSource="{Binding OptionsList}" SelectedItem="{Binding AdultsCount, Mode=TwoWay}" x:Name="adultsCombo" Style="{StaticResource ComboBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="3" x:Name="childrenChoise">
+                        <TextBlock Text="Children" Style="{StaticResource TextBlockStyle}" x:Name="childrenTxt"/>
+                        <ComboBox ItemsSource="{Binding OptionsList}" x:Name="childrenCombo" SelectedItem="{Binding ChildrenCount,Mode=TwoWay}" Style="{StaticResource ComboBoxStyle}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Text="Check-out" x:Name="checkOutTxt"  Style="{StaticResource TextBlockStyle}" />
+                    <RadioButton Content="Check-out" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Visibility="Collapsed" x:Name="checkOutButton" Checked="OnRadioButtonChecked"/>
+                    <telerikInput:RadCalendar x:Name="checkOutCalendar" DisplayDateStart="{Binding Today}" 
+                                          DisplayDate="{Binding CheckOutDisplayDate,Mode=TwoWay}" 
+                                          SelectedDateRange="{Binding EndDate, Converter={StaticResource converter}, Mode=TwoWay}"
+                                          Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"  Margin="0,0,0,0"
+                                          CellStyleSelector="{Binding DatesStyleSelector}" Background="White" MaxHeight="450"/>
+
+                </Grid>
+            </Border>
+            <StackPanel x:Name="hotels">
+                <Border BorderThickness="0 2 2 2" BorderBrush="#EFEFEF" Background="#fff" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="header" Text="Hotels Results" Margin="25,20,20,0" Style="{StaticResource TextBlockStyle}"/>
+                        <ListView x:Name="citiesList" Grid.Row="1" ItemsSource="{Binding HotelsResult}" Margin="25,20,30,0" ScrollViewer.VerticalScrollMode="Enabled" >
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid x:Name="itemsWrapGrid" Orientation="Horizontal" ItemWidth="140" ItemHeight="140" MaximumRowsOrColumns="3"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Margin" Value="0 5 5 0"/>
+                                    <Setter Property="Padding" Value="0" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Image x:Name="HotelImage" Source="{Binding ImageUri}" />
+                                        <Border BorderThickness="0" Background="#7F000000" Height="55" VerticalAlignment="Bottom">
+                                            <TextBlock Margin="10,0,10,3.08" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center">
+                                        <Run Text="{Binding HotelName}"/><LineBreak/>
+                                        <Run FontWeight="Bold" Text="from "/>
+                                        <Run FontWeight="Bold" Text="{Binding HotelPrice}"/>
+                                            </TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1375" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="hotels.(RelativePanel.RightOf)" Value="calendars" />
+                        <Setter Target="checkInCalendar.Visibility" Value="Visible"/>
+                        <Setter Target="checkOutCalendar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1086" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="hotels.(RelativePanel.Below)" Value="calendars" />
+                        <Setter Target="hotels.Width" Value="850"/>
+                        <Setter Target="checkInCalendar.Visibility" Value="Visible"/>
+                        <Setter Target="checkOutCalendar.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="410" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="hotels.(RelativePanel.Below)" Value="calendars" />
+                        <Setter Target="calendars.Width" Value="415"/>
+                        <Setter Target="calendars.Height" Value="650"/>
+                        <Setter Target="hotels.Width" Value="415"/>
+                        <Setter Target="calendarsGrid.ColumnDefinitions[0].Width" Value="Auto"/>
+                        <Setter Target="whereChoise.(Grid.Row)" Value="0"/>
+                        <Setter Target="whereChoise.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="whereCombo.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="roomsChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="roomsChoise.(Grid.Column)" Value="0"/>
+                        <Setter Target="adultsChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="adultsChoise.(Grid.Column)" Value="1"/>
+                        <Setter Target="childrenChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="childrenChoise.(Grid.Column)" Value="2"/>
+                        <Setter Target="checkInTxt.Visibility" Value="Collapsed"/>
+                        <Setter Target="checkInButton.(Grid.Row)" Value="2"/>
+                        <Setter Target="checkInButton.(Grid.Column)" Value="0"/>
+                        <Setter Target="checkInButton.Visibility" Value="Visible"/>
+                        <Setter Target="checkInButton.IsChecked" Value="True"/>
+                        <Setter Target="checkOutTxt.Visibility" Value="Collapsed"/>
+                        <Setter Target="checkOutButton.(Grid.Row)" Value="2"/>
+                        <Setter Target="checkOutButton.(Grid.Column)" Value="2"/>
+                        <Setter Target="checkOutButton.Visibility" Value="Visible"/>
+                        <Setter Target="checkInCalendar.(Grid.Row)" Value="3"/>
+                        <Setter Target="checkInCalendar.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="checkInCalendar.Height" Value="310"/>
+                        <Setter Target="checkInCalendar.Width" Value="355"/>
+                        <Setter Target="checkOutCalendar.(Grid.Row)" Value="3"/>
+                        <Setter Target="checkOutCalendar.(Grid.Column)" Value="0"/>
+                        <Setter Target="checkOutCalendar.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="checkOutCalendar.Height" Value="310"/>
+                        <Setter Target="checkOutCalendar.Width" Value="355"/>
+                        <Setter Target="checkOutCalendar.Margin" Value="0,0,15,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="hotels.(RelativePanel.Below)" Value="calendars" />
+                        <Setter Target="calendars.Width" Value="296"/>
+                        <Setter Target="calendars.Height" Value="600"/>
+                        <Setter Target="calendarsGrid.Margin" Value="0" />
+                        <Setter Target="hotels.Width" Value="296"/>
+                        <Setter Target="calendarsGrid.ColumnDefinitions[0].Width" Value="Auto"/>
+                        <Setter Target="whereChoise.(Grid.Row)" Value="0"/>
+                        <Setter Target="whereChoise.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="whereCombo.HorizontalAlignment" Value="Stretch"/>
+                        <Setter Target="roomsChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="roomsChoise.(Grid.Column)" Value="0"/>
+                        <Setter Target="adultsChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="adultsChoise.(Grid.Column)" Value="1"/>
+                        <Setter Target="childrenChoise.(Grid.Row)" Value="1"/>
+                        <Setter Target="childrenChoise.(Grid.Column)" Value="3"/>
+                        <Setter Target="checkInTxt.Visibility" Value="Collapsed"/>
+                        <Setter Target="checkInButton.(Grid.Row)" Value="2"/>
+                        <Setter Target="checkInButton.(Grid.Column)" Value="0"/>
+                        <Setter Target="checkInButton.Visibility" Value="Visible"/>
+                        <Setter Target="checkInButton.IsChecked" Value="True"/>
+                        <Setter Target="checkOutTxt.Visibility" Value="Collapsed"/>
+                        <Setter Target="checkOutButton.(Grid.Row)" Value="2"/>
+                        <Setter Target="checkOutButton.(Grid.Column)" Value="2"/>
+                        <Setter Target="checkOutButton.Visibility" Value="Visible"/>
+                        <Setter Target="checkInCalendar.(Grid.Row)" Value="3"/>
+                        <Setter Target="checkInCalendar.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="checkInCalendar.Height" Value="310"/>
+                        <Setter Target="checkInCalendar.Margin" Value="0"/>
+                        <Setter Target="checkOutCalendar.(Grid.Row)" Value="3"/>
+                        <Setter Target="checkOutCalendar.(Grid.Column)" Value="0"/>
+                        <Setter Target="checkOutCalendar.(Grid.ColumnSpan)" Value="4"/>
+                        <Setter Target="checkOutCalendar.Height" Value="310"/>
+                        <Setter Target="childrenTxt.FontSize" Value="15"/>
+                        <Setter Target="roomsTxt.FontSize" Value="15"/>
+                        <Setter Target="adultsTxt.FontSize" Value="15"/>
+                        <Setter Target="childrenCombo.MinWidth" Value="55"/>
+                        <Setter Target="roomsCombo.MinWidth" Value="55"/>
+                        <Setter Target="adultsCombo.MinWidth" Value="55"/>
+                        <Setter Target="citiesList.Margin" Value="0 20 0 0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+</UserControl>

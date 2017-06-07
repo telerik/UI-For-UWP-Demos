@@ -1,0 +1,124 @@
+﻿<UserControl
+    x:Class="Map.UserLayer.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Map.UserLayer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikMap="using:Telerik.UI.Xaml.Controls.Map"
+    xmlns:telerikMapPrimitives="using:Telerik.UI.Xaml.Controls.Map.Primitives"
+    xmlns:telerikDrawing="using:Telerik.UI.Drawing"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.DataContext>
+        <local:ViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="telerikMapPrimitives:MapToolTip">
+                <Setter Property="Background" Value="White" />
+            </Style>
+            <local:MapToolTipHeaderFormatConverter x:Key="headerFormatConverter" />
+            <local:MapUserToShapeLayerDataConverter x:Key="userToShapeLayerDataConverter" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="titleTextBlock" FontWeight="SemiLight" FontSize="24" Text="Internet Users per Continent, June, 2012" />
+        <telerikMap:RadMap x:Name="radMap" Grid.Row="1" ZoomLevel="1.66" Background="#FF272525">
+            <telerikMap:RadMap.Behaviors>
+                <telerikMap:MapShapeToolTipBehavior />
+                <telerikMap:MapPanAndZoomBehavior ZoomMode="ZoomToCenter" DoubleTapAction="Reset"/>
+            </telerikMap:RadMap.Behaviors>
+
+            <telerikMap:MapShapeLayer ShapeToolTipAttributeName="CONTINENT">
+                <telerikMap:MapShapeLayer.Source>
+                    <telerikMap:ShapefileDataSource SourceUriString="ms-appx:///Map/Data/world_continents.shp" 
+                                                    DataSourceUriString="ms-appx:///Map/Data/world_continents.dbf" />
+                </telerikMap:MapShapeLayer.Source>
+                <telerikMap:MapShapeLayer.ShapeStyle>
+                    <telerikDrawing:D2DShapeStyle>
+                        <telerikDrawing:D2DShapeStyle.Fill>
+                            <telerikDrawing:D2DSolidColorBrush Color="#FF00BDFF" />
+                        </telerikDrawing:D2DShapeStyle.Fill>
+                        <telerikDrawing:D2DShapeStyle.Stroke>
+                            <telerikDrawing:D2DSolidColorBrush Color="#FF272525" />
+                        </telerikDrawing:D2DShapeStyle.Stroke>
+                    </telerikDrawing:D2DShapeStyle>
+                </telerikMap:MapShapeLayer.ShapeStyle>
+                <telerikMap:MapShapeToolTipBehavior.ContentTemplate>
+                    <DataTemplate>
+                        <Border Padding="10,10,10,6">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock FontSize="22" Foreground="#D94D4D" Text="{Binding DisplayContent, Converter={StaticResource headerFormatConverter}}" />
+                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                    <TextBlock Text="Users:" Foreground="Black" Margin="0,0,5,0" />
+                                    <TextBlock Foreground="Black" Text="{Binding Converter={StaticResource userToShapeLayerDataConverter}}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </telerikMap:MapShapeToolTipBehavior.ContentTemplate>
+            </telerikMap:MapShapeLayer>
+
+            <telerikMap:MapUserLayer ItemsSource="{Binding Items}">
+                <telerikMap:MapUserLayer.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <telerikChart:RadPieChart Transitions="{x:Null}">
+                                <telerikChart:RadPieChart.Palette>
+                                    <telerikChart:ChartPalette>
+                                        <telerikChart:ChartPalette.FillEntries>
+                                            <telerikChart:PaletteEntryCollection>
+                                                <telerikChart:PaletteEntryCollection.Brushes>
+                                                    <SolidColorBrush Color="#D94D4D"/>
+                                                    <SolidColorBrush Color="#542F2F"/>
+                                                </telerikChart:PaletteEntryCollection.Brushes>
+                                            </telerikChart:PaletteEntryCollection>
+                                        </telerikChart:ChartPalette.FillEntries>
+                                    </telerikChart:ChartPalette>
+                                </telerikChart:RadPieChart.Palette>
+                                <telerikChart:DoughnutSeries x:Name="doughnutSeries" ItemsSource="{Binding DoughnutItemsSource}" 
+                                                             RadiusFactor="0.85" InnerRadiusFactor="0.6" 
+                                                             HighlightBrush="{x:Null}" ShowLabels="False"
+                                                             AngleRange="{Binding DoughnutRange}"/>
+                            </telerikChart:RadPieChart>
+                            <Ellipse Height="52" Width="52" Fill="#FF272525" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <TextBlock FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding UsageLabel}"/>
+                        </Grid>
+                    </DataTemplate>
+                </telerikMap:MapUserLayer.ItemTemplate>
+            </telerikMap:MapUserLayer>
+        </telerikMap:RadMap>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="410" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="titleTextBlock.MaxWidth" Value="300" />
+                        <Setter Target="titleTextBlock.TextWrapping" Value="WrapWholeWords" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

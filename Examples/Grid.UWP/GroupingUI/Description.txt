@@ -1,0 +1,1 @@
+﻿The example demonstrates the Grouping User Interface of RadDataGrid and how to customize/extend its appearance and behavior. The panel on the left side of the grid may tapped to display a Popup Panel containing the current grouping state of the grid. Experiment with the example options (available from the bottom AppBar) to enable/disable various aspects of the user experience.

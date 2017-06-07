@@ -1,0 +1,17 @@
+﻿<local:BaseFilterControl
+    x:Class="Grid.FlightSearch.FilterControls.PriceFilterControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.FlightSearch.FilterControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input">
+    
+    <Grid>
+        <telerikInput:RadNumericBox x:Name="numericBox" AllowNullValue="False" Minimum="200" Maximum="1500"
+                                    Header="Less than" Margin="0,6,0,6" ValueFormat="{}{0,0:C0}" SmallChange="10" LargeChange="100"/>
+    </Grid>
+</local:BaseFilterControl>

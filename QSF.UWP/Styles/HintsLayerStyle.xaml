@@ -1,0 +1,136 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:QSF.Controls">
+
+    <ControlTemplate x:Key="HintsLayerControlTemplate" TargetType="controls:HintsLayer">
+        <Grid x:Name="PART_Root" Background="#22000000">
+           
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="Border" x:Key="BottomGlyphBorderStyle">
+        <Setter Property="Background" Value="{StaticResource ToolTipBackgroundThemeBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ToolTipBorderThemeBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource ToolTipBorderThemeThickness}"/>
+        <Setter Property="Width" Value="19"/>
+        <Setter Property="Height" Value="19"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform Angle="45"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="TopGlyphBorderStyle">
+        <Setter Property="Background" Value="{StaticResource ToolTipBackgroundThemeBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ToolTipBorderThemeBrush}"/>
+        <Setter Property="Width" Value="15"/>
+        <Setter Property="Height" Value="15"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="{StaticResource ToolTipBorderThemeThickness}"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform Angle="45"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="BaseTooltipStyle" TargetType="ContentControl">
+        <Setter Property="Foreground" Value="{StaticResource ToolTipForegroundThemeBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ToolTipBackgroundThemeBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ToolTipBorderThemeBrush}"/>
+        <Setter Property="BorderThickness" Value="{StaticResource ToolTipBorderThemeThickness}"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource ToolTipContentThemeFontSize}"/>
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid Margin="5" x:Name="LayoutRoot">
+                        <Border Margin="{TemplateBinding Padding}" Width="19" Height="19" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Border Style="{StaticResource BottomGlyphBorderStyle}"/>
+                        </Border>
+                        <Border Margin="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Stretch">
+                            <TextBlock Text="{TemplateBinding Content}"
+                                   HorizontalAlignment="Stretch" 
+                                   VerticalAlignment="Stretch" Style="{StaticResource BaselineTextStyle}"
+                                   Margin="15,12"
+                                   TextWrapping="Wrap" />
+                        </Border>
+                        <Border Margin="{TemplateBinding Padding}" Width="19" Height="19" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Border Style="{StaticResource TopGlyphBorderStyle}"/>
+                        </Border>
+
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LeftToolTipStyle" TargetType="ContentControl" BasedOn="{StaticResource BaseTooltipStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition Edge="Right"/>
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    <Style x:Key="RightToolTipStyle" TargetType="ContentControl" BasedOn="{StaticResource BaseTooltipStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition Edge="Left"/>
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TopToolTipStyle" TargetType="ContentControl" BasedOn="{StaticResource BaseTooltipStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition Edge="Bottom"/>
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BottomToolTipStyle" TargetType="ContentControl" BasedOn="{StaticResource BaseTooltipStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Transitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <EdgeUIThemeTransition Edge="Top"/>
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="HintsLayerStyle" TargetType="controls:HintsLayer">
+        <Setter Property="Template" Value="{StaticResource HintsLayerControlTemplate}" />
+        <Setter Property="LeftHintStyle" Value="{StaticResource LeftToolTipStyle}" />
+        <Setter Property="RightHintStyle" Value="{StaticResource RightToolTipStyle}" />
+        <Setter Property="TopHintStyle" Value="{StaticResource TopToolTipStyle}" />
+        <Setter Property="BottomHintStyle" Value="{StaticResource BottomToolTipStyle}" />
+    </Style>
+
+</ResourceDictionary>

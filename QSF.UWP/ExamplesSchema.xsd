@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (http://www.altova.com) by tbb (office) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Root">
+		<xs:annotation>
+			<xs:documentation>Root Element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="HomepageInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:sequence>
+								<xs:element name="Headline" maxOccurs="2">
+									<xs:complexType>
+										<xs:attribute name="text" type="xs:string" use="required"/>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:element name="Highlights">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="Highlight" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="WhatsNew" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>only in SL</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="Highlight" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Controls">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Control" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="ControlType"/>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="ControlName">
+						<xs:selector xpath="Control"/>
+						<xs:field xpath="@name"/>
+					</xs:unique>
+				</xs:element>
+				<xs:element name="HighlightedControls">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="HighlightedControl" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="platform" type="PlatformType"/>
+                </xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+        <xs:element name="HighlightedExamples">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HighlightedExample" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:complexContent>
+                    <xs:extension base="Highlight" />
+                  </xs:complexContent>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HighlightedApps">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HighlightedApp" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Highlight" minOccurs="0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="thumbnail" type="xs:string" use="required"/>
+                  <xs:attribute name="icon" type="xs:string" use="optional"/>
+                  <xs:attribute name="shortDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="detailedDescription" type="xs:string" use="required"/>
+                  <xs:attribute name="link" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="ControlKey">
+			<xs:selector xpath="Controls/Control"/>
+			<xs:field xpath="@name"/>
+		</xs:key>
+		<xs:keyref name="HighlightedControlKeyRef" refer="ControlKey">
+			<xs:selector xpath="HighlightedControls/HighlightedControl"/>
+			<xs:field xpath="@name"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:complexType name="ControlType">
+		<xs:annotation>
+			<xs:documentation>Element describes the control type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Group" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Example" maxOccurs="unbounded">
+							<xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Highlight" maxOccurs="unbounded" minOccurs="0"/>
+                </xs:sequence>
+								<xs:attribute name="name" type="xs:string" use="required"/>
+								<xs:attribute name="text" type="xs:string" use="required"/>
+								<xs:attribute name="description" type="xs:string" use="optional"/>
+								<xs:attribute name="commonFolders" type="xs:string" use="required"/>
+								<xs:attribute name="keywords" use="required"/>
+								<xs:attribute name="isDefault" type="xs:boolean"/>
+								<xs:attribute name="packageName"/>
+								<xs:attribute name="status" type="ExampleStatusType"/>
+								<xs:attribute name="type" type="ExampleType"/>
+								<xs:attribute name="headerText" type="xs:string" use="required"/>
+								<xs:attribute name="canPinToDesktop" type="xs:boolean" />
+								<xs:attribute name="platform" type="PlatformType"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="name" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="keywords" type="xs:string"/>
+		<xs:attribute name="text" type="xs:string" use="optional"/>
+		<xs:attribute name="status" type="ExampleStatusType" use="optional"/>
+		<xs:attribute name="description" type="xs:string"/>
+		<xs:attribute name="platform" type="PlatformType"/>
+	</xs:complexType>
+	<xs:element name="Highlight">
+		<xs:annotation>
+			<xs:documentation>No need for subtitles - not used</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="text" type="xs:string" use="optional"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="image" type="xs:string" use="optional"/>
+      <xs:attribute name="widthMultiplier" type="xs:string" use="optional"/>
+      <xs:attribute name="heightMultiplier" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="ExampleStatusType">
+		<xs:annotation>
+			<xs:documentation>Element describes the example status type - new, beta, etc.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="New"/>
+			<xs:enumeration value="Beta"/>
+			<xs:enumeration value="CTP"/>
+			<xs:enumeration value="Updated"/>
+			<xs:enumeration value="Obsolete"/>
+      <xs:enumeration value="Universal"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExampleType">
+		<xs:annotation>
+			<xs:documentation>Element describes the example type - normal or theming example</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal"/>
+			<xs:enumeration value="Theming"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PlatformType">
+		<xs:annotation>
+			<xs:documentation>Element describes the platform of the control - UWP or WindowsUniversal</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UWP"/>
+			<xs:enumeration value="WindowsUniversal"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

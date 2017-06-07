@@ -1,0 +1,17 @@
+﻿Click the Options button to see the configuration settings.
+
+Tick frequency - set the logical tick frequency of the range slider control and the visual tick step for the scales
+
+Large change - change the large step value. Tap on slider trackbar to move thumbs with large change's value.  
+
+Small change - change the small step value. It can be useb by both SnapsTo and TrackTapMode properties
+
+Orientation - change RadRangeSlider's orientation. It can be horizontal or vertical
+
+Snaps to - choose a snap mode that will be applied on the selected range when input manipulation is completed
+
+Track tap mode - choose an action mode when tap manipulation occures on the RadRangeSlider trackbar
+
+Label format - choose a format for the label text on the axes
+
+Tooltip format - choose a format for both value and range tooltips text

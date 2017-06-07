@@ -1,0 +1,51 @@
+﻿<UserControl
+    x:Class="Grid.Editing.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Grid.Editing"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+	xmlns:telerikData="using:Telerik.Data.Core">
+
+    <Grid>
+        <telerikGrid:RadDataGrid x:Name="dataGrid" 
+                                 ItemsSource="{Binding Data}"
+                                 IsSynchronizedWithCurrentItem="True"
+                                 UserGroupMode="Disabled"
+                                 AutoGenerateColumns="False">
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+				<telerikData:PropertyGroupDescriptor PropertyName="Group"/>
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Id" CanUserEdit="False" CanUserFilter="False" Header="#" SizeMode="Fixed" Width="40"/>
+                <telerikGrid:DataGridTextColumn PropertyName="TaskName" Header="TASKS"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Effort" Header="EFFORT"/>
+                <telerikGrid:DataGridTextColumn PropertyName="Role" Header="ROLE"/>
+                <telerikGrid:DataGridDateColumn PropertyName="StartDate" Header="START DATE" CellContentFormat="{}{0,0:dd.MM.yyyy}"/>
+                <telerikGrid:DataGridDateColumn PropertyName="EndDate" Header="END DATE" CellContentFormat="{}{0,0:dd.MM.yyyy}"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Cost" Header="COST/HR" CellContentFormat="{}{0,0:C0}"/>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="867" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="dataGrid.UserEditMode" Value="Inline"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="dataGrid.UserEditMode" Value="External"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

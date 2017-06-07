@@ -1,0 +1,37 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart">
+
+    <DataTemplate x:Key="Item">
+        <telerik:RadCartesianChart PaletteName="DefaultLight">
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:DateTimeContinuousAxis LabelFormat="{}{0:yyyy/MM/dd}" LabelInterval="2"/>
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis/>
+            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart.Grid>
+                <telerik:CartesianChartGrid MajorLinesVisibility="XY"/>
+            </telerik:RadCartesianChart.Grid>
+            <telerik:CandlestickSeries ItemsSource="{Binding Data1}">
+                <telerik:CandlestickSeries.HighBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="High"/>
+                </telerik:CandlestickSeries.HighBinding>
+                <telerik:CandlestickSeries.LowBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Low"/>
+                </telerik:CandlestickSeries.LowBinding>
+                <telerik:CandlestickSeries.OpenBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Open"/>
+                </telerik:CandlestickSeries.OpenBinding>
+                <telerik:CandlestickSeries.CloseBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Close"/>
+                </telerik:CandlestickSeries.CloseBinding>
+                <telerik:CandlestickSeries.CategoryBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="Date" />
+                </telerik:CandlestickSeries.CategoryBinding>
+            </telerik:CandlestickSeries>
+        </telerik:RadCartesianChart>
+    </DataTemplate>
+
+</ResourceDictionary>

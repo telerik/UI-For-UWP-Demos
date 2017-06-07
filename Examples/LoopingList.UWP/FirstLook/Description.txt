@@ -1,0 +1,6 @@
+﻿RadLoopingList can scroll a logical range of items infinitely. Its well thought virtualizing model provides unmatched performance and smooth scrolling, based entirely on render transformations rather than layout passes.
+Using both UI and Data virtualization the control is capable of displaying practically any virtual number of items. Content is updated dynamically and data items are reused as content placeholders.
+
+The control may be used in many different scenarios - such as a "wheel" within a Date/Time selector instance. It may even serve as a super-fast list control for items with fixed height and light data templates.
+
+The example demonstrates how RadLoopingList may be used to simulate a reel within something like a "slot machine". Press the "Spin" button to start scrolling or the "Stop" button to cancel existing scrolling.

@@ -1,0 +1,144 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Calendar.SpecialDates">
+
+    <local:CustomStyleSelector x:Key="CustomStyleSelector">
+        <local:CustomStyleSelector.NormalAppointmentEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FF3399FF" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#x23F0;" Margin="0,1,2,0" />
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FF767676" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4" />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.NormalAppointmentEvent>
+        <local:CustomStyleSelector.AnotherMonthAppointmentEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FFCCCCCC" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#x23F0;" Margin="0,1,2,0" />
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FFCCCCCC" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4" />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.AnotherMonthAppointmentEvent>
+        <local:CustomStyleSelector.SelectedAppointmentEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FF3399FF" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#x23F0;" Margin="0,1,2,0"/>
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FF3399FF" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4"  />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.SelectedAppointmentEvent>
+        <!--NormalEventTemplates-->
+        <local:CustomStyleSelector.NormalEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FF3399FF" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#xE113;" />
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FF767676" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4"  />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.NormalEvent>
+        <local:CustomStyleSelector.AnotherMonthEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FFCCCCCC" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#xE113;" />
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FFCCCCCC" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4"  />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.AnotherMonthEvent>
+        <local:CustomStyleSelector.SelectedEvent>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock Foreground="#FF3399FF" FontSize="15" HorizontalAlignment="Right" FontFamily="Segoe UI Symbol" Text="&#xE113;" />
+                    <TextBlock Text="{Binding Label}"
+                                   Foreground="#FF3399FF" FontSize="13.333" VerticalAlignment="Bottom" Margin="6,0,0,4"  />
+                </Grid>
+            </DataTemplate>
+        </local:CustomStyleSelector.SelectedEvent>
+    </local:CustomStyleSelector>
+
+    <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+        <Setter Property="Margin" Value="30,20,0,5" />
+        <Setter Property="Foreground" Value="#000" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="FontSize" Value="34" />
+    </Style>
+
+    <Style x:Key="TodayButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="#FF767676"/>
+        <Setter Property="BorderBrush" Value="#FFCCCCCC"/>
+        <Setter Property="BorderThickness" Value="2,0,2,2"/>
+        <Setter Property="Padding" Value="12,4,12,4"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#FF3399FF"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="#FF3399FF"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBackgroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="Border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledBorderThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonDisabledForegroundThemeBrush}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualWhite"/>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisualBlack"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused"/>
+                                <VisualState x:Name="PointerFocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Margin="3">
+                            <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <Rectangle x:Name="FocusVisualWhite" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="1.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualWhiteStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                        <Rectangle x:Name="FocusVisualBlack" IsHitTestVisible="False" Opacity="0" StrokeDashOffset="0.5" StrokeEndLineCap="Square" Stroke="{StaticResource FocusVisualBlackStrokeThemeBrush}" StrokeDashArray="1,1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

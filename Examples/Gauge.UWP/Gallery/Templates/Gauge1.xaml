@@ -1,0 +1,126 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerikDataViz="using:Telerik.UI.Xaml.Controls.DataVisualization"
+    xmlns:local="using:Gauge.Gallery.Templates">
+
+    <DataTemplate x:Key="Item">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <VariableSizedWrapGrid Orientation="Horizontal" Margin="0 20 0 0" MaximumRowsOrColumns="2" ItemHeight="200" ItemWidth="320" >
+                <Grid Margin="0 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="EXPENSES(% OF TARGET)" HorizontalAlignment="Center"></TextBlock>
+                    <telerikDataViz:RadRadialGauge MaxValue="120" LabelStep="60" Margin="0 30 0 0" TickStep="20" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LabelRadiusScale="1.10">
+                        <telerikDataViz:RadRadialGauge.LabelTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontSize="15" Foreground="#595959" Margin="0,0,0,10"></TextBlock>
+                            </DataTemplate>
+                        </telerikDataViz:RadRadialGauge.LabelTemplate>
+                        <telerikDataViz:SegmentedRadialGaugeIndicator StartValue="0" Value="120">
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="#595959" Length="40"/>
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="Black" Length="40"/>
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="Red" Length="40"/>
+                        </telerikDataViz:SegmentedRadialGaugeIndicator>
+                        <telerikDataViz:RadialBarGaugeIndicator IsAnimated="True" Value="{Binding ExpensePercent}" Brush="Black" Thickness="12" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                        <telerikDataViz:MarkerGaugeIndicator Value="99" Content="*" FontFamily="Segoe UI" FontSize="17" Foreground="#595959" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                    </telerikDataViz:RadRadialGauge>
+                    <TextBlock Text="{Binding ExpensePercent}" FontSize="15" Grid.Row="1" Margin="0,30,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Margin="0 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="REVENUES (MLNS)" HorizontalAlignment="Center">
+
+                    </TextBlock>
+                    <telerikDataViz:RadRadialGauge MaxValue="100" LabelStep="25" TickStep="0" Margin="0 30 0 0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LabelRadiusScale="1.20">
+                        <telerikDataViz:RadRadialGauge.LabelTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontSize="15" Foreground="#595959" Margin="0,0,10,10"></TextBlock>
+                            </DataTemplate>
+                        </telerikDataViz:RadRadialGauge.LabelTemplate>
+                        <telerikDataViz:SegmentedRadialGaugeIndicator StartValue="0" Value="25" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="1.19">
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="Red" Length="25"/>
+                        </telerikDataViz:SegmentedRadialGaugeIndicator>
+
+
+                        <telerikDataViz:RadialBarGaugeIndicator Value="180" Brush="{StaticResource TelerikGaugeMainIndicatorBackgroundBrush}" Thickness="35" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.65"/>
+                        <telerikDataViz:RadialBarGaugeIndicator Value="{Binding Revenues}" IsAnimated="True" Brush="#595959" Thickness="35" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.65"/>
+                        <telerikDataViz:MarkerGaugeIndicator Value="12.5" Content="*" FontFamily="Segoe UI" FontSize="17" Foreground="#787878" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="1.10"/>
+
+                    </telerikDataViz:RadRadialGauge>
+                    <TextBlock Text="{Binding Revenues}" FontSize="15" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,30,0,0"></TextBlock>
+                </Grid>
+                <Grid Margin="0 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="REVENUES (% OF TARGET)" HorizontalAlignment="Center"></TextBlock>
+                    <telerikDataViz:RadRadialGauge MaxValue="120" LabelStep="60"  Margin="30 30 30 0" TickStep="20" Grid.Row="1" VerticalAlignment="Top" TickRadiusScale="0.8" LabelRadiusScale="0.60">
+                        <telerikDataViz:RadRadialGauge.LabelTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Margin="-5 0 0 0" Foreground="#595959"></TextBlock>
+                            </DataTemplate>
+                        </telerikDataViz:RadRadialGauge.LabelTemplate>
+                        <telerikDataViz:SegmentedRadialGaugeIndicator StartValue="0" Value="120"  telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.8">
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="#595959" Length="120"  telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.8"/>
+                        </telerikDataViz:SegmentedRadialGaugeIndicator>
+                        <telerikDataViz:RadialBarGaugeIndicator IsAnimated="True" Value="{Binding RevenuesPercent}" Brush="Black" Thickness="12" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="1"/>
+                    </telerikDataViz:RadRadialGauge>
+                    <TextBlock Text="{Binding RevenuesPercent}" FontSize="15" Grid.Row="1" Margin="0,30,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Margin="0 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock  HorizontalAlignment="Center" >
+                    <Run>REVENUES VS.</Run>
+                    <Run Foreground="Red">EXPENSES</Run>
+                    <Run>(MLNS)</Run>
+                    </TextBlock>
+                    <telerikDataViz:RadRadialGauge MaxValue="120" LabelStep="60" Margin="0 20 0 0" TickStep="20" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" LabelRadiusScale="1.10">
+                        <telerikDataViz:RadRadialGauge.LabelTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontSize="15" Foreground="#595959" Margin="0,0,0,10"></TextBlock>
+                            </DataTemplate>
+                        </telerikDataViz:RadRadialGauge.LabelTemplate>
+                        <telerikDataViz:SegmentedRadialGaugeIndicator StartValue="0" Value="120">
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="#595959" Length="120"/>
+                        </telerikDataViz:SegmentedRadialGaugeIndicator>
+                        <telerikDataViz:RadialBarGaugeIndicator Value="{Binding Revenues}" IsAnimated="True" Brush="{StaticResource TelerikGaugeMainIndicatorBackgroundBrush}" Thickness="12" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                        <telerikDataViz:RadialBarGaugeIndicator Value="{Binding Expenses}" IsAnimated="True" Brush="{StaticResource TelerikGaugeSecondaryIndicatorBackgroundBrush}" Thickness="8" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.63"/>
+                    </telerikDataViz:RadRadialGauge>
+                    <TextBlock Text="{Binding RevenuesVSExpenses}" FontSize="15" Grid.Row="1" Margin="0 20 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Margin="0 0 50 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="EXPENSES (MLNS)" HorizontalAlignment="Center"></TextBlock>
+                    <telerikDataViz:RadRadialGauge MinValue="0" MaxValue="80" LabelStep="10" Margin="0 40 0 0" TickStep="10" Grid.Row="1" telerikDataViz:RadRadialGauge.MinAngle="-30" telerikDataViz:RadRadialGauge.MaxAngle="210" VerticalAlignment="Top" LabelRadiusScale="1.10">
+                        <telerikDataViz:RadRadialGauge.LabelTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Margin="-5 0 0 0" FontSize="15" Foreground="#595959"></TextBlock>
+                            </DataTemplate>
+                        </telerikDataViz:RadRadialGauge.LabelTemplate>
+                        <telerikDataViz:SegmentedRadialGaugeIndicator  StartValue="0" Value="80">
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="#595959" Length="50"/>
+                            <telerikDataViz:BarIndicatorSegment Thickness="2" Stroke="Red" Length="30" />
+                        </telerikDataViz:SegmentedRadialGaugeIndicator>
+                        <telerikDataViz:RadialBarGaugeIndicator Value="55" Brush="Gray" Thickness="12" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                        <telerikDataViz:RadialBarGaugeIndicator Value="{Binding Expenses}" IsAnimated="True" Brush="Black" Thickness="12" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                        <telerikDataViz:MarkerGaugeIndicator Value="50" Content="*" FontFamily="Segoe UI" FontSize="17" Foreground="Red" telerikDataViz:RadRadialGauge.IndicatorRadiusScale="0.83"/>
+                    </telerikDataViz:RadRadialGauge>
+                    <TextBlock Text="{Binding Expenses}" FontSize="15" Grid.Row="1" Margin="0,30,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </VariableSizedWrapGrid>
+        </ScrollViewer>
+    </DataTemplate>
+</ResourceDictionary>

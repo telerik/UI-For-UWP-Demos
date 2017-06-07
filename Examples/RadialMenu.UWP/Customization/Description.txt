@@ -1,0 +1,1 @@
+﻿This example demonstrates the customization features of RadRadialMenu. Borders, backgrounds, colors and text, are easily customized through a set of APIs, giving the menu a completely different look each time.

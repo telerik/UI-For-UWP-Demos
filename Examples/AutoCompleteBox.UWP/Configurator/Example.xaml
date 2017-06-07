@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="AutoCompleteBox.Configurator.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:AutoCompleteBox"
+    xmlns:common="using:QSF.Common"
+    xmlns:vm="using:AutoCompleteBox.Configurator"
+    mc:Ignorable="d"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    Width="860">
+    <UserControl.Resources>
+        <vm:StringToIntConverter x:Key="stringToIntConverter"></vm:StringToIntConverter>
+        <vm:StringToTimeSpan x:Key="stringToTimeSpanConverter"></vm:StringToTimeSpan>
+        <vm:ViewModel x:Key="ViewModel" ></vm:ViewModel>
+    </UserControl.Resources>
+    
+    <common:ExampleHelper.ConfigurationPanel>
+        <StackPanel DataContext="{StaticResource ViewModel}" HorizontalAlignment="Stretch" MinWidth="235">
+            <StackPanel Margin="0 0 5 5" HorizontalAlignment="Stretch">          
+                <TextBlock Text="Filter mode" FontSize="14.67"/>
+                <ComboBox ItemsSource="{Binding MyFilterModeTypeValues}" SelectedItem="{Binding FilterMode,Mode=TwoWay}"  FontSize="14.67"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Watermark" FontSize="14.67"/>
+				<TextBox Text="{Binding Watermark, Mode=TwoWay}" IsTextPredictionEnabled="False"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Filter start threshold" FontSize="14.67"/>
+                <TextBox Text="{Binding FilterStartThreshold, Mode=TwoWay,Converter={StaticResource stringToIntConverter}}" InputScope="Number" IsTextPredictionEnabled="False"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Filter delay" FontSize="14.67"/>
+				<TextBox Text="{Binding FilterDelay, Mode=TwoWay, Converter={StaticResource stringToTimeSpanConverter}}" InputScope="Number" IsTextPredictionEnabled="False"/>
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Highlight text matches" FontSize="14.67"/>
+                <ToggleSwitch IsOn="{Binding ShouldHighlightMatches, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Ignore case" FontSize="14.67"/>
+                <ToggleSwitch IsOn="{Binding ShouldIgnoreCaseSwitch, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Margin="0 10 5 5">
+                <TextBlock Text="Autosuggest first item" FontSize="14.67"/>
+                <ToggleSwitch IsOn="{Binding ShouldAutosuggestFirstItem, Mode=TwoWay}" />
+            </StackPanel>
+        </StackPanel>
+    </common:ExampleHelper.ConfigurationPanel>
+    <common:ExampleHelper.ConfigurationPanelShrinksExample>
+        True
+    </common:ExampleHelper.ConfigurationPanelShrinksExample>
+    <common:ExampleHelper.HintsCollection>
+        <common:HintsCollection>
+            <common:Hint Content="Start typing to open the Drop-down" PlacementTargetName="autoCompleteBox" Placement="Bottom"
+                         Width="270" Height="100" />
+            <common:Hint Content="Press to open the example's options" PlacementTargetName="configuratorButton" Placement="Bottom"
+                         Width="270" Height="100" />
+        </common:HintsCollection>
+    </common:ExampleHelper.HintsCollection>
+
+    <Grid HorizontalAlignment="Left" DataContext="{StaticResource ViewModel}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <telerikInput:RadAutoCompleteBox x:Name="autoCompleteBox" ItemsSource="{Binding Suggestions}" Grid.Row="0" 
+                                         Header="World Countries &amp; Regions"
+                                         MinWidth="300" 
+                                         FilterDelay="{Binding FilterDelay}"
+                                         FilterMode="{Binding FilterMode}"  HorizontalAlignment="Left" 
+                                         FilterComparisonMode="{Binding ShouldIgnoreCase}"
+                                         AutosuggestFirstItem="{Binding ShouldAutosuggestFirstItem }"
+                                         Watermark="{Binding Watermark}"
+                                         FilterStartThreshold="{Binding FilterStartThreshold}">
+            <telerikInput:RadAutoCompleteBox.HeaderStyle>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </telerikInput:RadAutoCompleteBox.HeaderStyle>
+            <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="{Binding ShouldHighlightMatches,Source={StaticResource ViewModel}}"/>
+                </DataTemplate>
+            </telerikInput:RadAutoCompleteBox.ItemTemplate>
+        </telerikInput:RadAutoCompleteBox>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="325" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="294" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

@@ -1,0 +1,83 @@
+﻿<UserControl
+    x:Class="NumericBox.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    mc:Ignorable="d"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    xmlns:telerikTheming="using:Telerik.UI.Xaml.Controls.Primitives.Theming">
+    <UserControl.Resources>
+        <Style TargetType="telerikInput:RadNumericBox">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#BABABA" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <RelativePanel>
+            <Border x:Name="textPanel" MaxWidth="300" VerticalAlignment="Top" Margin="0,0,0,30" Background="{Binding Background}">
+                <StackPanel Margin="10">
+                    <TextBlock Text="WINDOWS 10" FontSize="{Binding FontSize}" Foreground="{Binding Foreground}"/>
+                    <TextBlock Text="WINDOWS 10 IS MODERN AND CLEAN." TextWrapping="Wrap" FontSize="{Binding FontSize}" Foreground="{Binding Foreground}" FontWeight="Light" Margin="0,12,0,6"/>
+                    <StackPanel x:Name="additionalText">
+                        <TextBlock Text="IT'S FAST AND IN MOTION." TextWrapping="Wrap" FontSize="{Binding FontSize}" Foreground="{Binding Foreground}" FontWeight="Light" Margin="0,6,0,6"/>
+                        <TextBlock Text="IT'S ABOUT CONTENT AND TYPOGRAPHY." TextWrapping="Wrap" FontSize="{Binding FontSize}" Foreground="{Binding Foreground}" FontWeight="Light" Margin="0,6,0,6"/>
+                        <TextBlock Text="AND IT'S ENTIRELY AUTHENTIC." TextWrapping="Wrap" FontSize="{Binding FontSize}" Foreground="{Binding Foreground}" FontWeight="Light" Margin="0,6,0,6"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <StackPanel x:Name="backgroundPanel" MaxWidth="250" >
+                <TextBlock x:Name="backgroundText" Text="BACKGROUND" FontWeight="SemiBold" FontSize="16"/>
+                <telerikInput:RadNumericBox AllowNullValue="False" Header="Red" Maximum="255" SmallChange="10" Margin="0,0,0,16" Value="{Binding Red, Mode=TwoWay}" ValueFormat="{}{0,0:N0}"/>
+                <telerikInput:RadNumericBox AllowNullValue="False" Header="Green" Maximum="255" SmallChange="10" Margin="0,0,0,16" Value="{Binding Green, Mode=TwoWay}" ValueFormat="{}{0,0:N0}"/>
+                <telerikInput:RadNumericBox AllowNullValue="False" Header="Blue" Maximum="255" SmallChange="10" Margin="0,0,0,16" Value="{Binding Blue, Mode=TwoWay}" ValueFormat="{}{0,0:N0}"/>
+                <telerikInput:RadNumericBox AllowNullValue="False" Header="Opacity" Maximum="255" SmallChange="10" Margin="0,0,0,16" Value="{Binding Alpha, Mode=TwoWay}" ValueFormat="{}{0,0:N0}"/>
+            </StackPanel>
+            <StackPanel x:Name="textPropertiesPanel" MaxWidth="250">
+                <TextBlock x:Name="semiBoldText" Text="TEXT" FontWeight="SemiBold" FontSize="16" />
+                <telerikInput:RadNumericBox AllowNullValue="False" Header="Size" Maximum="30" Minimum="10" Margin="0,0,0,16" Value="{Binding FontSize, Mode=TwoWay}" ValueFormat="{}{0,0:N0} pt"/>
+                <TextBlock Text="Color" Foreground="{StaticResource TelerikSecondaryForegroundBrush}" FontSize="{StaticResource ControlContentThemeFontSize}" Margin="0,0,0,6"/>
+                <ComboBox x:Name="textColorCombo" ItemsSource="{Binding AvailableColors}" SelectedItem="{Binding ForegroundColor, Mode=TwoWay}"/>
+            </StackPanel>           
+        </RelativePanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1047" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="backgroundPanel.(RelativePanel.RightOf)" Value="textPanel" />
+                        <Setter Target="backgroundPanel.Margin" Value="24,0,10,10"/>
+                        <Setter Target="textPropertiesPanel.(RelativePanel.RightOf)" Value="backgroundPanel" />
+                        <Setter Target="textPropertiesPanel.Margin" Value="24,0,10,10"/>
+                        <Setter Target="backgroundText.Margin" Value="0,0,0,24"/>
+                        <Setter Target="semiBoldText.Margin" Value="0,0,0,24"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="768" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="backgroundPanel.(RelativePanel.Below)" Value="textPanel" />
+                        <Setter Target="textPropertiesPanel.(RelativePanel.RightOf)" Value="textPanel" />
+                        <Setter Target="textPropertiesPanel.Margin" Value="24,0,10,10"/>
+                        <Setter Target="backgroundText.Margin" Value="0,0,0,24"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="backgroundPanel.(RelativePanel.Below)" Value="textPanel" />
+                        <Setter Target="textPropertiesPanel.(RelativePanel.Below)" Value="backgroundPanel" />
+                        <Setter Target="additionalText.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </ScrollViewer>
+</UserControl>

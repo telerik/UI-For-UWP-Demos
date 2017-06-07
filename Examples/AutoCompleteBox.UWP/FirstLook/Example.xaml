@@ -1,0 +1,124 @@
+﻿<UserControl
+    x:Class="AutoCompleteBox.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:AutoCompleteBox"
+    xmlns:common="using:QSF.Common"
+    mc:Ignorable="d"
+    xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+    Width="860">
+    <UserControl.Resources>
+        <local:StringToBitmapImageConverter x:Key="imageConverter" />
+        <local:UpperCaseConverter x:Key="textConverter" />
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <telerikInput:RadAutoCompleteBox x:Name="autoCompleteBox" Grid.Row="0" Watermark="Search for movies" Header="IN THEATERS NOW" MinWidth="400" AutosuggestFirstItem="False"
+                                         FilterMemberPath="Title" FilterMode="Contains" FilterDelay="0:0:0.5" HorizontalAlignment="Left" IsDropDownOpen="True" DropDownMaxHeight="350"
+                                         LostFocus="autoCompleteBoxLostFocus" SelectionChanged="autoCompleteBoxSelectionChanged">
+            
+            <telerikInput:RadAutoCompleteBox.HeaderStyle>
+                <Style TargetType="ContentControl">
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="Foreground" Value="#0083EF"/>
+                    <Setter Property="Margin" Value="0,5,0,15"/>
+                    <Setter Property="FontWeight" Value="ExtraLight"/>
+                </Style>
+            </telerikInput:RadAutoCompleteBox.HeaderStyle>
+
+            <telerikInput:RadAutoCompleteBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="100">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding Poster, Converter={StaticResource imageConverter}}" HorizontalAlignment="Left" Grid.RowSpan="2" Grid.Column="0" Margin="0,2,0,0"/>
+
+                        <StackPanel Grid.Column="1"  Grid.RowSpan="2" VerticalAlignment="Top">
+                            <TextBlock Text="{Binding Title, Converter={StaticResource textConverter}}" FontSize="16" FontFamily="Segoe UI" 
+                                       TextWrapping="Wrap" Margin="5,0,0,0" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True"/>
+
+                            <TextBlock FontFamily="Segoe UI" FontSize="17" Foreground="Gray" Margin="5,0,0,0" 
+                                       telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True">
+                                    <Run Text="IMDB Rating: "/>
+                                    <Run Text="{Binding Rating, Converter={StaticResource textConverter}}" Foreground="#0083EF" FontFamily="Segoe UI"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </telerikInput:RadAutoCompleteBox.ItemTemplate>
+        </telerikInput:RadAutoCompleteBox>
+
+        <ProgressBar Grid.Row="0" x:Name="ProgressBar" IsIndeterminate="True" Width="400" HorizontalAlignment="Left"  Margin="0,32,0,0"/>
+
+        <StackPanel Grid.Row="1"  Opacity="0.8" Orientation="Horizontal" Margin="0,8,0,0">          
+            <Button x:Name="LostFocusButton" IsHitTestVisible="False" Opacity="0"/>
+        </StackPanel>
+
+        <Grid x:Name="MovieDetails" Height="300" Grid.Row="2" Visibility="Collapsed" DataContext="{Binding ElementName=autoCompleteBox,Path=SelectedItem}" HorizontalAlignment="Left" Margin="5,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="93" />
+                <ColumnDefinition Width="175" />
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{Binding Poster}" Grid.RowSpan="2" VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" Margin="2,2,0,1"/>
+
+            <TextBlock Text="{Binding Title}" FontSize="15" TextWrapping="Wrap" Foreground="Black" FontFamily="Segoe UI" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                           Grid.Column="1" Margin="12,0,10,0" Width="150" telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True" />
+
+            <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="13,0,0,5">
+                <TextBlock FontSize="15" FontWeight="ExtraLight" Margin="0,1">
+                                        <Run Text="Duration: "/>
+                                        <Run Text="{Binding Duration}" Foreground="#0083EF" FontFamily="Segoe UI"/>
+                                        <Run Text=" min" Foreground="#0083EF" FontFamily="Segoe UI"/>
+                </TextBlock>
+                <TextBlock FontSize="15" Text="Director:" FontWeight="ExtraLight"/>
+                <TextBlock FontSize="15" Text="{Binding Director}" Foreground="#0083EF" FontFamily="Segoe UI" FontWeight="ExtraLight" 
+                           telerikInput:RadAutoCompleteBox.IsTextMatchHighlightEnabled="True" />
+
+                <TextBlock FontSize="15" FontWeight="ExtraLight" Margin="0,1">
+                                    <Run Text="IMDB Rating: "/>
+                                    <Run Text="{Binding Rating, Converter={StaticResource textConverter}}" Foreground="#0083EF" FontFamily="Segoe UI"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="426" />
+                    </VisualState.StateTriggers>                 
+                </VisualState>
+               
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="autoCompleteBox.MinWidth" Value="294" />
+                        <Setter Target="ProgressBar.Width" Value="294"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>    
+</UserControl>

@@ -1,0 +1,246 @@
+﻿<?xml version="1.0"?>
+<Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ActualRevenues>
+    <MonthRevenue >
+      <Date>2011/01/01</Date>
+      <Amount>883.1</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/02/01</Date>
+      <Amount>934.8</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/03/01</Date>
+      <Amount>973</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/04/01</Date>
+      <Amount>906.2</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/05/01</Date>
+      <Amount>967.4</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/06/01</Date>
+      <Amount>858.2</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/07/01</Date>
+      <Amount>876.6</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/08/01</Date>
+      <Amount>890.8</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/09/01</Date>
+      <Amount>952.4</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/10/01</Date>
+      <Amount>989.1</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/11/01</Date>
+      <Amount>978.2</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2011/12/01</Date>
+      <Amount>1009.6</Amount>
+    </MonthRevenue>
+  </ActualRevenues>
+  <LastYearRevenues>
+    <MonthRevenue >
+      <Date>2010/01/01</Date>
+      <Amount>756.2</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/02/01</Date>
+      <Amount>885.2</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/03/01</Date>
+      <Amount>896</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/04/01</Date>
+      <Amount>812.8</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/05/01</Date>
+      <Amount>991.7</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/06/01</Date>
+      <Amount>880.1</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/07/01</Date>
+      <Amount>875.4</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/08/01</Date>
+      <Amount>888.6</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/09/01</Date>
+      <Amount>900.1</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/10/01</Date>
+      <Amount>945.9</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/11/01</Date>
+      <Amount>935.9</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/12/01</Date>
+      <Amount>955.5</Amount>
+    </MonthRevenue>
+  </LastYearRevenues>
+  <TargetRevenues>
+    <MonthRevenue>
+      <Date>2010/01/01</Date>
+      <Amount>1150</Amount>
+    </MonthRevenue>
+    <MonthRevenue>
+      <Date>2010/02/01</Date>
+      <Amount>1250</Amount>
+    </MonthRevenue>
+    <MonthRevenue>
+      <Date>2010/03/01</Date>
+      <Amount>1300</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/04/01</Date>
+      <Amount>1200</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/05/01</Date>
+      <Amount>1250</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/06/01</Date>
+      <Amount>1300</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/07/01</Date>
+      <Amount>1330</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/08/01</Date>
+      <Amount>1330</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/09/01</Date>
+      <Amount>1250</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/10/01</Date>
+      <Amount>1300</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/11/01</Date>
+      <Amount>1330</Amount>
+    </MonthRevenue>
+    <MonthRevenue >
+      <Date>2010/12/01</Date>
+      <Amount>1350</Amount>
+    </MonthRevenue>
+  </TargetRevenues>
+  <StoreRevenues>
+    <StoreRevenue>
+      <StoreName>Greenings</StoreName>
+      <Amount>1302</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Perfecto</StoreName>
+      <Amount>1782.3</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Your store</StoreName>
+      <Amount>1115.3</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Dominos</StoreName>
+      <Amount>802</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Quality food</StoreName>
+      <Amount>1143.9</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>The Hit</StoreName>
+      <Amount>954.4</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>NearBy</StoreName>
+      <Amount>1421</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Ellinor</StoreName>
+      <Amount>1098.5</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>LollyHolly</StoreName>
+      <Amount>625</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Favs</StoreName>
+      <Amount>1278.9</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Family Store</StoreName>
+      <Amount>1366.3</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Shopper</StoreName>
+      <Amount>653.6</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName> Fresh &amp; Green</StoreName>
+      <Amount>653.6</Amount>
+    </StoreRevenue>
+    <StoreRevenue>
+      <StoreName>Variety</StoreName>
+      <Amount>860.3</Amount>
+    </StoreRevenue>
+  </StoreRevenues>
+  <ProductRevenues>
+    <ProductRevenue>
+      <ProductName>
+        food &amp; drinks
+      </ProductName>
+      <Amount>
+        5558
+      </Amount>
+    </ProductRevenue>
+    <ProductRevenue>
+      <ProductName>
+        clothing &amp; accessories
+      </ProductName>
+      <Amount>
+        4330
+      </Amount>
+    </ProductRevenue>
+    <ProductRevenue>
+      <ProductName>
+        electronics &amp; accessories
+      </ProductName>
+      <Amount>
+        4330
+      </Amount>
+    </ProductRevenue>
+    <ProductRevenue>
+      <ProductName>
+        homeware
+      </ProductName>
+      <Amount>
+        1345.2
+      </Amount>
+    </ProductRevenue>
+  </ProductRevenues>
+</Data>
+

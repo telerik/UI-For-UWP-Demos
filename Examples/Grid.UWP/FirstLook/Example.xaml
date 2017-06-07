@@ -1,0 +1,226 @@
+﻿<UserControl
+    x:Class="Grid.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:common="using:QSF.Common"
+    mc:Ignorable="d"
+    xmlns:local="using:Grid.FirstLook"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:telerikGrid="using:Telerik.UI.Xaml.Controls.Grid"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+	xmlns:telerikData="using:Telerik.Data.Core"
+    FontSize="14.667">
+
+    <UserControl.Resources>
+        <TransitionCollection x:Key="EmptyTransitions"/>
+
+        <Style TargetType="TextBlock" x:Key="DefaultNumericStyle">
+            <Setter Property="Margin" Value="6,9,6,9"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <local:TotalActualStyleSelector x:Key="TotalActualStyleSelector" NormalStyle="{StaticResource DefaultNumericStyle}">
+            <local:TotalActualStyleSelector.LowStyle>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="6,9,6,9"/>
+                    <Setter Property="Foreground" Value="#FFD64B4B"/>
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+            </local:TotalActualStyleSelector.LowStyle>
+        </local:TotalActualStyleSelector>
+
+        <local:DeviationGlyphToBrushConverter x:Key="DeviationGlyphBrushConverter" UpBrush="#FF00A50A" DownBrush="#FFC60000"/>
+
+        <Style TargetType="ListViewItem" x:Key="wideListViewItemStyle">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="#BBBBBB"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Margin" Value="0,0,6,6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="#FF605F5F"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Grid x:Name="OuterContainer">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF006AC1"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BorderRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unselected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BorderRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOverSelected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#FF006AC1"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BorderRect">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Rectangle x:Name="BackgroundRect" Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                                        ContentTransitions="{TemplateBinding ContentTransitions}" 
+                                                        Content="{TemplateBinding Content}" 
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                        Margin="{TemplateBinding Padding}" 
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Rectangle x:Name="BorderRect" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ListViewItem" x:Key="narrowListViewItemStyle" BasedOn="{StaticResource wideListViewItemStyle}">
+            <Setter Property="Margin" Value="0 0 6 15" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Margin="0,0,0,50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="categoriesList" SelectionMode="Single" 
+                   ItemContainerStyle="{StaticResource wideListViewItemStyle}" 
+                   ItemsSource="{Binding Products}" Margin="5" 
+                   ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollMode="Enabled">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding IconPath}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid Grid.Row="1" Margin="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Grid.Column="1">
+                                <Run Text="{Binding DeviationGlyph}" Foreground="{Binding DeviationGlyph, Converter={StaticResource DeviationGlyphBrushConverter}}"/>
+                                <Run Text="{Binding Percent}"/>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <telerikGrid:RadDataGrid  x:Name="radDataGrid"  UserGroupMode="Disabled" AutoGenerateColumns="False" ItemsSource="{Binding SelectedItem.Items, ElementName=categoriesList}">
+            <telerikGrid:RadDataGrid.GroupDescriptors>
+				<telerikData:PropertyGroupDescriptor PropertyName="SubCategory"/>
+            </telerikGrid:RadDataGrid.GroupDescriptors>
+            <telerikGrid:RadDataGrid.Columns>
+                <telerikGrid:DataGridTextColumn PropertyName="Product" Header="PRODUCT" SizeMode="Fixed" Width="155"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Actual2010" Header="2010" CellContentStyle="{StaticResource DefaultNumericStyle}" CellContentFormat="{}{0,0:C0}"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Actual2011" Header="2011" CellContentStyle="{StaticResource DefaultNumericStyle}" CellContentFormat="{}{0,0:C0}"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="Actual2012" Header="2012" CellContentStyle="{StaticResource DefaultNumericStyle}" CellContentFormat="{}{0,0:C0}"/>
+                <telerikGrid:DataGridTemplateColumn Header="ACTUAL vs. TARGET">
+                    <telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                        <DataTemplate>
+                            <telerikChart:RadCartesianChart MinHeight="30" MinWidth="60" Margin="2,6,2,6" PaletteName="DefaultLight">
+                                <telerikChart:RadCartesianChart.HorizontalAxis>
+                                    <telerikChart:CategoricalAxis Visibility="Collapsed"/>
+                                </telerikChart:RadCartesianChart.HorizontalAxis>
+                                <telerikChart:RadCartesianChart.VerticalAxis>
+                                    <telerikChart:LinearAxis Visibility="Collapsed"/>
+                                </telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:BarSeries ItemsSource="{Binding Actual}" Transitions="{StaticResource EmptyTransitions}"/>
+                                <telerikChart:LineSeries ItemsSource="{Binding Target}" Transitions="{StaticResource EmptyTransitions}"/>
+                            </telerikChart:RadCartesianChart>
+                        </DataTemplate>
+                    </telerikGrid:DataGridTemplateColumn.CellContentTemplate>
+                </telerikGrid:DataGridTemplateColumn>
+                <telerikGrid:DataGridNumericalColumn PropertyName="TotalActual" Header="ACTUAL" CellContentStyleSelector="{StaticResource TotalActualStyleSelector}" CellContentFormat="{}{0,0:C0}"/>
+                <telerikGrid:DataGridNumericalColumn PropertyName="TotalTarget" Header="TARGET" CellContentFormat="{}{0,0:C0}">
+                    <telerikGrid:DataGridNumericalColumn.CellContentStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="6,9,6,9"/>
+                            <Setter Property="Foreground" Value="#FFA500"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                    </telerikGrid:DataGridNumericalColumn.CellContentStyle>
+                </telerikGrid:DataGridNumericalColumn>
+            </telerikGrid:RadDataGrid.Columns>
+        </telerikGrid:RadDataGrid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1047" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="categoriesList.(Grid.Column)" Value="0" />
+                        <Setter Target="radDataGrid.(Grid.Column)" Value="1" />
+                        <Setter Target="categoriesList.(Grid.Row)" Value="1" />
+                        <Setter Target="radDataGrid.(Grid.Row)" Value="1" />
+                        <Setter Target="radDataGrid.CanUserChooseColumns" Value="False"/>
+                        <Setter Target="categoriesList.ItemsPanel">
+                            <Setter.Value>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>            
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="categoriesList.(Grid.Column)" Value="1" />
+                        <Setter Target="radDataGrid.(Grid.Column)" Value="1" />
+                        <Setter Target="categoriesList.(Grid.Row)" Value="0" />
+                        <Setter Target="radDataGrid.(Grid.Row)" Value="1" />
+                        <Setter Target="radDataGrid.CanUserChooseColumns" Value="True"/>
+                        <Setter Target="categoriesList.ItemContainerStyle" Value="{StaticResource narrowListViewItemStyle}"/>
+                        <Setter Target="categoriesList.ItemsPanel">
+                            <Setter.Value>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</UserControl>

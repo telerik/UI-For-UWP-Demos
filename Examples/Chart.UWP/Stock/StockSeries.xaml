@@ -1,0 +1,454 @@
+﻿<UserControl
+    x:Class="Chart.Stock.StockSeries"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chart.Stock"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../CommonResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <local:DateTimeConverter x:Key="CategoryConverter"/>
+            <DataTemplate x:Key="TrackInfoTemplate">
+                <StackPanel Background="White">
+                    <Border Background="#FF1E98E4">
+                        <TextBlock Margin="4" Text="{Binding DataPoint.Category, Converter={StaticResource CategoryConverter}, ConverterParameter='MMM, dd, yyyy'}" FontSize="12" Foreground="White"/>
+                    </Border>
+                    <TextBlock Margin="4,4,4,4" FontSize="12">
+                        <Run Text="O: " Foreground="#FF1E98E4"/>
+                        <Run Text="{Binding DataPoint.Open}" Foreground="Black"/>
+                    </TextBlock>
+                    <TextBlock Margin="4,0,4,4" FontSize="12">
+                        <Run Text="H: " Foreground="#FF1E98E4"/>
+                        <Run Text="{Binding DataPoint.High}" Foreground="Black"/>
+                    </TextBlock>
+                    <TextBlock Margin="4,0,4,4" FontSize="12">
+                        <Run Text="L: " Foreground="#FF1E98E4"/>
+                        <Run Text="{Binding DataPoint.Low}" Foreground="Black"/>
+                    </TextBlock>
+                    <TextBlock Margin="4,0,4,4" FontSize="12">
+                        <Run Text="C: " Foreground="#FF1E98E4"/>
+                        <Run Text="{Binding DataPoint.Close}" Foreground="Black"/>
+                    </TextBlock>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="EmptyTemplate"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock FontSize="17" Text="INTERNATIONAL SOFTWARE COMPANY (^ISC)" />
+                <StackPanel Orientation="Horizontal"  Margin="0 20 0 0">
+                    <TextBlock Text="Trend line:"  FontSize="16" Margin="5 5 20 0" VerticalAlignment="Center"/>
+                    <ComboBox  x:Name="Indicators" HorizontalAlignment="Left" SelectionChanged="Indicators_SelectionChanged" >
+                        <ComboBoxItem Content="MA (5)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:MovingAverageIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                    <telerikChart:MovingAverageIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:MovingAverageIndicator.ValueBinding>
+                                    <telerikChart:MovingAverageIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:MovingAverageIndicator.CategoryBinding>
+                                </telerikChart:MovingAverageIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Exponential MA (5)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:ExponentialMovingAverageIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                    <telerikChart:ExponentialMovingAverageIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:ExponentialMovingAverageIndicator.ValueBinding>
+                                    <telerikChart:ExponentialMovingAverageIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:ExponentialMovingAverageIndicator.CategoryBinding>
+                                </telerikChart:ExponentialMovingAverageIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Modified MA (5)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:ModifiedMovingAverageIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                    <telerikChart:ModifiedMovingAverageIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:ModifiedMovingAverageIndicator.ValueBinding>
+                                    <telerikChart:ModifiedMovingAverageIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:ModifiedMovingAverageIndicator.CategoryBinding>
+                                </telerikChart:ModifiedMovingAverageIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Modified Exponential MA (5)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:ModifiedExponentialMovingAverageIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                    <telerikChart:ModifiedExponentialMovingAverageIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:ModifiedExponentialMovingAverageIndicator.ValueBinding>
+                                    <telerikChart:ModifiedExponentialMovingAverageIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:ModifiedExponentialMovingAverageIndicator.CategoryBinding>
+                                </telerikChart:ModifiedExponentialMovingAverageIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Weighted MA (5)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:WeightedMovingAverageIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                    <telerikChart:WeightedMovingAverageIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:WeightedMovingAverageIndicator.ValueBinding>
+                                    <telerikChart:WeightedMovingAverageIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:WeightedMovingAverageIndicator.CategoryBinding>
+                                </telerikChart:WeightedMovingAverageIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Adaptive MA Kaufman (10, 4, 2)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:AdaptiveMovingAverageKaufmanIndicator ItemsSource="{Binding Data}" Period="2" SlowPeriod="10" FastPeriod="4" StrokeThickness="2">
+                                    <telerikChart:AdaptiveMovingAverageKaufmanIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:AdaptiveMovingAverageKaufmanIndicator.ValueBinding>
+                                    <telerikChart:AdaptiveMovingAverageKaufmanIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:AdaptiveMovingAverageKaufmanIndicator.CategoryBinding>
+                                </telerikChart:AdaptiveMovingAverageKaufmanIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="Bollinger Bands (5, 2)">
+                            <ComboBoxItem.DataContext>
+                                <telerikChart:BollingerBandsIndicator ItemsSource="{Binding Data}" Period="2" StandardDeviations="2" StrokeThickness="2" LowerBandStroke="Red">
+                                    <telerikChart:BollingerBandsIndicator.ValueBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                    </telerikChart:BollingerBandsIndicator.ValueBinding>
+                                    <telerikChart:BollingerBandsIndicator.CategoryBinding>
+                                        <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                    </telerikChart:BollingerBandsIndicator.CategoryBinding>
+                                </telerikChart:BollingerBandsIndicator>
+                            </ComboBoxItem.DataContext>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <telerikChart:RadCartesianChart  x:Name="Chart" Grid.Row="1" PaletteName="DefaultLight">
+                <telerikChart:RadCartesianChart.Resources>
+                    <Style TargetType="telerikChart:Candlestick" x:Key="CandleStickStyle">
+                        <Setter Property="StrokeThickness" Value="1"/>
+                    </Style>
+                    <Style TargetType="telerikChart:OhlcStick" x:Key="StickStyle">
+                        <Setter Property="StrokeThickness" Value="1"/>
+                    </Style>
+                </telerikChart:RadCartesianChart.Resources>
+                <telerikChart:RadCartesianChart.Grid>
+                    <telerikChart:CartesianChartGrid  MajorLinesVisibility="Y"/>
+                </telerikChart:RadCartesianChart.Grid>
+                <telerikChart:RadCartesianChart.HorizontalAxis>
+                    <telerikChart:DateTimeContinuousAxis LabelFormat="{}{0:dd.MM}" MaximumTicks="20" PlotStretch="Uniform" GapLength="0.1"/>
+                </telerikChart:RadCartesianChart.HorizontalAxis>
+                <telerikChart:RadCartesianChart.VerticalAxis>
+                    <telerikChart:LinearAxis/>
+                </telerikChart:RadCartesianChart.VerticalAxis>
+                <telerikChart:RadCartesianChart.Indicators>
+                    <telerikChart:MomentumIndicator ItemsSource="{Binding Data}" Period="8" Stroke="Black" StrokeThickness="2">
+                        <telerikChart:MomentumIndicator.ValueBinding>
+                            <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                        </telerikChart:MomentumIndicator.ValueBinding>
+                        <telerikChart:MomentumIndicator.CategoryBinding>
+                            <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                        </telerikChart:MomentumIndicator.CategoryBinding>
+                    </telerikChart:MomentumIndicator>
+                </telerikChart:RadCartesianChart.Indicators>
+                <telerikChart:RadCartesianChart.Behaviors>
+                    <telerikChart:ChartTrackBallBehavior InfoMode="Multiple"/>
+                </telerikChart:RadCartesianChart.Behaviors>
+            </telerikChart:RadCartesianChart>
+        </Grid>
+        <Grid Grid.Column="1" Margin="30 40 10 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Chart type" FontSize="16"/>
+            <RadioButton Grid.Row="1" Margin="0 5 0 5" Content="Candle stick" IsChecked="True" GroupName="SeriesType" Click="CandleSticksRadioButton_Click"/>
+            <RadioButton Grid.Row="2" Margin="0 5 0 5" Content="Ohlc stick" GroupName="SeriesType" Click="OhlcSticksRadioButton_Click"/>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0 20 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Financial Indicator:" FontSize="16" Margin="5 5 20 0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="Indicators2" HorizontalAlignment="Left" SelectionChanged="Indicators2_SelectionChanged" >
+                    <ComboBoxItem Content="Average True Range (5)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:AverageTrueRangeIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                <telerikChart:AverageTrueRangeIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:AverageTrueRangeIndicator.HighBinding>
+                                <telerikChart:AverageTrueRangeIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:AverageTrueRangeIndicator.LowBinding>
+                                <telerikChart:AverageTrueRangeIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:AverageTrueRangeIndicator.CloseBinding>
+                                <telerikChart:AverageTrueRangeIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:AverageTrueRangeIndicator.CategoryBinding>
+                            </telerikChart:AverageTrueRangeIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Commodity Channel Index (5)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:CommodityChannelIndexIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                <telerikChart:CommodityChannelIndexIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:CommodityChannelIndexIndicator.HighBinding>
+                                <telerikChart:CommodityChannelIndexIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:CommodityChannelIndexIndicator.LowBinding>
+                                <telerikChart:CommodityChannelIndexIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:CommodityChannelIndexIndicator.CloseBinding>
+                                <telerikChart:CommodityChannelIndexIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:CommodityChannelIndexIndicator.CategoryBinding>
+                            </telerikChart:CommodityChannelIndexIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="MACD (12, 9, 6)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:MacdIndicator ItemsSource="{Binding Data}" ShortPeriod="9" LongPeriod="12" SignalPeriod="6" SignalStroke="Black">
+                                <telerikChart:MacdIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:MacdIndicator.ValueBinding>
+                                <telerikChart:MacdIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:MacdIndicator.CategoryBinding>
+                            </telerikChart:MacdIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="MACDH (12, 9, 6)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:MacdhIndicator ItemsSource="{Binding Data}" ShortPeriod="9" LongPeriod="12" SignalPeriod="6">
+                                <telerikChart:MacdhIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:MacdhIndicator.ValueBinding>
+                                <telerikChart:MacdhIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:MacdhIndicator.CategoryBinding>
+                            </telerikChart:MacdhIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Momentum (5)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:MomentumIndicator ItemsSource="{Binding Data}" Period="5" StrokeThickness="2">
+                                <telerikChart:MomentumIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:MomentumIndicator.ValueBinding>
+                                <telerikChart:MomentumIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:MomentumIndicator.CategoryBinding>
+                            </telerikChart:MomentumIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Oscillator (8, 4)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:OscillatorIndicator ItemsSource="{Binding Data}" ShortPeriod="4" LongPeriod="8" StrokeThickness="2">
+                                <telerikChart:OscillatorIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:OscillatorIndicator.ValueBinding>
+                                <telerikChart:OscillatorIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:OscillatorIndicator.CategoryBinding>
+                            </telerikChart:OscillatorIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="RAVI (8, 4)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:RaviIndicator ItemsSource="{Binding Data}" ShortPeriod="4" LongPeriod="8" StrokeThickness="2">
+                                <telerikChart:RaviIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:RaviIndicator.ValueBinding>
+                                <telerikChart:RaviIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:RaviIndicator.CategoryBinding>
+                            </telerikChart:RaviIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Rate Of Change (8)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:RateOfChangeIndicator ItemsSource="{Binding Data}" Period="8" StrokeThickness="2">
+                                <telerikChart:RateOfChangeIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:RateOfChangeIndicator.ValueBinding>
+                                <telerikChart:RateOfChangeIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:RateOfChangeIndicator.CategoryBinding>
+                            </telerikChart:RateOfChangeIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Relative Momentum Index (8)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:RelativeMomentumIndexIndicator ItemsSource="{Binding Data}" Period="8" StrokeThickness="2">
+                                <telerikChart:RelativeMomentumIndexIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:RelativeMomentumIndexIndicator.ValueBinding>
+                                <telerikChart:RelativeMomentumIndexIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:RelativeMomentumIndexIndicator.CategoryBinding>
+                            </telerikChart:RelativeMomentumIndexIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Relative Strength Index (8)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:RelativeStrengthIndexIndicator ItemsSource="{Binding Data}" Period="8" StrokeThickness="2">
+                                <telerikChart:RelativeStrengthIndexIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:RelativeStrengthIndexIndicator.ValueBinding>
+                                <telerikChart:RelativeStrengthIndexIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:RelativeStrengthIndexIndicator.CategoryBinding>
+                            </telerikChart:RelativeStrengthIndexIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Stochastic Fast (14, 3)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:StochasticFastIndicator ItemsSource="{Binding Data}" MainPeriod="14" SignalPeriod="3"  StrokeThickness="2">
+                                <telerikChart:StochasticFastIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:StochasticFastIndicator.HighBinding>
+                                <telerikChart:StochasticFastIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:StochasticFastIndicator.LowBinding>
+                                <telerikChart:StochasticFastIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:StochasticFastIndicator.CloseBinding>
+                                <telerikChart:StochasticFastIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:StochasticFastIndicator.CategoryBinding>
+                            </telerikChart:StochasticFastIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Stochastic Slow (14, 3, 3)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:StochasticSlowIndicator ItemsSource="{Binding Data}" MainPeriod="14" SignalPeriod="3" SlowingPeriod="3"  StrokeThickness="2">
+                                <telerikChart:StochasticSlowIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:StochasticSlowIndicator.HighBinding>
+                                <telerikChart:StochasticSlowIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:StochasticSlowIndicator.LowBinding>
+                                <telerikChart:StochasticSlowIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:StochasticSlowIndicator.CloseBinding>
+                                <telerikChart:StochasticSlowIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:StochasticSlowIndicator.CategoryBinding>
+                            </telerikChart:StochasticSlowIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="TRIX (8)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:TrixIndicator ItemsSource="{Binding Data}" Period="8" StrokeThickness="2">
+                                <telerikChart:TrixIndicator.ValueBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:TrixIndicator.ValueBinding>
+                                <telerikChart:TrixIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:TrixIndicator.CategoryBinding>
+                            </telerikChart:TrixIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="True Range">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:TrueRangeIndicator ItemsSource="{Binding Data}"  StrokeThickness="2">
+                                <telerikChart:TrueRangeIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:TrueRangeIndicator.HighBinding>
+                                <telerikChart:TrueRangeIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:TrueRangeIndicator.LowBinding>
+                                <telerikChart:TrueRangeIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:TrueRangeIndicator.CloseBinding>
+                                <telerikChart:TrueRangeIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:TrueRangeIndicator.CategoryBinding>
+                            </telerikChart:TrueRangeIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Ultimate Oscillator (6, 9, 12)">
+                        <ComboBoxItem.DataContext>
+                            <telerikChart:UltimateOscillatorIndicator ItemsSource="{Binding Data}" Period="6" Period2="9" Period3="12"  StrokeThickness="2">
+                                <telerikChart:UltimateOscillatorIndicator.HighBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="High"/>
+                                </telerikChart:UltimateOscillatorIndicator.HighBinding>
+                                <telerikChart:UltimateOscillatorIndicator.LowBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Low"/>
+                                </telerikChart:UltimateOscillatorIndicator.LowBinding>
+                                <telerikChart:UltimateOscillatorIndicator.CloseBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                                </telerikChart:UltimateOscillatorIndicator.CloseBinding>
+                                <telerikChart:UltimateOscillatorIndicator.CategoryBinding>
+                                    <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                                </telerikChart:UltimateOscillatorIndicator.CategoryBinding>
+                            </telerikChart:UltimateOscillatorIndicator>
+                        </ComboBoxItem.DataContext>
+                    </ComboBoxItem>
+
+                </ComboBox>
+            </StackPanel>
+            <telerikChart:RadCartesianChart Grid.Row="1" x:Name="BottomChart" PaletteName="DefaultLight">
+                <telerikChart:RadCartesianChart.Grid>
+                    <telerikChart:CartesianChartGrid  MajorLinesVisibility="XY"/>
+                </telerikChart:RadCartesianChart.Grid>
+                <telerikChart:RadCartesianChart.HorizontalAxis>
+                    <telerikChart:DateTimeContinuousAxis LabelFormat="{}{0:dd.MM}" MaximumTicks="20" PlotStretch="Uniform" GapLength="0"/>
+                </telerikChart:RadCartesianChart.HorizontalAxis>
+                <telerikChart:RadCartesianChart.VerticalAxis>
+                    <telerikChart:LinearAxis/>
+                </telerikChart:RadCartesianChart.VerticalAxis>
+                <telerikChart:RadCartesianChart.Indicators>
+                    <telerikChart:MomentumIndicator ItemsSource="{Binding Data}" Period="8" Stroke="Black" StrokeThickness="2">
+                        <telerikChart:MomentumIndicator.ValueBinding>
+                            <telerikChart:PropertyNameDataPointBinding PropertyName="Close"/>
+                        </telerikChart:MomentumIndicator.ValueBinding>
+                        <telerikChart:MomentumIndicator.CategoryBinding>
+                            <telerikChart:PropertyNameDataPointBinding PropertyName="Date"/>
+                        </telerikChart:MomentumIndicator.CategoryBinding>
+                    </telerikChart:MomentumIndicator>
+                </telerikChart:RadCartesianChart.Indicators>
+            </telerikChart:RadCartesianChart>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0 20 0 20">
+            <ToggleButton Width="120" Margin="0" Content="Daily" IsChecked="{Binding UsingDailyData,Mode=TwoWay}" Command="{Binding ChangeDataPeriodCommand}" CommandParameter="Daily"/>
+            <ToggleButton Width="120" Margin="0" Content="Weekly" IsChecked="{Binding UsingWeeklyData,Mode=TwoWay}" Command="{Binding ChangeDataPeriodCommand}" CommandParameter="Weekly"/>
+            <ToggleButton Width="120" Margin="0" Content="Monthly" IsChecked="{Binding UsingMonthlyData,Mode=TwoWay}" Command="{Binding ChangeDataPeriodCommand}" CommandParameter="Monthly"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

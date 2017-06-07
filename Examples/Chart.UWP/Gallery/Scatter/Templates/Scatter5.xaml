@@ -1,0 +1,28 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Chart">
+
+    <DataTemplate x:Key="Item">
+        <telerik:RadCartesianChart PaletteName="DefaultLight">
+            <telerik:RadCartesianChart.HorizontalAxis>
+                <telerik:LinearAxis  Minimum="450" MajorStep="150" Maximum="1350"/>
+            </telerik:RadCartesianChart.HorizontalAxis>
+            <telerik:RadCartesianChart.VerticalAxis>
+                <telerik:LinearAxis/>
+            </telerik:RadCartesianChart.VerticalAxis>
+            <telerik:RadCartesianChart.Grid>
+                <telerik:CartesianChartGrid MajorLinesVisibility="XY"/>
+            </telerik:RadCartesianChart.Grid>
+            <telerik:ScatterSplineAreaSeries ItemsSource="{Binding Data2}">
+                <telerik:ScatterSplineAreaSeries.XValueBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="XData"/>
+                </telerik:ScatterSplineAreaSeries.XValueBinding>
+                <telerik:ScatterSplineAreaSeries.YValueBinding>
+                    <telerik:PropertyNameDataPointBinding PropertyName="YData"/>
+                </telerik:ScatterSplineAreaSeries.YValueBinding>
+            </telerik:ScatterSplineAreaSeries>
+        </telerik:RadCartesianChart>
+    </DataTemplate>
+
+</ResourceDictionary>

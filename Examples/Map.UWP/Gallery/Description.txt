@@ -1,0 +1,1 @@
+﻿The example demonstrates loading of various different shapefile samples with RadMap for Windows Universal. Select an item on the left to load the desired scenario.

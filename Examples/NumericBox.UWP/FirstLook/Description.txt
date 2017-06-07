@@ -1,0 +1,1 @@
+﻿RadNumericBox is a component that allows for numeric input. Its value may be edited either directly through the TextBox part or by the Increase/Decrease buttons. The component supports custom formatting and arbitrary Cultures.

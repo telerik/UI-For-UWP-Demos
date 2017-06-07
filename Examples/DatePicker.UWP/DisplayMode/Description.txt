@@ -1,0 +1,6 @@
+﻿This example shows the new "DisplayMode" property for RadDateTimePicker. The property contains two modes "Inline" and "Standard". The "Inline" mode
+shows constantly opened slector. An example for the "Standard" mode can be seen in the previous RadDateTimePicker page.
+
+Along with the "DisplayMode" property, a new keyboard numeric input mode included.Now you can easily select your desired 
+value with only a few digit key entries. The tab navigation between date-time items gives you the opportunity 
+to set the input value only with keyboard presses.

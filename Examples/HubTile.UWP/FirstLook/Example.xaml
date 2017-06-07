@@ -1,0 +1,263 @@
+﻿<local:ExampleBase
+    x:Class="HubTile.FirstLook.Example"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HubTile"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:telerikPrimitives="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:telerikChart="using:Telerik.UI.Xaml.Controls.Chart">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock" x:Key="ContentTextBlock">
+                <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+                <Setter Property="FontWeight" Value="SemiLight"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="Margin" Value="8"/>
+            </Style>
+            <SolidColorBrush x:Key="WonBrush" Color="#FF17C5A9"/>
+            <SolidColorBrush x:Key="LostBrush" Color="#FFC33535"/>
+        </Grid.Resources>
+
+     <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <RelativePanel>
+            <RelativePanel x:Name="firstPanel"  Grid.Row="0">
+                <telerikPrimitives:RadSlideHubTile Width="150" Height="150" x:Name="FirstLookTile1"
+                                               telerikPrimitives:HubTileService.GroupTag="FirstLook"
+                                               RelativePanel.AlignLeftWithPanel="True">
+                    <telerikPrimitives:RadSlideHubTile.TopContent>
+                        <TextBlock Text="Jake Connely" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="22" FontWeight="Light" Margin="12,12,12,12"/>
+                    </telerikPrimitives:RadSlideHubTile.TopContent>
+                    <telerikPrimitives:RadSlideHubTile.BottomContent>
+                        <Image Source="../Images/jake-connely.png" Stretch="UniformToFill"/>
+                    </telerikPrimitives:RadSlideHubTile.BottomContent>
+                </telerikPrimitives:RadSlideHubTile>
+                <StackPanel x:Name="FirstLookTile2" RelativePanel.RightOf="FirstLookTile1">
+                    <telerikPrimitives:RadCustomHubTile Width="70" Height="70" telerikPrimitives:HubTileService.GroupTag="FirstLook">
+                        <telerikPrimitives:RadCustomHubTile.FrontContent>
+                            <Border Background="{StaticResource WonBrush}">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Image Source="../Images/won.png" Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Text="43%" FontSize="22" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </telerikPrimitives:RadCustomHubTile.FrontContent>
+                        <telerikPrimitives:RadCustomHubTile.BackContent>
+                            <Border Background="{StaticResource WonBrush}">
+                                <TextBlock Text="WON" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </telerikPrimitives:RadCustomHubTile.BackContent>
+                    </telerikPrimitives:RadCustomHubTile>
+                    <telerikPrimitives:RadCustomHubTile Width="70" Height="70" UpdateInterval="0:0:5" telerikPrimitives:HubTileService.GroupTag="FirstLook">
+                        <telerikPrimitives:RadCustomHubTile.FrontContent>
+                            <Border Background="{StaticResource LostBrush}">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Image Source="../Images/lost.png" Stretch="None" VerticalAlignment="Center"/>
+                                    <TextBlock Text="56%" FontSize="22" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </telerikPrimitives:RadCustomHubTile.FrontContent>
+                        <telerikPrimitives:RadCustomHubTile.BackContent>
+                            <Border Background="{StaticResource LostBrush}">
+                                <TextBlock Text="LOST" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </telerikPrimitives:RadCustomHubTile.BackContent>
+                    </telerikPrimitives:RadCustomHubTile>
+                </StackPanel>
+                <telerikPrimitives:RadSlideHubTile x:Name="FirstLookTile3"
+                                               Width="310" Height="150" 
+                                               telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                               Padding="0"
+                                               RelativePanel.RightOf="FirstLookTile2">
+                    <telerikPrimitives:RadSlideHubTile.TopContent>
+                        <TextBlock Text="CLOSED: -73%" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="22" Margin="16,12,12,34"/>
+                    </telerikPrimitives:RadSlideHubTile.TopContent>
+                    <telerikPrimitives:RadSlideHubTile.Title>
+                        <Grid Background="{StaticResource TelerikSelectedBrush}" HorizontalAlignment="Stretch">
+                            <TextBlock Text="Closed opportunities" Margin="16,16,16,6"/>
+                        </Grid>
+                    </telerikPrimitives:RadSlideHubTile.Title>
+                    <telerikPrimitives:RadSlideHubTile.BottomContent>
+                        <telerikChart:RadCartesianChart x:Name="lineChart" Margin="16,12,12,34">
+                            <telerikChart:RadCartesianChart.HorizontalAxis>
+                                <telerikChart:CategoricalAxis Visibility="Collapsed"/>
+                            </telerikChart:RadCartesianChart.HorizontalAxis>
+                            <telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:LinearAxis Visibility="Collapsed"/>
+                            </telerikChart:RadCartesianChart.VerticalAxis>
+                            <telerikChart:LineSeries Stroke="White" StrokeThickness="2" ItemsSource="{Binding}">
+                                <telerikChart:LineSeries.Transitions>
+                                    <TransitionCollection/>
+                                </telerikChart:LineSeries.Transitions>
+                            </telerikChart:LineSeries>
+                        </telerikChart:RadCartesianChart>
+                    </telerikPrimitives:RadSlideHubTile.BottomContent>
+                </telerikPrimitives:RadSlideHubTile>
+                <telerikPrimitives:RadSlideHubTile x:Name="FirstLookTile4" 
+                                               Width="310" Height="150" 
+                                               telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                               Padding="0"
+                                               RelativePanel.RightOf="FirstLookTile3">
+                    <telerikPrimitives:RadSlideHubTile.TopContent>
+                        <TextBlock Text="LEADS: -36%" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="22" Margin="16,12,12,34"/>
+                    </telerikPrimitives:RadSlideHubTile.TopContent>
+                    <telerikPrimitives:RadSlideHubTile.Title>
+                        <Grid Background="{StaticResource TelerikSelectedBrush}" HorizontalAlignment="Stretch">
+                            <TextBlock Text="New leads" Margin="16,16,16,6"/>
+                        </Grid>
+                    </telerikPrimitives:RadSlideHubTile.Title>
+                    <telerikPrimitives:RadSlideHubTile.BottomContent>
+                        <telerikChart:RadCartesianChart x:Name="barChart" Margin="16,12,12,36">
+                            <telerikChart:RadCartesianChart.HorizontalAxis>
+                                <telerikChart:CategoricalAxis Visibility="Collapsed" GapLength="0.1"/>
+                            </telerikChart:RadCartesianChart.HorizontalAxis>
+                            <telerikChart:RadCartesianChart.VerticalAxis>
+                                <telerikChart:LinearAxis Visibility="Collapsed"/>
+                            </telerikChart:RadCartesianChart.VerticalAxis>
+                            <telerikChart:BarSeries ItemsSource="{Binding}">
+                                <telerikChart:BarSeries.DefaultVisualStyle>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="{StaticResource TelerikSolidColorWhite}"/>
+                                    </Style>
+                                </telerikChart:BarSeries.DefaultVisualStyle>
+                                <telerikChart:BarSeries.Transitions>
+                                    <TransitionCollection/>
+                                </telerikChart:BarSeries.Transitions>
+                            </telerikChart:BarSeries>
+                        </telerikChart:RadCartesianChart>
+                    </telerikPrimitives:RadSlideHubTile.BottomContent>
+                </telerikPrimitives:RadSlideHubTile>
+            </RelativePanel>
+
+            <RelativePanel x:Name="secondPanel" Grid.Row="1" Margin="0 24 0 0">
+                <telerikPrimitives:RadMosaicHubTile Width="150" Height="150" 
+                                                VerticalAlignment="Top" 
+                                                telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                                PicturesSource="{Binding}" 
+                                                x:Name="mosaicTile" 
+                                                Title="Contacts"
+                                                RelativePanel.AlignLeftWithPanel="True" />
+                <telerikPrimitives:RadPictureRotatorHubTile x:Name="statisticsTile" 
+                                                        PicturesSource="{Binding}" 
+                                                        Padding="0" Width="310" Height="150" 
+                                                        VerticalAlignment="Top" 
+                                                        telerikPrimitives:HubTileService.GroupTag="FirstLook"
+                                                        RelativePanel.RightOf="mosaicTile">
+                    <telerikPrimitives:RadPictureRotatorHubTile.Title>
+                        <Border Background="{StaticResource TelerikSelectedBrush}">
+                            <TextBlock Text="Statistics" Margin="16,16,16,6"/>
+                        </Border>
+                    </telerikPrimitives:RadPictureRotatorHubTile.Title>
+                </telerikPrimitives:RadPictureRotatorHubTile>
+                <telerikPrimitives:RadPictureRotatorHubTile x:Name="companiesTile" 
+                                                        PicturesSource="{Binding}" 
+                                                        Padding="0"
+                                                        Width="310" Height="150" 
+                                                        VerticalAlignment="Top" 
+                                                        telerikPrimitives:HubTileService.GroupTag="FirstLook"
+                                                        RelativePanel.RightOf="statisticsTile">
+                    <telerikPrimitives:RadPictureRotatorHubTile.Title>
+                        <Border Background="{StaticResource TelerikSelectedBrush}">
+                            <TextBlock Text="Companies" Margin="16,16,16,6"/>
+                        </Border>
+                    </telerikPrimitives:RadPictureRotatorHubTile.Title>
+                </telerikPrimitives:RadPictureRotatorHubTile>
+            </RelativePanel>
+
+            <RelativePanel x:Name="thirdPanel" Grid.Row="2">
+                <telerikPrimitives:RadHubTile Width="150" Height="150" 
+                                          telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                          Title="Calls" ImageSource="../Images/calls.png" Notification="5" 
+                                          Background="#FFED1591"
+                                          RelativePanel.AlignLeftWithPanel="True"
+                                          x:Name="FirstLookTile5" />
+                <telerikPrimitives:RadHubTile Width="150" Height="150" 
+                                          telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                          Title="Mails" ImageSource="../Images/mails.png" 
+                                          Notification="11" Background="#FF259FD9"
+                                          x:Name="FirstLookTile6"
+                                          RelativePanel.RightOf="FirstLookTile5" />
+                <telerikPrimitives:RadHubTile Width="150" Height="150" 
+                                          telerikPrimitives:HubTileService.GroupTag="FirstLook" 
+                                          Title="Meetings" ImageSource="../Images/calls.png" 
+                                          Notification="2" Background="#FFD9A125"
+                                          x:Name="FirstLookTile7"
+                                          RelativePanel.RightOf="FirstLookTile6" />
+                <telerikPrimitives:RadCustomHubTile Width="150" Height="150" 
+                                                telerikPrimitives:HubTileService.GroupTag="FirstLook"
+                                                x:Name="FirstLookTile8"
+                                                RelativePanel.RightOf="FirstLookTile7" >
+                    <telerikPrimitives:RadCustomHubTile.FrontContent>
+                        <StackPanel Margin="16,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="12" FontSize="82.667" FontWeight="SemiLight"/>
+                            <TextBlock Text="OPEN" FontSize="14.667" Margin="4,-12,0,0"/>
+                            <TextBlock Text="Opportunities" FontSize="12" Margin="4,14,0,0"/>
+                        </StackPanel>
+                    </telerikPrimitives:RadCustomHubTile.FrontContent>
+                    <telerikPrimitives:RadCustomHubTile.BackContent>
+                        <StackPanel Margin="16,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="5" FontSize="82.667" FontWeight="SemiLight"/>
+                            <TextBlock Text="OVERDUE" FontSize="14.667" Margin="4,-12,0,0"/>
+                            <TextBlock Text="Opportunities" FontSize="12" Margin="4,14,0,0"/>
+                        </StackPanel>
+                    </telerikPrimitives:RadCustomHubTile.BackContent>
+                </telerikPrimitives:RadCustomHubTile>
+            </RelativePanel>
+        </RelativePanel>
+    </ScrollViewer>
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1008" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="secondPanel.(RelativePanel.Below)" Value="firstPanel" />
+                        <Setter Target="thirdPanel.(RelativePanel.Below)" Value="secondPanel" />
+                    </VisualState.Setters>
+                </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="640" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="secondPanel.(RelativePanel.Below)" Value="firstPanel" />
+                    <Setter Target="thirdPanel.(RelativePanel.Below)" Value="secondPanel" />
+                    <Setter Target="FirstLookTile4.(RelativePanel.Below)" Value="FirstLookTile1" />
+                    <Setter Target="FirstLookTile4.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="companiesTile.(RelativePanel.Below)" Value="mosaicTile" />
+                    <Setter Target="companiesTile.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="FirstLookTile8.(RelativePanel.Below)" Value="FirstLookTile5" />
+                    <Setter Target="FirstLookTile8.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="secondPanel.(RelativePanel.Below)" Value="firstPanel" />
+                    <Setter Target="thirdPanel.(RelativePanel.Below)" Value="secondPanel" />
+                    <Setter Target="FirstLookTile3.(RelativePanel.Below)" Value="FirstLookTile1" />
+                    <Setter Target="FirstLookTile3.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="FirstLookTile4.(RelativePanel.Below)" Value="FirstLookTile3" />
+                    <Setter Target="FirstLookTile4.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="statisticsTile.(RelativePanel.Below)" Value="mosaicTile" />
+                    <Setter Target="statisticsTile.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="companiesTile.(RelativePanel.Below)" Value="statisticsTile" />
+                    <Setter Target="companiesTile.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="FirstLookTile7.(RelativePanel.Below)" Value="FirstLookTile5" />
+                    <Setter Target="FirstLookTile7.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                    <Setter Target="FirstLookTile8.(RelativePanel.Below)" Value="FirstLookTile7" />
+                    <Setter Target="FirstLookTile8.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    </Grid>
+</local:ExampleBase>
