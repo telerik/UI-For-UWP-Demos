@@ -42,4 +42,4 @@ The application provides examples for the following components:
 
 ## License
 
-Licensed under the MIT License. Please refer to [LICENSE.md](LICENSE.md) for more information.
+Licensed under the MIT License. Please refer to [LICENSE.md](LICENSE) for more information.
