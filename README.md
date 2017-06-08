@@ -40,6 +40,8 @@ The application provides examples for the following components:
 * [RadRangeSlider](http://www.telerik.com/universal-windows-platform-ui/rangeslider)
 * [RadRating](http://www.telerik.com/universal-windows-platform-ui/rating)
 
+The open-source version of the controls you could find [here](https://github.com/telerik/UI-For-UWP).
+
 ## License
 
 Licensed under the MIT License. Please refer to [LICENSE.md](LICENSE) for more information.
