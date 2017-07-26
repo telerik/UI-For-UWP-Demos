@@ -21,7 +21,7 @@ namespace Chart.Gallery.Step
             model.Data1 = ChartGalleryModel.GetStepSeriesData(true);
             model.Data2 = ChartGalleryModel.GetStepSeriesData(false);
             model.SelectedItem = model.Items[0];
-            model.Title = "MONTLY SALES REVENUE, 2010";
+            model.Title = "MONTHLY SALES REVENUE, 2010";
 
             this.DataContext = model;
         }

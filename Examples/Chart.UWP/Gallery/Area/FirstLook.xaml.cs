@@ -21,7 +21,7 @@ namespace Chart.Gallery.Area
             model.Data1 = ChartGalleryModel.GetCategoricalData();
             model.Data2 = ChartGalleryModel.GetCategoricalData();
             model.SelectedItem = model.Items[0];
-            model.Title = "MONTLY SALES REVENUE, 2011";
+            model.Title = "MONTHLY SALES REVENUE, 2011";
 
             this.DataContext = model;
         }
