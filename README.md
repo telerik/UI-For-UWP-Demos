@@ -8,7 +8,7 @@ This is an open-source version of Telerik UI for Universal Windows Platform (UWP
 
 * Make sure you have the [required software to build UWP applications](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)
 * Clone a copy of the repository code
-* Open QSF.UWP.sln and build it
+* Open QSF.UWP.sln and build it for x86 architecture
 * After successful build run the application 
 
 ## Downloads
