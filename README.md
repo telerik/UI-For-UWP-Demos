@@ -44,4 +44,4 @@ The open-source version of the controls you could find [here](https://github.com
 
 ## License
 
-Licensed under the MIT License. Please refer to [LICENSE.md](LICENSE) for more information.
+Please refer to [LICENSE.md](LICENSE.md) for more information.
