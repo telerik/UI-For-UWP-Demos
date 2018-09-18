@@ -146,7 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\QSF.Common\QSF.Common.csproj">
-      <Project>{680d7e16-7bc1-44a6-939e-8f94904dbc7b}</Project>
+      <Project>{f64a63de-a771-49ec-9178-1e5d1479f586}</Project>
       <Name>QSF.Common</Name>
     </ProjectReference>
   </ItemGroup>
