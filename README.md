@@ -1,6 +1,6 @@
 # Progress Telerik UI for UWP Demos
 
-<a href="https://www.telerik.com/universal-windows-platform-ui" target="_blank"><img src=EOL_banner.svg /></a>
+<a href="https://www.telerik.com/universal-windows-platform-ui" target="_blank"><img src=telerik-ui-for-uwp-retired.png /></a>
 
 This is an open-source version of Telerik UI for Universal Windows Platform (UWP) Demos application by Progress. It is a free sample application illustrating Telerik UI for Universal Windows Platform components in action. The application demonstrates what features and capabilities the UI for UWP controls provide.
 
